@@ -1,139 +1,73 @@
 package Cliente;
 
-import Banco.Banco;
-import Cache.Cache;
-import Servidores.Servidor;
-import Banco.No;
-import OrdemServico.ServiceOrder;
-import Exception.MyPickException;
-import java.util.Scanner;
+import Impl.ImplCliente;
+
+import java.io.IOException;
+import java.net.InetAddress;
+import java.net.Socket;
 
 public class Cliente {
 
-    private static Banco hash = new Banco();
-    private static Cache mc = new Cache();
-    private static Servidor server = new Servidor(hash, mc);
+    Socket socket;
+    InetAddress inet;
+    String ip;
+    int porta;
 
-    
-    public static void main(String[] args) throws Exception {
-        server.inicializar();
-        Scanner sc = new Scanner(System.in);
-        int opcao = 0;
+    public Cliente(String ip, int porta) {
 
-        do {
-            exibirMenu();
-            opcao = sc.nextInt();
-            sc.nextLine();
+        this.ip = ip;
+        this.porta = porta;
+        this.rodar();
 
-            processarOpcao(opcao, sc);
-            
-        } while (opcao != 7);
-
-
-        sc.close();
     }
 
-    private static void exibirMenu() {
-        System.out.println("===== MENU =====");
-        System.out.println("1. Cadastrar OS");
-        System.out.println("2. Listar todas as OS");
-        System.out.println("3. Alterar OS");
-        System.out.println("4. Remover OS");
-        System.out.println("5. Buscar OS");
-        System.out.println("6. Sair");
-        System.out.print("Escolha uma opção: ");
-        System.out.println("");
-    }
+    private void rodar() {
 
-    private static void processarOpcao(int opcao, Scanner sc) {
-        switch (opcao) {
-            case 1:
-                cadastrarOS(sc);
-                System.out.println("");
-                server.listarCache();
-                break;
-            case 2:
-                server.listar();
-                break;
-            case 3:
-                alterarOS(sc);
-                System.out.println("");
-                server.listarCache();
-                break;
-            case 4:
-                removerOS(sc);
-                System.out.println("");
-                server.listarCache();
-                break;
-            case 5:
-                buscarOS(sc);
-                System.out.println("");
-                server.listarCache();
-                break;
-            case 6:
-                System.out.println("Saindo");
-                break;
-            default:
-                System.out.println("Opção inválida. Tente novamente.");
-        }
-        System.out.println();
-    }
-
-    private static void cadastrarOS(Scanner sc) {
-        System.out.print("Digite seu nome: ");
-        String nome = sc.nextLine();
-
-        System.out.print("Digite a descrição do problema: ");
-        String desc = sc.nextLine();
-
-        ServiceOrder so = new ServiceOrder(nome, desc);
-        No no = new No(so);
-
-        server.inserir(no);
-    }
-
-    private static void alterarOS(Scanner sc)  {
-        System.out.print("Digite o id do Service Order que você vai alterar: ");
-        int codigo = sc.nextInt();
-        sc.nextLine();
-
-        System.out.print("Digite o novo nome da pessoa: ");
-        String nome = sc.nextLine();
-
-        System.out.print("Digite a nova descrição: ");
-        String descricao = sc.nextLine();
+        /*
+         * Para se conectar ao servidor,
+         * cria-se objeto Socket.
+         * O primeiro parâmetro é o
+         * IP ou endereço da máquina que
+         * se quer conectar e o segundo é
+         * a porta da aplicação.
+         * Neste caso, usa-se o IP da
+         * máquina local (127.0.0.1) e a porta da
+         * aplicação Servidor de Eco (54321).
+         */
 
         try {
-            server.atualizar(hash, codigo, nome, descricao);
-        } catch (MyPickException e) {
-            // TODO Auto-generated catch block
+
+            socket = new Socket(ip, porta);
+            inet = socket.getInetAddress();
+
+            System.out.println("HostAddress = " + inet.getHostAddress());
+            System.out.println("HostName = " + inet.getHostName());
+
+   /*
+    * Criar um novo objeto Cliente
+    * com a conexão socket para que
+    * seja executado em
+    * um novo processo.
+    * Permitindo assim a conexão de
+    * vários clientes com o
+    * servidor.
+
+Java
+    */
+
+            ImplCliente c = new ImplCliente(socket);
+            Thread t = new Thread(c);
+            t.start();
+
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
-    private static void removerOS(Scanner sc) {
-        System.out.print("Digite o id do Service Order que você vai remover: ");
-        int codigo = sc.nextInt();
+    public static void main(String args[]) {
 
-        try {
-            server.remover(codigo);
-        } catch (MyPickException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
+        new Cliente("127.0.0.1", 54321);
+
     }
 
-    private static void buscarOS(Scanner sc) {
-        System.out.print("Digite o id do Service Order que você vai buscar: ");
-        int codigo = sc.nextInt();
-
-        try {
-            server.buscar(codigo);
-        } catch (MyPickException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
-    }
 }
-    
-

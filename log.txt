@@ -1,90 +1,10 @@
-Ação: Inserido no banco, Chave: 0, Tabela de Cache: 
-Ação: Inserido no banco, Chave: 1, Tabela de Cache: 
-Ação: Inserido no banco, Chave: 2, Tabela de Cache: 
-Ação: Inserido no banco, Chave: 3, Tabela de Cache: 
-Ação: Inserido no banco, Chave: 4, Tabela de Cache: 
-Ação: Inserido no banco, Chave: 5, Tabela de Cache: 
-Ação: Inserido no banco, Chave: 6, Tabela de Cache: 
-Ação: Inserido no banco, Chave: 7, Tabela de Cache: 
-Ação: Inserido no banco, Chave: 8, Tabela de Cache: 
-Ação: Inserido no banco, Chave: 9, Tabela de Cache: 
-Ação: Inserido no banco, Chave: 10, Tabela de Cache: 
-Ação: Inserido no banco, Chave: 11, Tabela de Cache: 
-Ação: Inserido no banco, Chave: 12, Tabela de Cache: 
-Ação: Inserido no banco, Chave: 13, Tabela de Cache: 
-Ação: Inserido no banco, Chave: 14, Tabela de Cache: 
-Ação: Inserido no banco, Chave: 15, Tabela de Cache: 
-Ação: Inserido no banco, Chave: 16, Tabela de Cache: 
-Ação: Inserido no banco, Chave: 17, Tabela de Cache: 
-Ação: Inserido no banco, Chave: 18, Tabela de Cache: 
-Ação: Inserido no banco, Chave: 19, Tabela de Cache: 
-Ação: Inserido no banco, Chave: 20, Tabela de Cache: 
-Ação: Inserido no banco, Chave: 21, Tabela de Cache: 
-Ação: Inserido no banco, Chave: 22, Tabela de Cache: 
-Ação: Inserido no banco, Chave: 23, Tabela de Cache: 
-Ação: Inserido no banco, Chave: 24, Tabela de Cache: 
-Ação: Inserido no banco, Chave: 25, Tabela de Cache: 
-Ação: Inserido no banco, Chave: 26, Tabela de Cache: 
-Ação: Inserido no banco, Chave: 27, Tabela de Cache: 
-Ação: Inserido no banco, Chave: 28, Tabela de Cache: 
-Ação: Inserido no banco, Chave: 29, Tabela de Cache: 
-Ação: Inserido no banco, Chave: 30, Tabela de Cache: 
-Ação: Inserido no banco, Chave: 31, Tabela de Cache: 
-Ação: Inserido no banco, Chave: 32, Tabela de Cache: 
-Ação: Inserido no banco, Chave: 33, Tabela de Cache: 
-Ação: Inserido no banco, Chave: 34, Tabela de Cache: 
-Ação: Inserido no banco, Chave: 35, Tabela de Cache: 
-Ação: Inserido no banco, Chave: 36, Tabela de Cache: 
-Ação: Inserido no banco, Chave: 37, Tabela de Cache: 
-Ação: Inserido no banco, Chave: 38, Tabela de Cache: 
-Ação: Inserido no banco, Chave: 39, Tabela de Cache: 
-Ação: Inserido no banco, Chave: 40, Tabela de Cache: 
-Ação: Inserido no banco, Chave: 41, Tabela de Cache: 
-Ação: Inserido no banco, Chave: 42, Tabela de Cache: 
-Ação: Inserido no banco, Chave: 43, Tabela de Cache: 
-Ação: Inserido no banco, Chave: 44, Tabela de Cache: 
-Ação: Inserido no banco, Chave: 45, Tabela de Cache: 
-Ação: Inserido no banco, Chave: 46, Tabela de Cache: 
-Ação: Inserido no banco, Chave: 47, Tabela de Cache: 
-Ação: Inserido no banco, Chave: 48, Tabela de Cache: 
-Ação: Inserido no banco, Chave: 49, Tabela de Cache: 
-Ação: Inserido no banco, Chave: 50, Tabela de Cache: 
-Ação: Inserido no banco, Chave: 51, Tabela de Cache: 
-Ação: Inserido no banco, Chave: 52, Tabela de Cache: 
-Ação: Inserido no banco, Chave: 53, Tabela de Cache: 
-Ação: Inserido no banco, Chave: 54, Tabela de Cache: 
-Ação: Inserido no banco, Chave: 55, Tabela de Cache: 
-Ação: Inserido no banco, Chave: 56, Tabela de Cache: 
-Ação: Inserido no banco, Chave: 57, Tabela de Cache: 
-Ação: Inserido no banco, Chave: 58, Tabela de Cache: 
-Ação: Inserido no banco, Chave: 59, Tabela de Cache: 
-Ação: Inserido na cache, Chave: 30, Tabela de Cache: [30] 
-Ação: Inserido na cache, Chave: 31, Tabela de Cache: [30] [31] 
-Ação: Inserido na cache, Chave: 32, Tabela de Cache: [32] [30] [31] 
-Ação: Inserido na cache, Chave: 33, Tabela de Cache: [32] [33] [30] [31] 
-Ação: Inserido na cache, Chave: 34, Tabela de Cache: [32] [33] [34] [30] [31] 
-Ação: Inserido na cache, Chave: 35, Tabela de Cache: [32] [33] [34] [35] [30] [31] 
-Ação: Inserido na cache, Chave: 36, Tabela de Cache: [32] [33] [34] [35] [36] [30] [31] 
-Ação: Inserido na cache, Chave: 37, Tabela de Cache: [32] [33] [34] [35] [36] [37] [30] [31] 
-Ação: Inserido na cache, Chave: 38, Tabela de Cache: [32] [33] [34] [35] [36] [37] [38] [30] [31] 
-Ação: Inserido na cache, Chave: 39, Tabela de Cache: [32] [33] [34] [35] [36] [37] [38] [39] [30] [31] 
-Ação: Inserido na cache, Chave: 40, Tabela de Cache: [32] [33] [34] [35] [36] [37] [38] [39] [40] [30] [31] 
-Ação: Inserido na cache, Chave: 41, Tabela de Cache: [32] [33] [34] [35] [36] [37] [38] [39] [40] [41] [30] [31] 
-Ação: Inserido na cache, Chave: 42, Tabela de Cache: [32] [33] [34] [35] [36] [37] [38] [39] [40] [41] [42] [30] [31] 
-Ação: Inserido na cache, Chave: 43, Tabela de Cache: [32] [33] [34] [35] [36] [37] [38] [39] [40] [41] [42] [43] [30] [31] 
-Ação: Inserido na cache, Chave: 44, Tabela de Cache: [32] [33] [34] [35] [36] [37] [38] [39] [40] [41] [42] [43] [44] [30] [31] 
-Ação: Inserido na cache, Chave: 45, Tabela de Cache: [32] [33] [34] [35] [36] [37] [38] [39] [40] [41] [42] [43] [44] [45] [30] [31] 
-Ação: Inserido na cache, Chave: 46, Tabela de Cache: [32] [33] [34] [35] [36] [37] [38] [39] [40] [41] [42] [43] [44] [45] [46] [30] [31] 
-Ação: Inserido na cache, Chave: 47, Tabela de Cache: [32] [33] [34] [35] [36] [37] [38] [39] [40] [41] [42] [43] [44] [45] [46] [47] [30] [31] 
-Ação: Inserido na cache, Chave: 48, Tabela de Cache: [32] [33] [34] [35] [36] [37] [38] [39] [40] [41] [42] [43] [44] [45] [46] [47] [48] [30] [31] 
-Ação: Inserido na cache, Chave: 49, Tabela de Cache: [32] [33] [34] [35] [36] [37] [38] [39] [40] [41] [42] [43] [44] [45] [46] [47] [48] [49] [30] [31] 
-Ação: Inserido na cache, Chave: 50, Tabela de Cache: [32] [33] [34] [35] [36] [37] [38] [39] [40] [41] [42] [43] [44] [45] [46] [47] [48] [49] [50] [30] [31] 
-Ação: Inserido na cache, Chave: 51, Tabela de Cache: [32] [33] [34] [35] [36] [37] [38] [39] [40] [41] [42] [43] [44] [45] [46] [47] [48] [49] [50] [51] [30] [31] 
-Ação: Inserido na cache, Chave: 52, Tabela de Cache: [32] [33] [34] [35] [36] [37] [38] [39] [40] [41] [42] [43] [44] [45] [46] [47] [48] [49] [50] [51] [52] [30] [31] 
-Ação: Inserido na cache, Chave: 53, Tabela de Cache: [32] [33] [34] [35] [36] [37] [38] [39] [40] [41] [42] [43] [44] [45] [46] [47] [48] [49] [50] [51] [52] [53] [30] [31] 
-Ação: Inserido na cache, Chave: 54, Tabela de Cache: [30] [31] [32] [33] [34] [35] [36] [37] [38] [39] [40] [41] [42] [43] [44] [45] [46] [47] [48] [49] [50] [51] [52] [53] [54] 
-Ação: Inserido na cache, Chave: 55, Tabela de Cache: [30] [31] [32] [33] [34] [35] [36] [37] [38] [39] [40] [41] [42] [43] [44] [45] [46] [47] [48] [49] [50] [51] [52] [53] [54] [55] 
-Ação: Inserido na cache, Chave: 56, Tabela de Cache: [30] [31] [32] [33] [34] [35] [36] [37] [38] [39] [40] [41] [42] [43] [44] [45] [46] [47] [48] [49] [50] [51] [52] [53] [54] [55] [56] 
-Ação: Inserido na cache, Chave: 57, Tabela de Cache: [30] [31] [32] [33] [34] [35] [36] [37] [38] [39] [40] [41] [42] [43] [44] [45] [46] [47] [48] [49] [50] [51] [52] [53] [54] [55] [56] [57] 
-Ação: Inserido na cache, Chave: 58, Tabela de Cache: [30] [31] [32] [33] [34] [35] [36] [37] [38] [39] [40] [41] [42] [43] [44] [45] [46] [47] [48] [49] [50] [51] [52] [53] [54] [55] [56] [57] [58] 
-Ação: Inserido na cache, Chave: 59, Tabela de Cache: [30] [31] [32] [33] [34] [35] [36] [37] [38] [39] [40] [41] [42] [43] [44] [45] [46] [47] [48] [49] [50] [51] [52] [53] [54] [55] [56] [57] [58] [59] 
+// Envia uma mensagem de boas-vindas ao cliente
+                        System.out.println("Bem-vindo ao servidor! \nEscolha uma das opções: \n1° Pega o ip do servidor de proxy: \n2° Encerra conexão: ");
+                        escolha = s.nextLine();
+                        switch (escolha){
+                            case "1": out.println("127.0.0.1");
+                            break;
+
+                            case "2": out.println("127.0.0.2");
+                            break;
+                        }
