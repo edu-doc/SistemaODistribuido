@@ -33,7 +33,7 @@ public class ImplCliente implements Runnable {
                 try {
                     String mensagemServidor;
                     while ((mensagemServidor = entrada.readLine()) != null) {
-                        System.out.println("Servidor: " + mensagemServidor);
+                        System.out.println(mensagemServidor);
                     }
                 } catch (IOException e) {
                     System.out.println("Conexão com o servidor foi fechada.");

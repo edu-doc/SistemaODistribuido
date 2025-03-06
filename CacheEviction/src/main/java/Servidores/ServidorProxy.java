@@ -1,19 +1,19 @@
 package Servidores;
 
-import Impl.ImplServidor;
+import Impl.ImplServidorProxy;
 
 import java.io.IOException;
 import java.net.InetAddress;
 import java.net.ServerSocket;
 import java.net.Socket;
 
-public class Servidor {
+public class ServidorProxy {
 
     ServerSocket socketServidor;
     Socket cliente;
     int porta;
 
-    public Servidor(int porta) {
+    public ServidorProxy(int porta) {
         this.porta = porta;
         this.rodar();
     }
@@ -52,9 +52,9 @@ Java
                 cliente = socketServidor.accept();
 
                 // Cria uma thread do servidor para tratar a conexão
-                ImplServidor servidor = new ImplServidor(cliente);
+                ImplServidorProxy servidorProxy = new ImplServidorProxy(cliente);
 
-                Thread t = new Thread(servidor);
+                Thread t = new Thread(servidorProxy);
                 // Inicia a thread para o cliente conectado
 
                 t.start();
@@ -68,7 +68,7 @@ Java
 
     public static void main(String[] args) throws Exception {
 
-        new Servidor(54321);
+        new ServidorProxy(12345);
 
     }
 

@@ -1,8 +1,12 @@
 package Banco;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Banco {
 
     private No raiz;
+    public static final Banco instancia = new Banco();
 
     public Banco() {
         this.raiz = null;
@@ -140,16 +144,24 @@ public class Banco {
         return atual;
     }
 
-    public void listarElementos() {
-        inOrder(raiz);
+    public List<String> listarElementos() {
+        List<String> listaOS = new ArrayList<>();
+        inOrder(raiz, listaOS);
+        return listaOS;
     }
 
-    private void inOrder(No no) {
+    private void inOrder(No no, List<String> listaOS) {
         if (no != null) {
-            inOrder(no.getEsquerda());
-            printarNo(no);
-            inOrder(no.getDireita());
+            inOrder(no.getEsquerda(), listaOS);
+            listaOS.add(formatarNo(no)); // Adiciona a OS formatada à lista
+            inOrder(no.getDireita(), listaOS);
         }
+    }
+
+    private String formatarNo(No no) {
+        return "ID: " + no.getOrder().getCodigoServico() +
+                ", Nome: " + no.getOrder().getNome() +
+                ", Descrição: " + no.getOrder().getDescricao();
     }
 
     private void printarNo(No no) {

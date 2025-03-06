@@ -11,6 +11,7 @@ public class Cache<K> {
     private final HashMap<K, NoCache<K, ServiceOrder>> mapa;
     private NoCache<K, ServiceOrder> inicio;
     private NoCache<K, ServiceOrder> fim;
+    public static final Cache<Integer> instancia = new Cache<Integer>();
 
     public Cache() {
         this.capacidade = 30;
