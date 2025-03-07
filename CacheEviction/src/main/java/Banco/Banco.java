@@ -12,7 +12,7 @@ public class Banco {
         this.raiz = null;
     }
 
-    public synchronized void inserir(No no) {
+    public  void inserir(No no) {
         raiz = inserirRN(raiz, no);
         raiz.setCor(No.Cor.PRETO);
     }
@@ -51,7 +51,7 @@ public class Banco {
         }
     }
 
-    public synchronized No remover(int chave) {
+    public No remover(int chave) {
         No noRemovido = buscarRN(raiz, chave);
         if (noRemovido != null) {
             raiz = removerRN(raiz, chave);
@@ -158,7 +158,7 @@ public class Banco {
                 ", Descrição: " + no.getOrder().getDescricao();
     }
 
-    public synchronized boolean atualizar(int codigoServico, String nome, String descricao) {
+    public boolean atualizar(int codigoServico, String nome, String descricao) {
         No no = buscarRN(raiz, codigoServico);
         if (no != null) {
             no.getOrder().setNome(nome);
@@ -181,11 +181,11 @@ public class Banco {
         return 1 + contarNos(no.getEsquerda()) + contarNos(no.getDireita());
     }
 
-    public synchronized No getRaiz() {
+    public No getRaiz() {
         return raiz;
     }
 
-    public synchronized void setRaiz(No raiz) {
+    public void setRaiz(No raiz) {
         this.raiz = raiz;
     }
 }

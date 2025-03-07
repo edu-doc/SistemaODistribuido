@@ -61,18 +61,18 @@ public class ImplServidorLocalizacao implements Runnable {
 
     private void enviarMenu() {
         saida.println("Bem-vindo! Escolha uma opção:");
-        saida.println("1. Opção 1");
+        saida.println("1. Conectar com servidor de proxy");
         saida.println("2. Finalizar conexão");
     }
 
     private void processarEscolha(String escolha) {
         switch (escolha) {
             case "1":
-                saida.println("Conectar-se com o servidor de proxy");
+                saida.println("Conectado");
                 redirecionarParaProxy();
                 break;
             case "2":
-                saida.println("Conexaão Finalizada");
+                saida.println("Conexão Finalizada");
                 conexao = false; // Encerra o loop de processamento
                 break;
             default:

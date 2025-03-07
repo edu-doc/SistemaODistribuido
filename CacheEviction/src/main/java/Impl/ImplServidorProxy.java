@@ -152,7 +152,14 @@ public class ImplServidorProxy implements Runnable {
 
     private void alterarOS(List<Object> lista) throws IOException, ClassNotFoundException {
         saida.println("Digite o ID da OS:");
-        int id = Integer.parseInt(entrada.readLine());
+        int id = -1;
+
+        try {
+            id = Integer.parseInt(entrada.readLine());
+        } catch (NumberFormatException e) {
+            e.printStackTrace();
+        }
+
         saida.println("Digite o novo nome:");
         String nome = entrada.readLine();
         saida.println("Digite a nova descrição:");
@@ -173,7 +180,15 @@ public class ImplServidorProxy implements Runnable {
 
     private void removerOS(List<Object> lista) throws IOException, ClassNotFoundException {
         saida.println("Digite o ID para remover:");
-        int id = Integer.parseInt(entrada.readLine());
+
+        int id = -1;
+
+        try {
+            id = Integer.parseInt(entrada.readLine());
+        } catch (NumberFormatException e) {
+            e.printStackTrace();
+        }
+
         cache.remover(id);
         lista.add("remover");
         lista.add(id);
@@ -187,7 +202,14 @@ public class ImplServidorProxy implements Runnable {
 
     private void buscarOS(List<Object> lista) throws IOException, ClassNotFoundException, MyPickException {
         saida.println("Digite o ID para buscar:");
-        int id = Integer.parseInt(entrada.readLine());
+
+        int id = -1;
+
+        try {
+            id = Integer.parseInt(entrada.readLine());
+        } catch (NumberFormatException e) {
+            e.printStackTrace();
+        }
 
         // Busca na cache
         ServiceOrder so = cache.get(id);
@@ -210,7 +232,7 @@ public class ImplServidorProxy implements Runnable {
                     saida.println("OS não encontrada.");
                 }
             } else {
-                saida.println("Erro: Objeto recebido não é do tipo Banco.No.");
+                saida.println("Valor inválido.");
             }
         } else {
             saida.println("OS encontrada na cache: " + so);
@@ -218,6 +240,7 @@ public class ImplServidorProxy implements Runnable {
     }
 
     private void enviarMenu() {
+        saida.println("");
         saida.println("===== MENU =====\n1. Cadastrar OS\n2. Listar Cache\n3. Listar todas as OS\n4. Alterar OS\n5. Remover OS\n6. Buscar OS\n7. Sair\nEscolha uma opção:");
     }
 

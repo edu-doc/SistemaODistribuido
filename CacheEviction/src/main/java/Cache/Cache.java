@@ -18,7 +18,7 @@ public class Cache<K> {
         this.fim = null;
     }
 
-    public synchronized void put(K chave, ServiceOrder ordem) {
+    public void put(K chave, ServiceOrder ordem) {
         if (mapa.containsKey(chave)) {
             NoCache<K, ServiceOrder> no = mapa.get(chave);
             no.setValor(ordem);
@@ -33,7 +33,7 @@ public class Cache<K> {
         }
     }
 
-    public synchronized ServiceOrder get(K chave) throws MyPickException {
+    public ServiceOrder get(K chave) throws MyPickException {
         if (mapa.containsKey(chave)) {
             NoCache<K, ServiceOrder> no = mapa.get(chave);
             moverParaInicio(no);
@@ -42,7 +42,7 @@ public class Cache<K> {
         return null;
     }
 
-    public synchronized void atualizar(K chave, String novoNome, String novaDescricao) {
+    public void atualizar(K chave, String novoNome, String novaDescricao) {
         if (mapa.containsKey(chave)) {
             NoCache<K, ServiceOrder> no = mapa.get(chave);
             ServiceOrder ordem = no.getValor();
@@ -54,7 +54,7 @@ public class Cache<K> {
         }
     }
 
-    public synchronized void remover(K chave) {
+    public void remover(K chave) {
         if (!mapa.containsKey(chave)) return;
 
         NoCache<K, ServiceOrder> no = mapa.get(chave);
@@ -74,7 +74,7 @@ public class Cache<K> {
         mapa.remove(chave);
     }
 
-    private synchronized void moverParaInicio(NoCache<K, ServiceOrder> no) {
+    private void moverParaInicio(NoCache<K, ServiceOrder> no) {
         if (no == inicio) return;
 
         if (no.getAnterior() != null) {
@@ -90,7 +90,7 @@ public class Cache<K> {
         adicionarNoInicio(no);
     }
 
-    private synchronized void adicionarNoInicio(NoCache<K, ServiceOrder> no) {
+    private void adicionarNoInicio(NoCache<K, ServiceOrder> no) {
         no.setProximo(inicio);
         no.setAnterior(null);
 
@@ -104,7 +104,7 @@ public class Cache<K> {
         }
     }
 
-    private synchronized void removerUltimo() {
+    private void removerUltimo() {
         if (fim != null) {
             mapa.remove(fim.getChave());
             if (fim.getAnterior() != null) {
