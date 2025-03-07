@@ -12,7 +12,6 @@ public class ServidorProxy {
     ServerSocket socketServidor;
     Socket socketAplicacao;
     Socket cliente;
-    Socket aplicacao;
     int porta;
     int portaAplicacao;
 

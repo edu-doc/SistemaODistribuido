@@ -10,8 +10,8 @@ import OrdemServico.ServiceOrder;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.IOException;
-import java.io.InputStreamReader;
 import java.net.Socket;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
@@ -21,57 +21,33 @@ public class ImplServidorAplicacao implements Runnable {
     private boolean conexao = true;
     private ObjectInputStream entrada;
     private ObjectOutputStream saida;
-    private Cache<Integer> cache; // Cache compartilhada
     private Banco banco; // Banco compartilhado
 
     public ImplServidorAplicacao(Socket proxy) {
         this.socketProxy = proxy;
-        // this.cache = Cache.instancia; // Obtém a instância única da Cache
-        this.banco = Banco.instancia; // Obtém a instância única do Banco
+        this.banco = Banco.instancia;
         cont++;  // Incrementa o contador de conexões
     }
 
     public void run() {
-        String mensagemRecebida;
-        System.out.println("Conexão " +
-                cont +
-                " com o aplicação " +
-                socketProxy.getInetAddress().getHostAddress() +
-                "/" +
-                socketProxy.getInetAddress().getHostName()
-        );
+        System.out.println("Conexão " + cont + " com o proxy " + socketProxy.getInetAddress().getHostAddress());
 
         try {
-            // Prepara para leitura das mensagens do proxy
-
             saida = new ObjectOutputStream(socketProxy.getOutputStream());
             entrada = new ObjectInputStream(socketProxy.getInputStream());
 
-            // Processa as escolhas do proxy
             while (conexao) {
                 try {
-                    System.out.println("Conectei");
-                    mensagemRecebida =  (String) entrada.readObject();
-                    System.out.println(mensagemRecebida);
-                    No no = (No) entrada.readObject();
-
-                    cadastrarOS(no);
-
+                    List<Object> lista = (List<Object>) entrada.readObject();
+                    String comando = (String) lista.get(0);
+                    processarEscolha(comando, lista);
                 } catch (ClassNotFoundException e) {
-                    throw new RuntimeException(e);
-                }
-
-                if (mensagemRecebida == null || mensagemRecebida.equalsIgnoreCase("fim")) {
-                    conexao = false;
+                    System.err.println("Erro na leitura do objeto: " + e.getMessage());
                 }
             }
 
-            // Finaliza os recursos
             entrada.close();
             saida.close();
-            System.out.println("Fim do proxy " +
-                    socketProxy.getInetAddress().getHostAddress());
-
             socketProxy.close();
 
         } catch (IOException e) {
@@ -79,24 +55,47 @@ public class ImplServidorAplicacao implements Runnable {
         }
     }
 
-
-    private void processarEscolha(String escolha) {
-        switch (escolha) {
-            case "1":
+    private void processarEscolha(String comando, List<Object> lista) throws IOException {
+        switch (comando) {
+            case "cadastro":
+                No no = (No) lista.get(1);
+                banco.inserir(no);
+                saida.writeObject("Cadastro realizado com sucesso!");
+                saida.flush();
                 break;
-            case "7":
-                System.out.println("Fim da conexão");
-                conexao = false; // Encerra o loop de processamento
+            case "remover":
+                int idRemover = (Integer) lista.get(1);
+                banco.remover(idRemover);
+                saida.writeObject("Remoção realizada com sucesso!");
+                saida.flush();
+                break;
+            case "listar":
+                List<String> listaOS = banco.listarElementos(); // Obtém a lista de OS do banco
+                saida.writeObject(listaOS); // Envia a lista de OS para o proxy
+                saida.flush();
+                break;
+            case "buscar":
+                int idBuscar = (Integer) lista.get(1);
+                No resultado = banco.buscar(idBuscar);
+                if (resultado != null) {
+                    saida.writeObject(resultado); // Retorna um objeto do tipo Banco.No
+                } else {
+                    saida.writeObject(null); // Retorna null se não encontrar
+                }
+                saida.flush();
+                break;
+            case "alterar":
+                int idAlterar = (Integer) lista.get(1);
+                String nome = (String) lista.get(2);
+                String descricao = (String) lista.get(3);
+                banco.atualizar(idAlterar, nome, descricao);
+                saida.writeObject("Alteração realizada com sucesso!");
+                saida.flush();
                 break;
             default:
-                System.out.println("Opção inválida. Tente novamente.");
+                saida.writeObject("Comando inválido!");
+                saida.flush();
                 break;
         }
     }
-
-    private void cadastrarOS(No no) {
-        banco.inserir(no);
-        System.out.println("OS cadastrada com sucesso! ID: " + no.getOrder().getCodigoServico());
-    }
-
 }

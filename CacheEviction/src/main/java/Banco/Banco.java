@@ -12,7 +12,7 @@ public class Banco {
         this.raiz = null;
     }
 
-    public void inserir(No no) {
+    public synchronized void inserir(No no) {
         raiz = inserirRN(raiz, no);
         raiz.setCor(No.Cor.PRETO);
     }
@@ -40,7 +40,6 @@ public class Banco {
     }
 
     private No buscarRN(No no, int chave) {
-
         if (no == null || no.getOrder().getCodigoServico() == chave) {
             return no;
         }
@@ -52,7 +51,7 @@ public class Banco {
         }
     }
 
-    public No remover(int chave) {
+    public synchronized No remover(int chave) {
         No noRemovido = buscarRN(raiz, chave);
         if (noRemovido != null) {
             raiz = removerRN(raiz, chave);
@@ -76,12 +75,7 @@ public class Banco {
         } else {
             if (no.getEsquerda() == null || no.getDireita() == null) {
                 No temp = (no.getEsquerda() != null) ? no.getEsquerda() : no.getDireita();
-                if (temp == null) {
-                    return null;
-                } else {
-                    temp.setCor(no.getCor());
-                    return temp;
-                }
+                return temp;
             } else {
                 No sucessor = menorNo(no.getDireita());
                 no.setOrder(sucessor.getOrder());
@@ -153,7 +147,7 @@ public class Banco {
     private void inOrder(No no, List<String> listaOS) {
         if (no != null) {
             inOrder(no.getEsquerda(), listaOS);
-            listaOS.add(formatarNo(no)); // Adiciona a OS formatada à lista
+            listaOS.add(formatarNo(no));
             inOrder(no.getDireita(), listaOS);
         }
     }
@@ -164,13 +158,7 @@ public class Banco {
                 ", Descrição: " + no.getOrder().getDescricao();
     }
 
-    private void printarNo(No no) {
-        System.out.println("Código: " + no.getOrder().getCodigoServico());
-        System.out.println("Nome: " + no.getOrder().getNome());
-        System.out.println("");
-    }
-
-    public boolean atualizar(int codigoServico, String nome, String descricao) {
+    public synchronized boolean atualizar(int codigoServico, String nome, String descricao) {
         No no = buscarRN(raiz, codigoServico);
         if (no != null) {
             no.getOrder().setNome(nome);
@@ -193,11 +181,11 @@ public class Banco {
         return 1 + contarNos(no.getEsquerda()) + contarNos(no.getDireita());
     }
 
-    public No getRaiz() {
+    public synchronized No getRaiz() {
         return raiz;
     }
 
-    public void setRaiz(No raiz) {
+    public synchronized void setRaiz(No raiz) {
         this.raiz = raiz;
     }
 }
