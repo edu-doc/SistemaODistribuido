@@ -1,20 +1,24 @@
 package OrdemServico;
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
-public class ServiceOrder {
+public class ServiceOrder implements Serializable {
+
+    private static final long serialVersionUID = 1L;
+
     static int count = 0000;
     private int codigoServico;
     private String nome;
     private String descricao;
 
     private LocalDateTime data = LocalDateTime.now();
-    private DateTimeFormatter horaFormatada = DateTimeFormatter.ofPattern("HH:mm:ss");
 
     private String hora;
 
     public ServiceOrder(String nome, String descricao){
+        DateTimeFormatter horaFormatada = DateTimeFormatter.ofPattern("HH:mm:ss");
         this.codigoServico = count;
         setNome(nome);
         setDescricao(descricao);
@@ -72,13 +76,13 @@ public class ServiceOrder {
         this.data = data;
     }
 
-    public DateTimeFormatter getHoraFormatada() {
-        return horaFormatada;
-    }
+    // public DateTimeFormatter getHoraFormatada() {
+    //    return horaFormatada;
+    //}
 
-    public void setHoraFormatada(DateTimeFormatter horaFormatada) {
-        this.horaFormatada = horaFormatada;
-    }
+    // public void setHoraFormatada(DateTimeFormatter horaFormatada) {
+    //    this.horaFormatada = horaFormatada;
+    //}
 
     public void setHora(String hora) {
         this.hora = hora;

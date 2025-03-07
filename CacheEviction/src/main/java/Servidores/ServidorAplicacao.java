@@ -1,5 +1,6 @@
 package Servidores;
 
+import Impl.ImplServidorAplicacao;
 import Impl.ImplServidorProxy;
 
 import java.io.IOException;
@@ -7,18 +8,13 @@ import java.net.InetAddress;
 import java.net.ServerSocket;
 import java.net.Socket;
 
-public class ServidorProxy {
-
+public class ServidorAplicacao {
     ServerSocket socketServidor;
-    Socket socketAplicacao;
     Socket cliente;
-    Socket aplicacao;
     int porta;
-    int portaAplicacao;
 
-    public ServidorProxy(int porta, int portaAplicacao) {
+    public ServidorAplicacao(int porta) {
         this.porta = porta;
-        this.portaAplicacao = portaAplicacao;
         this.rodar();
     }
 
@@ -29,7 +25,6 @@ public class ServidorProxy {
          */
         try {
             socketServidor = new ServerSocket(porta);
-            socketAplicacao = new Socket("127.0.0.1", portaAplicacao);
 
             System.out.println("Servidor rodando na porta " +
                     socketServidor.getLocalPort());
@@ -37,7 +32,6 @@ public class ServidorProxy {
                     InetAddress.getLocalHost().getHostAddress());
             System.out.println("HostName = " +
                     InetAddress.getLocalHost().getHostName());
-
 
    /*
     * Aguarda alguém se conectar.
@@ -58,9 +52,9 @@ Java
                 cliente = socketServidor.accept();
 
                 // Cria uma thread do servidor para tratar a conexão
-                ImplServidorProxy servidorProxy = new ImplServidorProxy(cliente,socketAplicacao);
+                ImplServidorAplicacao servidorAplicacao = new ImplServidorAplicacao(cliente);
 
-                Thread t = new Thread(servidorProxy);
+                Thread t = new Thread(servidorAplicacao);
                 // Inicia a thread para o cliente conectado
 
                 t.start();
@@ -74,8 +68,7 @@ Java
 
     public static void main(String[] args) throws Exception {
 
-        new ServidorProxy(12345,12321);
+        new ServidorAplicacao(12321);
 
     }
-
 }

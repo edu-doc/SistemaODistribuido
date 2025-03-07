@@ -1,9 +1,6 @@
 package Impl;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.PrintWriter;
+import java.io.*;
 import java.net.Socket;
 import java.util.HashMap;
 import java.util.List;
@@ -17,15 +14,19 @@ import Exception.MyPickException;
 
 public class ImplServidorProxy implements Runnable {
     public Socket socketCliente;
+    public Socket socketAplicacao;
     public static int cont = 0;
     private boolean conexao = true;
     private BufferedReader entrada;
     private PrintWriter saida;
+    private ObjectInputStream entradaAplicacao;
+    private ObjectOutputStream  saidaAplicacao;
     private Cache<Integer> cache; // Cache compartilhada
     private Banco banco; // Banco compartilhado
 
-    public ImplServidorProxy(Socket cliente) {
+    public ImplServidorProxy(Socket cliente, Socket aplicacao) {
         this.socketCliente = cliente;
+        this.socketAplicacao = aplicacao;
         this.cache = Cache.instancia; // Obtém a instância única da Cache
         this.banco = Banco.instancia; // Obtém a instância única do Banco
         cont++;  // Incrementa o contador de conexões
@@ -33,6 +34,9 @@ public class ImplServidorProxy implements Runnable {
 
     public void run() {
         String mensagemRecebida;
+        No noAplicacao;
+        String mensagemAplicacao = null;
+
         System.out.println("Conexão " +
                 cont +
                 " com o cliente " +
@@ -42,6 +46,7 @@ public class ImplServidorProxy implements Runnable {
         );
 
         try {
+
             // Prepara para leitura das mensagens do cliente
             entrada = new BufferedReader(new InputStreamReader(socketCliente.getInputStream()));
             saida = new PrintWriter(socketCliente.getOutputStream(), true);
@@ -58,7 +63,7 @@ public class ImplServidorProxy implements Runnable {
                     if (mensagemRecebida == null || mensagemRecebida.equalsIgnoreCase("fim")) {
                         conexao = false;
                     } else {
-                        processarEscolha(mensagemRecebida);
+                        processarEscolha(mensagemRecebida, mensagemAplicacao);
                     }
                 }
             } else {
@@ -66,11 +71,14 @@ public class ImplServidorProxy implements Runnable {
             }
 
             // Finaliza os recursos
+            entradaAplicacao.close();
+            saidaAplicacao.close();
             entrada.close();
             saida.close();
             System.out.println("Fim do cliente " +
                     socketCliente.getInetAddress().getHostAddress());
 
+            socketAplicacao.close();
             socketCliente.close();
 
         } catch (IOException e) {
@@ -112,8 +120,8 @@ public class ImplServidorProxy implements Runnable {
         }
     }
 
-    private void processarEscolha(String escolha) {
-        switch (escolha) {
+    private void processarEscolha(String mensagemRecebida , String mensagemAplicacao) {
+        switch (mensagemRecebida) {
             case "1":
                 cadastrarOS();
                 break;
@@ -151,8 +159,22 @@ public class ImplServidorProxy implements Runnable {
 
             ServiceOrder so = new ServiceOrder(nome, descricao);
             No no = new No(so);
-            banco.inserir(no);
-            saida.println("OS cadastrada com sucesso! ID: " + no.getOrder().getCodigoServico());
+
+            if(socketAplicacao.isConnected()){
+                System.out.println("Ainda conectado " + socketCliente.getInetAddress().getHostAddress());
+            }
+
+
+            entradaAplicacao = new ObjectInputStream(socketAplicacao.getInputStream());
+            saidaAplicacao = new ObjectOutputStream(socketAplicacao.getOutputStream());
+
+            saidaAplicacao.writeObject("Cadastro");
+            saidaAplicacao.flush();
+
+            saidaAplicacao.writeObject(no);
+            saidaAplicacao.flush();
+
+            // saida.println("OS cadastrada com sucesso! ID: " + no.getOrder().getCodigoServico());
         } catch (IOException e) {
             saida.println("Erro ao cadastrar OS: " + e.getMessage());
         }

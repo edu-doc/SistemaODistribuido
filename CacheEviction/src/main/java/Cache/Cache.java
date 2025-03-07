@@ -38,7 +38,7 @@ public class Cache<K> {
     public ServiceOrder get(K chave, Banco banco) throws MyPickException {
         if (mapa.containsKey(chave)) {
             NoCache<K, ServiceOrder> no = mapa.get(chave);
-            moverParaInicio(no);
+            moverParaInicio(no); 
             return no.getValor();
         }
 
