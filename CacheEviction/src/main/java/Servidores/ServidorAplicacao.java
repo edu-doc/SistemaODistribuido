@@ -68,7 +68,7 @@ Java
 
     public static void main(String[] args) throws Exception {
 
-        new ServidorAplicacao(12322);
+        new ServidorAplicacao(12321);
 
     }
 }

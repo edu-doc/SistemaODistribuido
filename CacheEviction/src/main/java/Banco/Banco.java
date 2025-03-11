@@ -7,15 +7,18 @@ public class Banco {
 
     private No raiz;
     public static final Banco instancia = new Banco();
+    private final LogBanco logBanco;
 
     public Banco() {
         this.raiz = null;
+        this.logBanco = new LogBanco();
     }
 
     public  void inserir(No no) {
         synchronized(Banco.class) {
             raiz = inserirRN(raiz, no);
             raiz.setCor(No.Cor.PRETO);
+            logBanco.log("Inserido no banco", no);
         }
     }
 
@@ -38,7 +41,10 @@ public class Banco {
     }
 
     public No buscar(int chave) {
-        return buscarRN(raiz, chave);
+        synchronized (Banco.class) {
+            logBanco.log("Buscando no banco", buscarRN(raiz, chave));
+            return buscarRN(raiz, chave);
+        }
     }
 
     private No buscarRN(No no, int chave) {
@@ -61,6 +67,7 @@ public class Banco {
                 if (raiz != null) {
                     raiz.setCor(No.Cor.PRETO);
                 }
+                logBanco.log("Removido no banco", noRemovido);
                 return noRemovido;
             }
             return null;
@@ -168,7 +175,7 @@ public class Banco {
             if (no != null) {
                 no.getOrder().setNome(nome);
                 no.getOrder().setDescricao(descricao);
-                System.out.println("Service Order atualizada: " + codigoServico);
+                logBanco.log("Atualizao no Banco",no);
                 return true;
             }
             System.out.println("Service Order não encontrada para atualização: " + codigoServico);

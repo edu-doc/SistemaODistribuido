@@ -11,12 +11,14 @@ public class Cache<K> {
     private NoCache<K, ServiceOrder> inicio;
     private NoCache<K, ServiceOrder> fim;
     public static final Cache<Integer> instancia = new Cache<Integer>();
+    private final LogCache<K> logCache;
 
     public Cache() {
         this.capacidade = 30;
         this.mapa = new HashMap<>();
         this.inicio = null;
         this.fim = null;
+        this.logCache = new LogCache<K>();
     }
 
     public void put(K chave, ServiceOrder ordem) {
@@ -25,6 +27,7 @@ public class Cache<K> {
                 NoCache<K, ServiceOrder> no = mapa.get(chave);
                 no.setValor(ordem);
                 moverParaInicio(no);
+                logCache.log("Service Order já na Cache e movido para o inicio",chave,getMapa());
             } else {
                 NoCache<K, ServiceOrder> novoNo = new NoCache<K, ServiceOrder>(chave, ordem);
                 if (mapa.size() >= capacidade) {
@@ -32,6 +35,7 @@ public class Cache<K> {
                 }
                 adicionarNoInicio(novoNo);
                 mapa.put(chave, novoNo);
+                logCache.log("Service Order adicionada pelo Banco e movido para o inicio",chave,getMapa());
             }
         }
     }
@@ -40,6 +44,7 @@ public class Cache<K> {
         if (mapa.containsKey(chave)) {
             NoCache<K, ServiceOrder> no = mapa.get(chave);
             moverParaInicio(no);
+            logCache.log("Service Order buscado e movido para o inicio",chave,getMapa());
             return no.getValor();
         }
         return null;
@@ -55,6 +60,7 @@ public class Cache<K> {
                 ordem.setDescricao(novaDescricao);
 
                 moverParaInicio(no);
+                logCache.log("Service Order atualizado e movido para o inicio",chave,getMapa());
             }
         }
     }
@@ -78,6 +84,7 @@ public class Cache<K> {
             }
 
             mapa.remove(chave);
+            logCache.log("Service Order removido da cache",chave,getMapa());
         }
     }
 

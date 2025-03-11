@@ -2,6 +2,7 @@ package Impl;
 
 import java.io.*;
 import java.net.Socket;
+import Logger.Logger;
 
 public class ImplServidorLocalizacao implements Runnable {
 
@@ -10,9 +11,11 @@ public class ImplServidorLocalizacao implements Runnable {
     private boolean conexao = true;
     private BufferedReader entrada;
     private PrintWriter saida;
+    private final Logger log;
 
     public ImplServidorLocalizacao(Socket cliente) {
         this.socketCliente = cliente;
+        this.log = new Logger();
         cont++;  // Incrementa o contador de conexões
     }
 
@@ -26,6 +29,8 @@ public class ImplServidorLocalizacao implements Runnable {
                 "/" +
                 socketCliente.getInetAddress().getHostName()
         );
+
+        log.info("Cliente " + socketCliente.getInetAddress().getHostAddress() + " se conectou no servidor de localizacao");
 
         try {
             // Prepara para leitura das mensagens do cliente
@@ -69,6 +74,7 @@ public class ImplServidorLocalizacao implements Runnable {
         switch (escolha) {
             case "1":
                 saida.println("Conectado");
+                log.info("Cliente " + socketCliente.getInetAddress().getHostAddress() + " foi redirecionado para servidor de proxy");
                 redirecionarParaProxy();
                 break;
             case "2":
