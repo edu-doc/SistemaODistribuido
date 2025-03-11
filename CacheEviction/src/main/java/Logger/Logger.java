@@ -18,7 +18,7 @@ public class Logger {
 
         System.out.println(logMessage);
 
-        try (PrintWriter out = new PrintWriter(new FileWriter(LOG_FILE, false))) {
+        try (PrintWriter out = new PrintWriter(new FileWriter(LOG_FILE, true))) {
             out.println(logMessage);
             if (throwable != null) {
                 throwable.printStackTrace(out);

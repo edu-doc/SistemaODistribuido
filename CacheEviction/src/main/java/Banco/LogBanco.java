@@ -23,7 +23,7 @@ public class LogBanco {
                 no != null ? formatarNo(no) : "null",
                 arvoreString.toString());
 
-        try (BufferedWriter bw = new BufferedWriter(new FileWriter(path, false))) {
+        try (BufferedWriter bw = new BufferedWriter(new FileWriter(path, true))) {
             bw.write(message);
         } catch (IOException e) {
             e.printStackTrace();

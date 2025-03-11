@@ -21,7 +21,7 @@ public class LogCache<K> {
                 chave != null ? chave.toString() : "null",
                 tabelaString.toString());
 
-        try (BufferedWriter bw = new BufferedWriter(new FileWriter(path, false))) {
+        try (BufferedWriter bw = new BufferedWriter(new FileWriter(path, true))) {
             bw.write(message);
         } catch (IOException e) {
             e.printStackTrace();
