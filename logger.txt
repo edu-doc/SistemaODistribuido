@@ -1,1 +1,46 @@
 [2025-03-11 18:52:21] [INFO] [Impl.ImplServidorProxy.processarEscolha] Cliente 2 e IP:127.0.0.1 solicitou listagem de todas as OSs.
+[2025-03-11 19:01:40] [INFO] [Impl.ImplServidorLocalizacao.run] Cliente 26.45.69.138 se conectou no servidor de localizacao
+[2025-03-11 19:02:45] [INFO] [Impl.ImplServidorLocalizacao.processarEscolha] Cliente 26.45.69.138 foi redirecionado para servidor de proxy
+[2025-03-11 19:02:45] [INFO] [Impl.ImplServidorProxy.<init>] Nova conexão estabelecida. Total de conexões: 1
+[2025-03-11 19:02:45] [INFO] [Impl.ImplServidorAplicacao.run] Conexão 1 estabelecida com o proxy 127.0.0.1
+[2025-03-11 19:02:45] [INFO] [Impl.ImplServidorProxy.run] Iniciando comunicação com o cliente 1 e IP:127.0.0.1
+[2025-03-11 19:02:51] [INFO] [Impl.ImplServidorProxy.run] Autenticação bem-sucedida para o cliente 1 e IP:127.0.0.1
+[2025-03-11 19:03:10] [INFO] [Impl.ImplServidorProxy.processarEscolha] Cliente 1 e IP:127.0.0.1 solicitou cadastro de OS.
+[2025-03-11 19:03:14] [INFO] [Impl.ImplServidorAplicacao.processarEscolha] Cadastro realizado com sucesso!
+[2025-03-11 19:03:15] [INFO] [Impl.ImplServidorProxy.processarEscolha] Cliente 1 e IP:127.0.0.1 solicitou cadastro de OS.
+[2025-03-11 19:03:18] [INFO] [Impl.ImplServidorAplicacao.processarEscolha] Cadastro realizado com sucesso!
+[2025-03-11 19:03:21] [INFO] [Impl.ImplServidorProxy.processarEscolha] Cliente 1 e IP:127.0.0.1 solicitou cadastro de OS.
+[2025-03-11 19:03:24] [INFO] [Impl.ImplServidorAplicacao.processarEscolha] Cadastro realizado com sucesso!
+[2025-03-11 19:03:37] [INFO] [Impl.ImplServidorProxy.processarEscolha] Cliente 1 e IP:127.0.0.1 solicitou busca de OS.
+[2025-03-11 19:03:44] [INFO] [Impl.ImplServidorProxy.processarEscolha] Cliente 1 e IP:127.0.0.1 solicitou busca de OS.
+[2025-03-11 19:03:50] [INFO] [Impl.ImplServidorProxy.processarEscolha] Cliente 1 e IP:127.0.0.1 solicitou busca de OS.
+[2025-03-11 19:03:58] [INFO] [Impl.ImplServidorProxy.processarEscolha] Cliente 1 e IP:127.0.0.1 solicitou listagem de todas as OSs.
+[2025-03-11 19:04:03] [INFO] [Impl.ImplServidorProxy.processarEscolha] Cliente 1 e IP:127.0.0.1 solicitou listagem da cache.
+[2025-03-11 19:04:19] [INFO] [Impl.ImplServidorProxy.processarEscolha] Cliente 1 e IP:127.0.0.1 solicitou cadastro de OS.
+[2025-03-11 19:04:25] [INFO] [Impl.ImplServidorAplicacao.processarEscolha] Cadastro realizado com sucesso!
+[2025-03-11 19:04:36] [INFO] [Impl.ImplServidorProxy.processarEscolha] Cliente 1 e IP:127.0.0.1 solicitou listagem da cache.
+[2025-03-11 19:04:40] [INFO] [Impl.ImplServidorProxy.processarEscolha] Cliente 1 e IP:127.0.0.1 solicitou listagem de todas as OSs.
+[2025-03-11 19:04:52] [INFO] [Impl.ImplServidorProxy.processarEscolha] Cliente 1 e IP:127.0.0.1 solicitou cadastro de OS.
+[2025-03-11 19:04:57] [INFO] [Impl.ImplServidorAplicacao.processarEscolha] Cadastro realizado com sucesso!
+[2025-03-11 19:05:04] [INFO] [Impl.ImplServidorProxy.processarEscolha] Cliente 1 e IP:127.0.0.1 solicitou listagem da cache.
+[2025-03-11 19:05:06] [INFO] [Impl.ImplServidorProxy.processarEscolha] Cliente 1 e IP:127.0.0.1 solicitou listagem de todas as OSs.
+[2025-03-11 19:05:21] [INFO] [Impl.ImplServidorProxy.processarEscolha] Cliente 1 e IP:127.0.0.1 solicitou alteração de OS.
+[2025-03-11 19:05:30] [INFO] [Impl.ImplServidorAplicacao.processarEscolha] Alteração realizada com sucesso!
+[2025-03-11 19:05:38] [INFO] [Impl.ImplServidorProxy.processarEscolha] Cliente 1 e IP:127.0.0.1 solicitou listagem da cache.
+[2025-03-11 19:05:41] [INFO] [Impl.ImplServidorProxy.processarEscolha] Cliente 1 e IP:127.0.0.1 solicitou listagem de todas as OSs.
+[2025-03-11 19:06:04] [INFO] [Impl.ImplServidorProxy.processarEscolha] Cliente 1 e IP:127.0.0.1 solicitou remoção de OS.
+[2025-03-11 19:06:11] [INFO] [Impl.ImplServidorAplicacao.processarEscolha] Remoção realizada com sucesso!
+[2025-03-11 19:06:14] [INFO] [Impl.ImplServidorProxy.processarEscolha] Cliente 1 e IP:127.0.0.1 solicitou listagem da cache.
+[2025-03-11 19:06:20] [INFO] [Impl.ImplServidorProxy.processarEscolha] Cliente 1 e IP:127.0.0.1 solicitou listagem de todas as OSs.
+[2025-03-11 19:06:28] [INFO] [Impl.ImplServidorProxy.processarEscolha] Cliente 1 e IP:127.0.0.1 solicitou remoção de OS.
+[2025-03-11 19:06:29] [INFO] [Impl.ImplServidorAplicacao.processarEscolha] Remoção realizada com sucesso!
+[2025-03-11 19:06:31] [INFO] [Impl.ImplServidorProxy.processarEscolha] Cliente 1 e IP:127.0.0.1 solicitou listagem da cache.
+[2025-03-11 19:06:31] [INFO] [Impl.ImplServidorProxy.processarEscolha] Cliente 1 e IP:127.0.0.1 solicitou listagem de todas as OSs.
+[2025-03-11 19:06:41] [ERROR] [Impl.ImplServidorAplicacao.run] Erro na conexão com o proxy: null
+java.io.EOFException
+	at java.base/java.io.ObjectInputStream$BlockDataInputStream.peekByte(ObjectInputStream.java:3232)
+	at java.base/java.io.ObjectInputStream.readObject0(ObjectInputStream.java:1713)
+	at java.base/java.io.ObjectInputStream.readObject(ObjectInputStream.java:540)
+	at java.base/java.io.ObjectInputStream.readObject(ObjectInputStream.java:498)
+	at Impl.ImplServidorAplicacao.run(ImplServidorAplicacao.java:45)
+	at java.base/java.lang.Thread.run(Thread.java:1583)

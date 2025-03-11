@@ -1,1 +1,6 @@
 Ação: Service Order buscado e movido para o inicio, Chave: 1, Estado da Cache: [ID: 1, Nome: paulo, Descrição: paulo] 
+Ação: Service Order adicionada pelo Banco e movido para o inicio, Chave: 1, Estado da Cache: [ID: 1, Nome: teste2, Descrição: teste2] 
+Ação: Service Order adicionada pelo Banco e movido para o inicio, Chave: 0, Estado da Cache: [ID: 0, Nome: teste1, Descrição: teste1] [ID: 1, Nome: teste2, Descrição: teste2] 
+Ação: Service Order adicionada pelo Banco e movido para o inicio, Chave: 2, Estado da Cache: [ID: 0, Nome: teste1, Descrição: teste1] [ID: 1, Nome: teste2, Descrição: teste2] [ID: 2, Nome: teste3, Descrição: teste3] 
+Ação: Service Order atualizado e movido para o inicio, Chave: 1, Estado da Cache: [ID: 0, Nome: teste1, Descrição: teste1] [ID: 1, Nome: teste6, Descrição: teste6] [ID: 2, Nome: teste3, Descrição: teste3] 
+Ação: Service Order removido da cache, Chave: 1, Estado da Cache: [ID: 0, Nome: teste1, Descrição: teste1] [ID: 2, Nome: teste3, Descrição: teste3] 
