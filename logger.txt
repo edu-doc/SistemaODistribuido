@@ -44,3 +44,69 @@ java.io.EOFException
 	at java.base/java.io.ObjectInputStream.readObject(ObjectInputStream.java:498)
 	at Impl.ImplServidorAplicacao.run(ImplServidorAplicacao.java:45)
 	at java.base/java.lang.Thread.run(Thread.java:1583)
+[2025-03-11 19:23:27] [INFO] [Impl.ImplServidorLocalizacao.run] Cliente 127.0.0.1 se conectou no servidor de localizacao
+[2025-03-11 19:23:30] [INFO] [Impl.ImplServidorLocalizacao.processarEscolha] Cliente 127.0.0.1 foi redirecionado para servidor de proxy
+[2025-03-11 19:23:30] [INFO] [Impl.ImplServidorAplicacao.run] Conexão 1 estabelecida com o proxy 127.0.0.1
+[2025-03-11 19:23:30] [INFO] [Impl.ImplServidorProxy.<init>] Nova conexão estabelecida. Total de conexões: 1
+[2025-03-11 19:23:30] [INFO] [Impl.ImplServidorProxy.run] Iniciando comunicação com o cliente 1 e IP:127.0.0.1
+[2025-03-11 19:23:33] [INFO] [Impl.ImplServidorProxy.run] Autenticação bem-sucedida para o cliente 1 e IP:127.0.0.1
+[2025-03-11 19:23:35] [INFO] [Impl.ImplServidorProxy.processarEscolha] Cliente 1 e IP:127.0.0.1 solicitou listagem de todas as OSs.
+[2025-03-11 19:23:46] [INFO] [Impl.ImplServidorProxy.processarEscolha] Cliente 1 e IP:127.0.0.1 solicitou listagem de todas as OSs.
+[2025-03-11 19:23:48] [INFO] [Impl.ImplServidorProxy.processarEscolha] Cliente 1 e IP:127.0.0.1 solicitou listagem da cache.
+[2025-03-11 19:25:21] [INFO] [Impl.ImplServidorLocalizacao.run] Cliente 127.0.0.1 se conectou no servidor de localizacao
+[2025-03-11 19:25:23] [INFO] [Impl.ImplServidorLocalizacao.processarEscolha] Cliente 127.0.0.1 foi redirecionado para servidor de proxy
+[2025-03-11 19:25:23] [INFO] [Impl.ImplServidorAplicacao.run] Conexão 1 estabelecida com o proxy 127.0.0.1
+[2025-03-11 19:25:23] [INFO] [Impl.ImplServidorProxy.<init>] Nova conexão estabelecida. Total de conexões: 1
+[2025-03-11 19:25:23] [INFO] [Impl.ImplServidorProxy.run] Iniciando comunicação com o cliente 1 e IP:127.0.0.1
+[2025-03-11 19:25:26] [INFO] [Impl.ImplServidorProxy.run] Autenticação bem-sucedida para o cliente 1 e IP:127.0.0.1
+[2025-03-11 19:25:28] [INFO] [Impl.ImplServidorProxy.processarEscolha] Cliente 1 e IP:127.0.0.1 solicitou listagem de todas as OSs.
+[2025-03-11 19:27:49] [INFO] [Impl.ImplServidorLocalizacao.run] Cliente 127.0.0.1 se conectou no servidor de localizacao
+[2025-03-11 19:27:52] [INFO] [Impl.ImplServidorLocalizacao.processarEscolha] Cliente 127.0.0.1 foi redirecionado para servidor de proxy
+[2025-03-11 19:27:52] [INFO] [Impl.ImplServidorAplicacao.run] Conexão 1 estabelecida com o proxy 127.0.0.1
+[2025-03-11 19:27:52] [INFO] [Impl.ImplServidorProxy.<init>] Nova conexão estabelecida. Total de conexões: 1
+[2025-03-11 19:27:52] [INFO] [Impl.ImplServidorProxy.run] Iniciando comunicação com o cliente 1 e IP:127.0.0.1
+[2025-03-11 19:27:54] [INFO] [Impl.ImplServidorProxy.run] Autenticação bem-sucedida para o cliente 1 e IP:127.0.0.1
+[2025-03-11 19:27:56] [INFO] [Impl.ImplServidorProxy.processarEscolha] Cliente 1 e IP:127.0.0.1 solicitou listagem de todas as OSs.
+[2025-03-11 19:28:38] [INFO] [Impl.ImplServidorLocalizacao.run] Cliente 127.0.0.1 se conectou no servidor de localizacao
+[2025-03-11 19:28:41] [INFO] [Impl.ImplServidorLocalizacao.processarEscolha] Cliente 127.0.0.1 foi redirecionado para servidor de proxy
+[2025-03-11 19:28:41] [INFO] [Impl.ImplServidorProxy.<init>] Nova conexão estabelecida. Total de conexões: 1
+[2025-03-11 19:28:41] [INFO] [Impl.ImplServidorAplicacao.run] Conexão 1 estabelecida com o proxy 127.0.0.1
+[2025-03-11 19:28:41] [INFO] [Impl.ImplServidorProxy.run] Iniciando comunicação com o cliente 1 e IP:127.0.0.1
+[2025-03-11 19:28:43] [INFO] [Impl.ImplServidorProxy.run] Autenticação bem-sucedida para o cliente 1 e IP:127.0.0.1
+[2025-03-11 19:28:44] [INFO] [Impl.ImplServidorProxy.processarEscolha] Cliente 1 e IP:127.0.0.1 solicitou listagem de todas as OSs.
+[2025-03-11 19:28:53] [INFO] [Impl.ImplServidorProxy.processarEscolha] Cliente 1 e IP:127.0.0.1 solicitou listagem da cache.
+[2025-03-11 19:33:42] [INFO] [Impl.ImplServidorLocalizacao.run] Cliente 127.0.0.1 se conectou no servidor de localizacao
+[2025-03-11 19:33:47] [INFO] [Impl.ImplServidorLocalizacao.processarEscolha] Cliente 127.0.0.1 foi redirecionado para servidor de proxy
+[2025-03-11 19:33:47] [INFO] [Impl.ImplServidorProxy.<init>] Nova conexão estabelecida. Total de conexões: 1
+[2025-03-11 19:33:47] [INFO] [Impl.ImplServidorProxy.run] Iniciando comunicação com o cliente 1 e IP:127.0.0.1
+[2025-03-11 19:33:47] [INFO] [Impl.ImplServidorAplicacao.run] Conexão 1 estabelecida com o proxy 127.0.0.1
+[2025-03-11 19:33:50] [INFO] [Impl.ImplServidorProxy.run] Autenticação bem-sucedida para o cliente 1 e IP:127.0.0.1
+[2025-03-11 19:33:53] [INFO] [Impl.ImplServidorProxy.processarEscolha] Cliente 1 e IP:127.0.0.1 solicitou listagem de todas as OSs.
+[2025-03-11 19:42:13] [INFO] [Impl.ImplServidorLocalizacao.run] Cliente 127.0.0.1 se conectou no servidor de localizacao
+[2025-03-11 19:42:16] [INFO] [Impl.ImplServidorLocalizacao.processarEscolha] Cliente 127.0.0.1 foi redirecionado para servidor de proxy
+[2025-03-11 19:42:16] [INFO] [Impl.ImplServidorProxy.<init>] Nova conexão estabelecida. Total de conexões: 1
+[2025-03-11 19:42:16] [INFO] [Impl.ImplServidorProxy.run] Iniciando comunicação com o cliente 1 e IP:127.0.0.1
+[2025-03-11 19:42:16] [INFO] [Impl.ImplServidorAplicacao.run] Conexão 1 estabelecida com o proxy 127.0.0.1
+[2025-03-11 19:42:21] [INFO] [Impl.ImplServidorProxy.run] Autenticação bem-sucedida para o cliente 1 e IP:127.0.0.1
+[2025-03-11 19:42:27] [INFO] [Impl.ImplServidorLocalizacao.run] Cliente 127.0.0.1 se conectou no servidor de localizacao
+[2025-03-11 19:42:31] [INFO] [Impl.ImplServidorProxy.processarEscolha] Cliente 1 e IP:127.0.0.1 solicitou listagem de todas as OSs.
+[2025-03-11 19:42:35] [INFO] [Impl.ImplServidorLocalizacao.processarEscolha] Cliente 127.0.0.1 foi redirecionado para servidor de proxy
+[2025-03-11 19:42:35] [INFO] [Impl.ImplServidorProxy.<init>] Nova conexão estabelecida. Total de conexões: 2
+[2025-03-11 19:42:35] [INFO] [Impl.ImplServidorProxy.run] Iniciando comunicação com o cliente 2 e IP:127.0.0.1
+[2025-03-11 19:42:35] [INFO] [Impl.ImplServidorAplicacao.run] Conexão 2 estabelecida com o proxy 127.0.0.1
+[2025-03-11 19:42:40] [INFO] [Impl.ImplServidorProxy.run] Autenticação bem-sucedida para o cliente 2 e IP:127.0.0.1
+[2025-03-11 19:42:41] [INFO] [Impl.ImplServidorProxy.processarEscolha] Cliente 2 e IP:127.0.0.1 solicitou listagem de todas as OSs.
+[2025-03-11 19:45:08] [INFO] [Impl.ImplServidorLocalizacao.run] Cliente 127.0.0.1 se conectou no servidor de localizacao
+[2025-03-11 19:45:11] [INFO] [Impl.ImplServidorLocalizacao.processarEscolha] Cliente 127.0.0.1 foi redirecionado para servidor de proxy
+[2025-03-11 19:45:11] [INFO] [Impl.ImplServidorProxy.<init>] Nova conexão estabelecida. Total de conexões: 1
+[2025-03-11 19:45:11] [INFO] [Impl.ImplServidorProxy.run] Iniciando comunicação com o cliente 1 e IP:127.0.0.1
+[2025-03-11 19:45:11] [INFO] [Impl.ImplServidorAplicacao.run] Conexão 1 estabelecida com o proxy 127.0.0.1
+[2025-03-11 19:45:13] [INFO] [Impl.ImplServidorProxy.run] Autenticação bem-sucedida para o cliente 1 e IP:127.0.0.1
+[2025-03-11 19:45:14] [INFO] [Impl.ImplServidorProxy.processarEscolha] Cliente 1 e IP:127.0.0.1 solicitou listagem de todas as OSs.
+[2025-03-11 19:45:20] [INFO] [Impl.ImplServidorLocalizacao.run] Cliente 127.0.0.1 se conectou no servidor de localizacao
+[2025-03-11 19:45:21] [INFO] [Impl.ImplServidorLocalizacao.processarEscolha] Cliente 127.0.0.1 foi redirecionado para servidor de proxy
+[2025-03-11 19:45:21] [INFO] [Impl.ImplServidorProxy.<init>] Nova conexão estabelecida. Total de conexões: 2
+[2025-03-11 19:45:21] [INFO] [Impl.ImplServidorAplicacao.run] Conexão 2 estabelecida com o proxy 127.0.0.1
+[2025-03-11 19:45:21] [INFO] [Impl.ImplServidorProxy.run] Iniciando comunicação com o cliente 2 e IP:127.0.0.1
+[2025-03-11 19:45:23] [INFO] [Impl.ImplServidorProxy.run] Autenticação bem-sucedida para o cliente 2 e IP:127.0.0.1
+[2025-03-11 19:45:24] [INFO] [Impl.ImplServidorProxy.processarEscolha] Cliente 2 e IP:127.0.0.1 solicitou listagem de todas as OSs.

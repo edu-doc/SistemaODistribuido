@@ -1,5 +1,7 @@
 package Banco;
 
+import OrdemServico.ServiceOrder;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -201,4 +203,5 @@ public class Banco {
     public void setRaiz(No raiz) {
         this.raiz = raiz;
     }
+
 }

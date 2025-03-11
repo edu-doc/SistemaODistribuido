@@ -29,6 +29,9 @@ public class ImplServidorAplicacao implements Runnable {
         this.socketProxy = proxy;
         this.banco = Banco.instancia;
         this.log = new Logger();
+        if(cont == 0){
+            inicializar();
+        }
         cont++;  // Incrementa o contador de conexões
     }
 
@@ -111,6 +114,83 @@ public class ImplServidorAplicacao implements Runnable {
                 saida.writeObject("Comando inválido!");
                 saida.flush();
                 break;
+        }
+    }
+    public void inicializar(){
+        List<No> nos = new ArrayList<>(); // Lista para armazenar os nós
+
+        String[][] dados = {
+                {"Paulo", "Erro: Internet instável"},
+                {"Eduardo", "Erro: Conexão perdida"},
+                {"Pedro", "Erro: Rede indisponível"},
+                {"Arthur", "Erro: Falha no DNS"},
+                {"Lucas", "Erro: Timeout de conexão"},
+                {"Brenno", "Erro: Wi-Fi desconectado"},
+                {"Bruno", "Erro: Falha na autenticação"},
+                {"Maria", "Erro: Serviço não encontrado"},
+                {"Clara", "Erro: IP conflitante"},
+                {"Joao", "Erro: Proxy não responde"},
+                {"Guilherme", "Erro: Latência alta"},
+                {"Joana", "Erro: Banda limitada"},
+                {"Margot", "Erro: Conexão interrompida"},
+                {"Carlos", "Erro: Porta bloqueada"},
+                {"Renato", "Erro: VPN falhou"},
+                {"Alan", "Erro: Conexão lenta"},
+                {"Jose", "Erro: Falha no roteador"},
+                {"Henrique", "Erro: Gateway inacessível"},
+                {"Gustavo", "Erro: Servidor não encontrado"},
+                {"Douglas", "Erro: DNS temporário"},
+                {"Ana", "Erro: Conexão instável"},
+                {"Lara", "Erro: Falha na rede"},
+                {"Felipe", "Erro: Interrupção de serviço"},
+                {"Fernanda", "Erro: Falha na comunicação"},
+                {"Mariana", "Erro: Erro de rede"},
+                {"Thiago", "Erro: Falha na sincronização"},
+                {"Beatriz", "Erro: Pacotes perdidos"},
+                {"Leonardo", "Erro: Falha na resolução de nome"},
+                {"Raquel", "Erro: Falha no handshake"},
+                {"Sofia", "Erro: Endereço IP inválido"},
+                {"Igor", "Erro: Falha no TLS"},
+                {"Ricardo", "Erro: Falha na criptografia"},
+                {"Carolina", "Erro: Ping não respondido"},
+                {"Gabriel", "Erro: Sessão expirada"},
+                {"Isabela", "Erro: Limite de tempo atingido"},
+                {"Matheus", "Erro: Certificado expirado"},
+                {"Lucas", "Erro: Endereço MAC bloqueado"},
+                {"Amanda", "Erro: Proxy não encontrado"},
+                {"Rafael", "Erro: HTTP 404"},
+                {"Juliana", "Erro: Serviço temporariamente indisponível"},
+                {"Bruna", "Erro: Endereço IP não atribuído"},
+                {"Thiago", "Erro: Configuração de rede inválida"},
+                {"Julio", "Erro: Conexão segura falhou"},
+                {"Renata", "Erro: Erro de autenticação"},
+                {"Patricia", "Erro: Pacote de dados corrompido"},
+                {"Sergio", "Erro: Problema no modem"},
+                {"Leticia", "Erro: Falha no firewall"},
+                {"Diego", "Erro: Endereço IP duplicado"},
+                {"Marcelo", "Erro: Servidor sobrecarregado"},
+                {"Camila", "Erro: Falha na atualização de DNS"},
+                {"Fabio", "Erro: Erro de SSL"},
+                {"Eliana", "Erro: Conexão rejeitada"},
+                {"Otavio", "Erro: Falha no roteamento"},
+                {"Paula", "Erro: Protocolo não suportado"},
+                {"Helena", "Erro: Conexão redefinida"},
+                {"Vicente", "Erro: Erro de configuração do servidor"},
+                {"Simone", "Erro: Falha na transferência de dados"},
+                {"Anderson", "Erro: Erro de sincronização de tempo"},
+                {"Luiza", "Erro: Falha na autenticação de usuário"},
+                {"Miguel", "Erro: Serviço temporariamente inacessível"}
+        };
+
+        for (String[] dado : dados) {
+            ServiceOrder ordem = new ServiceOrder(dado[0], dado[1]);
+            No no = new No(ordem); // Criando um nó para cada ordem
+            nos.add(no); // Adiciona o nó à lista
+        }
+
+        // Exemplo de saída para verificar os nós criados
+        for (No no : nos) {
+            banco.inserir(no);
         }
     }
 }

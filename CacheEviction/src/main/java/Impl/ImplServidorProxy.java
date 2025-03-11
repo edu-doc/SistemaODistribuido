@@ -48,6 +48,7 @@ public class ImplServidorProxy implements Runnable {
             if (autenticar()) {
                 Logger.info("Autenticação bem-sucedida para o cliente " + cont + " e IP:" + socketCliente.getInetAddress().getHostAddress());
                 saida.println("Autenticação bem-sucedida!");
+
                 enviarMenu();
 
                 while (conexao) {
@@ -288,4 +289,7 @@ public class ImplServidorProxy implements Runnable {
         socketCliente.close();
         socketAplicacao.close();
     }
+
 }
+
+
