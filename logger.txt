@@ -1,0 +1,91 @@
+[2025-03-11 13:09:34] [INFO] [Impl.ImplServidorAplicacao.run] Conexão 1 estabelecida com o proxy 127.0.0.1
+[2025-03-11 13:09:40] [INFO] [Impl.ImplServidorProxy.<init>] Nova conexão estabelecida. Total de conexões: 1
+[2025-03-11 13:09:40] [INFO] [Impl.ImplServidorProxy.run] Iniciando comunicação com o cliente 127.0.0.1
+[2025-03-11 13:09:43] [INFO] [Impl.ImplServidorProxy.run] Autenticação bem-sucedida para o cliente 1 e IP:127.0.0.1
+[2025-03-11 13:09:45] [INFO] [Impl.ImplServidorProxy.processarEscolha] Cliente 1 e IP:127.0.0.1 solicitou cadastro de OS.
+[2025-03-11 13:09:50] [INFO] [Impl.ImplServidorAplicacao.processarEscolha] Cadastro realizado com sucesso!
+[2025-03-11 13:09:52] [INFO] [Impl.ImplServidorProxy.processarEscolha] Cliente 1 e IP:127.0.0.1 solicitou busca de OS.
+[2025-03-11 13:10:09] [INFO] [Impl.ImplServidorProxy.<init>] Nova conexão estabelecida. Total de conexões: 2
+[2025-03-11 13:10:09] [INFO] [Impl.ImplServidorProxy.run] Iniciando comunicação com o cliente 127.0.0.1
+[2025-03-11 13:10:09] [ERROR] [Impl.ImplServidorAplicacao.run] Erro na conexão com o proxy: invalid type code: AC
+java.io.StreamCorruptedException: invalid type code: AC
+	at java.base/java.io.ObjectInputStream.readObject0(ObjectInputStream.java:1793)
+	at java.base/java.io.ObjectInputStream.readObject(ObjectInputStream.java:540)
+	at java.base/java.io.ObjectInputStream.readObject(ObjectInputStream.java:498)
+	at Impl.ImplServidorAplicacao.run(ImplServidorAplicacao.java:45)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+[2025-03-11 13:10:22] [INFO] [Impl.ImplServidorProxy.<init>] Nova conexão estabelecida. Total de conexões: 3
+[2025-03-11 13:10:22] [INFO] [Impl.ImplServidorProxy.run] Iniciando comunicação com o cliente 127.0.0.1
+[2025-03-11 13:10:37] [ERROR] [Impl.ImplServidorProxy.run] Erro na comunicação com o cliente 3Socket closed
+java.net.SocketException: Socket closed
+	at java.base/sun.nio.ch.NioSocketImpl.ensureOpenAndConnected(NioSocketImpl.java:163)
+	at java.base/sun.nio.ch.NioSocketImpl.beginRead(NioSocketImpl.java:226)
+	at java.base/sun.nio.ch.NioSocketImpl.implRead(NioSocketImpl.java:294)
+	at java.base/sun.nio.ch.NioSocketImpl.read(NioSocketImpl.java:346)
+	at java.base/sun.nio.ch.NioSocketImpl$1.read(NioSocketIm[2025-03-11 13:10:37] [ERROR] [Impl.ImplServidorProxy.run] Erro na comunicação com o cliente 3Socket closed
+java.net.SocketException: Socket closed
+	at java.base/sun.nio.ch.NioSocketImpl.endRead(NioSocketImpl.java:243)
+	at java.base/sun.nio.ch.NioSocketImpl.implRead(NioSocketImpl.java:323)
+	at java.base/sun.nio.ch.NioSocketImpl.read(NioSocketImpl.java:346)
+	at java.base/sun.nio.ch.NioSocketImpl$1.read(NioSocketImpl.java:796)
+	at java.base/java.net.Socket$SocketInputStream.read(Socket.java:1109)
+	at java.base/java.io.ObjectInputStream$PeekInputStream.read(ObjectInputStream.java:2915)
+	at java.base/java.io.ObjectInputStream$PeekInputStream.readFully(ObjectInputStream.java:2931)
+	at java.base/java.io.ObjectInputStream$BlockDataInputStream.readShort(ObjectInputStream.java:3428)
+	at java.base/java.io.ObjectInputStream.readStreamHeader(ObjectInputStream.java:985)
+	at java.base/java.io.ObjectInputStream.<init>(ObjectInputStream.java:416)
+	at Impl.ImplServidorProxy.run(ImplServidorProxy.java:46)
+	at japl.java:796)
+	at java.base/java.net.Socket$SocketInputStream.read(Socket.java:1109)
+	at java.base/java.io.ObjectInputStream$PeekInputStream.read(ObjectInputStream.java:2915)
+	at java.base/java.io.ObjectInputStream$PeekInputStream.readFully(ObjectInputStream.java:2931)
+	at java.base/java.io.ObjectInputStream$BlockDataInputStream.readShort(ObjectInputStream.java:3428)
+	at java.base/java.io.ObjectInputStream.readStreamHeader(ObjectInputStream.java:985)
+	at java.base/java.io.ObjectInputStream.<init>(Objecva.base/java.lang.Thread.run(Thread.java:1583)
+tInputStream.java:416)
+	at Impl.ImplServidorProxy.run(ImplServidorProxy.java:46)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+[2025-03-11 13:10:44] [INFO] [Impl.ImplServidorProxy.<init>] Nova conexão estabelecida. Total de conexões: 4
+[2025-03-11 13:10:44] [INFO] [Impl.ImplServidorProxy.run] Iniciando comunicação com o cliente 127.0.0.1
+[2025-03-11 13:10:44] [ERROR] [Impl.ImplServidorProxy.run] Erro na comunicação com o cliente 4Socket is closed
+java.net.SocketException: Socket is closed
+	at java.base/java.net.Socket.getOutputStream(Socket.java:1167)
+	at Impl.ImplServidorProxy.run(ImplServidorProxy.java:45)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+[2025-03-11 13:11:00] [INFO] [Impl.ImplServidorProxy.<init>] Nova conexão estabelecida. Total de conexões: 5
+[2025-03-11 13:11:00] [INFO] [Impl.ImplServidorProxy.run] Iniciando comunicação com o cliente 127.0.0.1
+[2025-03-11 13:11:00] [ERROR] [Impl.ImplServidorProxy.run] Erro na comunicação com o cliente 5Socket is closed
+java.net.SocketException: Socket is closed
+	at java.base/java.net.Socket.getOutputStream(Socket.java:1167)
+	at Impl.ImplServidorProxy.run(ImplServidorProxy.java:45)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+[2025-03-11 13:12:50] [INFO] [Impl.ImplServidorAplicacao.run] Conexão 1 estabelecida com o proxy 127.0.0.1
+[2025-03-11 13:12:50] [INFO] [Impl.ImplServidorProxy.<init>] Nova conexão estabelecida. Total de conexões: 1
+[2025-03-11 13:12:50] [INFO] [Impl.ImplServidorProxy.run] Iniciando comunicação com o cliente 127.0.0.1
+[2025-03-11 13:12:52] [INFO] [Impl.ImplServidorProxy.run] Autenticação bem-sucedida para o cliente 1 e IP:127.0.0.1
+[2025-03-11 13:12:54] [INFO] [Impl.ImplServidorProxy.processarEscolha] Cliente 1 e IP:127.0.0.1 solicitou cadastro de OS.
+[2025-03-11 13:12:57] [INFO] [Impl.ImplServidorAplicacao.processarEscolha] Cadastro realizado com sucesso!
+[2025-03-11 13:13:04] [INFO] [Impl.ImplServidorProxy.<init>] Nova conexão estabelecida. Total de conexões: 2
+[2025-03-11 13:13:04] [INFO] [Impl.ImplServidorAplicacao.run] Conexão 2 estabelecida com o proxy 127.0.0.1
+[2025-03-11 13:13:04] [INFO] [Impl.ImplServidorProxy.run] Iniciando comunicação com o cliente 127.0.0.1
+[2025-03-11 13:13:07] [INFO] [Impl.ImplServidorProxy.run] Autenticação bem-sucedida para o cliente 2 e IP:127.0.0.1
+[2025-03-11 13:13:10] [INFO] [Impl.ImplServidorProxy.processarEscolha] Cliente 2 e IP:127.0.0.1 solicitou listagem de todas as OSs.
+[2025-03-11 13:13:16] [INFO] [Impl.ImplServidorProxy.processarEscolha] Cliente 2 e IP:127.0.0.1 solicitou listagem da cache.
+[2025-03-11 13:13:19] [INFO] [Impl.ImplServidorProxy.processarEscolha] Cliente 2 e IP:127.0.0.1 solicitou busca de OS.
+[2025-03-11 13:13:23] [INFO] [Impl.ImplServidorProxy.processarEscolha] Cliente 2 e IP:127.0.0.1 solicitou listagem da cache.
+[2025-03-11 13:19:46] [INFO] [Impl.ImplServidorAplicacao.run] Conexão 1 estabelecida com o proxy 127.0.0.1
+[2025-03-11 13:19:46] [INFO] [Impl.ImplServidorProxy.<init>] Nova conexão estabelecida. Total de conexões: 1
+[2025-03-11 13:19:46] [INFO] [Impl.ImplServidorProxy.run] Iniciando comunicação com o cliente 1 e IP:127.0.0.1
+[2025-03-11 13:19:48] [INFO] [Impl.ImplServidorProxy.run] Autenticação bem-sucedida para o cliente 1 e IP:127.0.0.1
+[2025-03-11 13:21:58] [INFO] [Impl.ImplServidorAplicacao.run] Conexão 1 estabelecida com o proxy 127.0.0.1
+[2025-03-11 13:21:58] [INFO] [Impl.ImplServidorProxy.<init>] Nova conexão estabelecida. Total de conexões: 1
+[2025-03-11 13:21:58] [INFO] [Impl.ImplServidorProxy.run] Iniciando comunicação com o cliente 1 e IP:127.0.0.1
+[2025-03-11 13:22:00] [INFO] [Impl.ImplServidorProxy.run] Autenticação bem-sucedida para o cliente 1 e IP:127.0.0.1
+[2025-03-11 13:22:01] [ERROR] [Impl.ImplServidorAplicacao.run] Erro na conexão com o proxy: null
+java.io.EOFException
+	at java.base/java.io.ObjectInputStream$BlockDataInputStream.peekByte(ObjectInputStream.java:3232)
+	at java.base/java.io.ObjectInputStream.readObject0(ObjectInputStream.java:1713)
+	at java.base/java.io.ObjectInputStream.readObject(ObjectInputStream.java:540)
+	at java.base/java.io.ObjectInputStream.readObject(ObjectInputStream.java:498)
+	at Impl.ImplServidorAplicacao.run(ImplServidorAplicacao.java:45)
+	at java.base/java.lang.Thread.run(Thread.java:1583)

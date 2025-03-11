@@ -61,6 +61,12 @@ public class ImplCliente implements Runnable {
 
         } catch (IOException e) {
             e.printStackTrace();
+        } finally {
+            try {
+                cliente.close();
+            } catch (IOException e) {
+                System.err.println("Erro ao fechar conexão do servidor: " + e.getMessage());
+            }
         }
     }
 }

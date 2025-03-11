@@ -7,6 +7,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import Logger.Logger;
 import Banco.Banco;
 import Banco.No;
 import Cache.Cache;
@@ -32,11 +33,12 @@ public class ImplServidorProxy implements Runnable {
         this.cache = Cache.instancia;
         this.banco = Banco.instancia;
         cont++;
+        Logger.info("Nova conexão estabelecida. Total de conexões: " + cont);
     }
 
     public void run() {
-        System.out.println("Conexão " + cont + " com o cliente " + socketCliente.getInetAddress().getHostAddress());
-
+        System.out.println("Conexão " + cont + " com o cliente " + cont + " e IP:" + socketCliente.getInetAddress().getHostAddress());
+        Logger.info("Iniciando comunicação com o cliente " + cont + " e IP:"+ socketCliente.getInetAddress().getHostAddress());
         try {
             entrada = new BufferedReader(new InputStreamReader(socketCliente.getInputStream()));
             saida = new PrintWriter(socketCliente.getOutputStream(), true);
@@ -44,6 +46,7 @@ public class ImplServidorProxy implements Runnable {
             entradaAplicacao = new ObjectInputStream(socketAplicacao.getInputStream());
 
             if (autenticar()) {
+                Logger.info("Autenticação bem-sucedida para o cliente " + cont + " e IP:" + socketCliente.getInetAddress().getHostAddress());
                 saida.println("Autenticação bem-sucedida!");
                 enviarMenu();
 
@@ -56,13 +59,21 @@ public class ImplServidorProxy implements Runnable {
                     }
                 }
             } else {
+                Logger.warning("Autenticação falhou para o cliente " + cont + " e IP:"+ socketCliente.getInetAddress().getHostAddress());
                 saida.println("Autenticação falhou. Conexão encerrada.");
             }
 
             fecharConexoes();
 
         } catch (IOException e) {
-            System.err.println("Erro na conexão com o cliente: " + e.getMessage());
+            Logger.error("Erro na comunicação com o cliente " + cont + e.getMessage(), e);
+            System.err.println("Erro na conexão com o cliente " + cont + e.getMessage());
+        } finally {
+            try {
+                fecharConexoes();
+            } catch (IOException e) {
+                System.err.println("Erro ao fechar conexões: " + e.getMessage());
+            }
         }
     }
 
@@ -71,28 +82,39 @@ public class ImplServidorProxy implements Runnable {
             List<Object> lista = new ArrayList<>();
             switch (opcao) {
                 case "1":
+                    Logger.info("Cliente " + cont + " e IP:" + socketCliente.getInetAddress().getHostAddress() +" solicitou cadastro de OS.");
                     cadastrarOS(lista);
                     break;
                 case "2":
+                    Logger.info("Cliente " + cont + " e IP:" + socketCliente.getInetAddress().getHostAddress() +" solicitou listagem da cache.");
                     listarCache();
                     break;
                 case "3":
+                    Logger.info("Cliente " + cont + " e IP:" + socketCliente.getInetAddress().getHostAddress() +" solicitou listagem de todas as OSs.");
                     listarTodasOS();
                     break;
                 case "4":
+                    Logger.info("Cliente " + cont + " e IP:" + socketCliente.getInetAddress().getHostAddress() +" solicitou alteração de OS.");
                     alterarOS(lista);
                     break;
                 case "5":
+                    Logger.info("Cliente " + cont + " e IP:" + socketCliente.getInetAddress().getHostAddress() +" solicitou remoção de OS.");
                     removerOS(lista);
                     break;
                 case "6":
+                    Logger.info("Cliente " + cont + " e IP:" + socketCliente.getInetAddress().getHostAddress() +" solicitou busca de OS.");
                     buscarOS(lista);
+                    break;
+                case "7":
+                    Logger.info("Cliente " + cont + " e IP:" + socketCliente.getInetAddress().getHostAddress() +" solicitou fechar conexão.");
+                    socketCliente.close();
                     break;
                 default:
                     saida.println("Opção inválida. Tente novamente.");
                     break;
             }
         } catch (IOException | ClassNotFoundException | MyPickException e) {
+            Logger.error("Erro ao processar escolha do cliente " + cont + " e IP:" + socketCliente.getInetAddress().getHostAddress() +": " + e.getMessage(), e);
             saida.println("Erro ao processar solicitação: " + e.getMessage());
         }
         enviarMenu();

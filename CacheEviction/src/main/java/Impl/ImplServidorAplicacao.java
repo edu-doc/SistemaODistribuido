@@ -47,7 +47,7 @@ public class ImplServidorAplicacao implements Runnable {
                     processarEscolha(comando, lista);
                 } catch (ClassNotFoundException e) {
                     System.err.println("Erro na leitura do objeto: " + e.getMessage());
-                    log.error("Erro na leitura do objeto: " + e.getMessage());
+                    log.error("Erro na leitura do objeto: " + e.getMessage(), e);
                 }
             }
 
@@ -57,7 +57,13 @@ public class ImplServidorAplicacao implements Runnable {
 
         } catch (IOException e) {
             System.err.println("Erro na conexão com o proxy: " + e.getMessage());
-            log.error("Erro na conexão com o proxy: " + e.getMessage());
+            log.error("Erro na conexão com o proxy: " + e.getMessage(), e);
+        } finally {
+            try {
+                socketProxy.close();
+            } catch (IOException e) {
+                System.err.println("Erro ao fechar conexão do proxy: " + e.getMessage());
+            }
         }
     }
 
