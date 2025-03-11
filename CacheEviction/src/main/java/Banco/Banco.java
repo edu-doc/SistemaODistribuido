@@ -13,8 +13,10 @@ public class Banco {
     }
 
     public  void inserir(No no) {
-        raiz = inserirRN(raiz, no);
-        raiz.setCor(No.Cor.PRETO);
+        synchronized(Banco.class) {
+            raiz = inserirRN(raiz, no);
+            raiz.setCor(No.Cor.PRETO);
+        }
     }
 
     private No inserirRN(No no, No novoNo) {
@@ -52,15 +54,17 @@ public class Banco {
     }
 
     public No remover(int chave) {
-        No noRemovido = buscarRN(raiz, chave);
-        if (noRemovido != null) {
-            raiz = removerRN(raiz, chave);
-            if (raiz != null) {
-                raiz.setCor(No.Cor.PRETO);
+        synchronized(Banco.class) {
+            No noRemovido = buscarRN(raiz, chave);
+            if (noRemovido != null) {
+                raiz = removerRN(raiz, chave);
+                if (raiz != null) {
+                    raiz.setCor(No.Cor.PRETO);
+                }
+                return noRemovido;
             }
-            return noRemovido;
+            return null;
         }
-        return null;
     }
 
     private No removerRN(No no, int chave) {
@@ -159,15 +163,17 @@ public class Banco {
     }
 
     public boolean atualizar(int codigoServico, String nome, String descricao) {
-        No no = buscarRN(raiz, codigoServico);
-        if (no != null) {
-            no.getOrder().setNome(nome);
-            no.getOrder().setDescricao(descricao);
-            System.out.println("Service Order atualizada: " + codigoServico);
-            return true;
+        synchronized(Banco.class) {
+            No no = buscarRN(raiz, codigoServico);
+            if (no != null) {
+                no.getOrder().setNome(nome);
+                no.getOrder().setDescricao(descricao);
+                System.out.println("Service Order atualizada: " + codigoServico);
+                return true;
+            }
+            System.out.println("Service Order não encontrada para atualização: " + codigoServico);
+            return false;
         }
-        System.out.println("Service Order não encontrada para atualização: " + codigoServico);
-        return false;
     }
 
     public int contarNos() {

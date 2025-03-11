@@ -241,7 +241,7 @@ public class ImplServidorProxy implements Runnable {
 
     private void enviarMenu() {
         saida.println("");
-        saida.println("===== MENU =====\n1. Cadastrar OS\n2. Listar Cache\n3. Listar todas as OS\n4. Alterar OS\n5. Remover OS\n6. Buscar OS\n7. Sair\nEscolha uma opção:");
+        saida.println("===== MENU =====\n1. Cadastrar OS\n2. Listar Cache\n3. Listar Banco\n4. Alterar OS\n5. Remover OS\n6. Buscar OS\n7. Sair\nEscolha uma opção:");
     }
 
     private boolean autenticar() throws IOException {

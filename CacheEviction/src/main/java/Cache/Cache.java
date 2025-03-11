@@ -1,5 +1,6 @@
 package Cache;
 
+import Banco.Banco;
 import OrdemServico.ServiceOrder;
 import Exception.MyPickException;
 import java.util.HashMap;
@@ -19,17 +20,19 @@ public class Cache<K> {
     }
 
     public void put(K chave, ServiceOrder ordem) {
-        if (mapa.containsKey(chave)) {
-            NoCache<K, ServiceOrder> no = mapa.get(chave);
-            no.setValor(ordem);
-            moverParaInicio(no);
-        } else {
-            NoCache<K, ServiceOrder> novoNo = new NoCache<K, ServiceOrder>(chave, ordem);
-            if (mapa.size() >= capacidade) {
-                removerUltimo();
+        synchronized(Cache.class) {
+            if (mapa.containsKey(chave)) {
+                NoCache<K, ServiceOrder> no = mapa.get(chave);
+                no.setValor(ordem);
+                moverParaInicio(no);
+            } else {
+                NoCache<K, ServiceOrder> novoNo = new NoCache<K, ServiceOrder>(chave, ordem);
+                if (mapa.size() >= capacidade) {
+                    removerUltimo();
+                }
+                adicionarNoInicio(novoNo);
+                mapa.put(chave, novoNo);
             }
-            adicionarNoInicio(novoNo);
-            mapa.put(chave, novoNo);
         }
     }
 
@@ -43,35 +46,39 @@ public class Cache<K> {
     }
 
     public void atualizar(K chave, String novoNome, String novaDescricao) {
-        if (mapa.containsKey(chave)) {
-            NoCache<K, ServiceOrder> no = mapa.get(chave);
-            ServiceOrder ordem = no.getValor();
+        synchronized(Cache.class) {
+            if (mapa.containsKey(chave)) {
+                NoCache<K, ServiceOrder> no = mapa.get(chave);
+                ServiceOrder ordem = no.getValor();
 
-            ordem.setNome(novoNome);
-            ordem.setDescricao(novaDescricao);
+                ordem.setNome(novoNome);
+                ordem.setDescricao(novaDescricao);
 
-            moverParaInicio(no);
+                moverParaInicio(no);
+            }
         }
     }
 
     public void remover(K chave) {
-        if (!mapa.containsKey(chave)) return;
+        synchronized(Cache.class) {
+            if (!mapa.containsKey(chave)) return;
 
-        NoCache<K, ServiceOrder> no = mapa.get(chave);
+            NoCache<K, ServiceOrder> no = mapa.get(chave);
 
-        if (no.getAnterior() != null) {
-            no.getAnterior().setProximo(no.getProximo());
-        } else {
-            inicio = no.getProximo();
+            if (no.getAnterior() != null) {
+                no.getAnterior().setProximo(no.getProximo());
+            } else {
+                inicio = no.getProximo();
+            }
+
+            if (no.getProximo() != null) {
+                no.getProximo().setAnterior(no.getAnterior());
+            } else {
+                fim = no.getAnterior();
+            }
+
+            mapa.remove(chave);
         }
-
-        if (no.getProximo() != null) {
-            no.getProximo().setAnterior(no.getAnterior());
-        } else {
-            fim = no.getAnterior();
-        }
-
-        mapa.remove(chave);
     }
 
     private void moverParaInicio(NoCache<K, ServiceOrder> no) {

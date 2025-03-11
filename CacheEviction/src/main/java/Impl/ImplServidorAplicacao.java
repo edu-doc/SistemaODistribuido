@@ -5,6 +5,7 @@ import Cache.NoCache;
 import Exception.MyPickException;
 import Banco.Banco;
 import Cache.Cache;
+import Logger.Logger;
 import OrdemServico.ServiceOrder;
 
 import java.io.ObjectInputStream;
@@ -22,15 +23,18 @@ public class ImplServidorAplicacao implements Runnable {
     private ObjectInputStream entrada;
     private ObjectOutputStream saida;
     private Banco banco; // Banco compartilhado
+    private Logger log;
 
     public ImplServidorAplicacao(Socket proxy) {
         this.socketProxy = proxy;
         this.banco = Banco.instancia;
+        this.log = new Logger();
         cont++;  // Incrementa o contador de conexões
     }
 
     public void run() {
         System.out.println("Conexão " + cont + " com o proxy " + socketProxy.getInetAddress().getHostAddress());
+        log.info("Conexão " + cont + " estabelecida com o proxy " + socketProxy.getInetAddress().getHostAddress());
 
         try {
             saida = new ObjectOutputStream(socketProxy.getOutputStream());
@@ -43,6 +47,7 @@ public class ImplServidorAplicacao implements Runnable {
                     processarEscolha(comando, lista);
                 } catch (ClassNotFoundException e) {
                     System.err.println("Erro na leitura do objeto: " + e.getMessage());
+                    log.error("Erro na leitura do objeto: " + e.getMessage());
                 }
             }
 
@@ -52,6 +57,7 @@ public class ImplServidorAplicacao implements Runnable {
 
         } catch (IOException e) {
             System.err.println("Erro na conexão com o proxy: " + e.getMessage());
+            log.error("Erro na conexão com o proxy: " + e.getMessage());
         }
     }
 
@@ -61,12 +67,14 @@ public class ImplServidorAplicacao implements Runnable {
                 No no = (No) lista.get(1);
                 banco.inserir(no);
                 saida.writeObject("Cadastro realizado com sucesso!");
+                log.info("Cadastro realizado com sucesso!");
                 saida.flush();
                 break;
             case "remover":
                 int idRemover = (Integer) lista.get(1);
                 banco.remover(idRemover);
                 saida.writeObject("Remoção realizada com sucesso!");
+                log.info("Remoção realizada com sucesso!");
                 saida.flush();
                 break;
             case "listar":
@@ -90,6 +98,7 @@ public class ImplServidorAplicacao implements Runnable {
                 String descricao = (String) lista.get(3);
                 banco.atualizar(idAlterar, nome, descricao);
                 saida.writeObject("Alteração realizada com sucesso!");
+                log.info("Alteração realizada com sucesso!");
                 saida.flush();
                 break;
             default:
