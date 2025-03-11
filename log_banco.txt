@@ -1,0 +1,1 @@
+Ação: Atualizao no Banco, Nó: ID: 1, Nome: paulo, Descrição: paulo, Estado da Árvore: [ID: 0, Nome: teste1, Descrição: teste1] [ID: 1, Nome: paulo, Descrição: paulo] 

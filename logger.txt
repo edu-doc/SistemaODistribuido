@@ -1,0 +1,1 @@
+[2025-03-11 18:52:21] [INFO] [Impl.ImplServidorProxy.processarEscolha] Cliente 2 e IP:127.0.0.1 solicitou listagem de todas as OSs.
