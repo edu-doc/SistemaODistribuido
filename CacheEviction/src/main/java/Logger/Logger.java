@@ -7,7 +7,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class Logger {
-    private static final String LOG_FILE = "logger.txt"; // Nome do arquivo de log
+    private static final String LOG_FILE = "logger.txt";
     private static final SimpleDateFormat DATE_FORMAT = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 
     // Método para registrar log
@@ -15,10 +15,8 @@ public class Logger {
         String timestamp = DATE_FORMAT.format(new Date());
         String logMessage = String.format("[%s] [%s] %s", timestamp, level, message);
 
-        // Exibe no console
         System.out.println(logMessage);
 
-        // Salva no arquivo
         try (PrintWriter out = new PrintWriter(new FileWriter(LOG_FILE, true))) {
             out.println(logMessage);
         } catch (IOException e) {

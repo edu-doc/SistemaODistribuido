@@ -5,6 +5,7 @@ import java.net.Socket;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import Banco.Banco;
 import Banco.No;
@@ -245,11 +246,16 @@ public class ImplServidorProxy implements Runnable {
     }
 
     private boolean autenticar() throws IOException {
+        Map<String, String> usuarios = new HashMap<>();
+        usuarios.put("admin", "admin");
+        usuarios.put("eduardo", "eduardo");
+        usuarios.put("paulo", "paulo");
+
         saida.println("Bem-vindo ao servidor proxy! Digite seu login:");
         String login = entrada.readLine();
         saida.println("Digite sua senha:");
         String senha = entrada.readLine();
-        return "admin".equals(login) && "admin".equals(senha);
+        return usuarios.containsKey(login) && usuarios.get(login).equals(senha);
     }
 
     private void fecharConexoes() throws IOException {
