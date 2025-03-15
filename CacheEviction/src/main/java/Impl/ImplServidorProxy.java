@@ -108,7 +108,8 @@ public class ImplServidorProxy implements Runnable {
                     break;
                 case "7":
                     Logger.info("Cliente " + cont + " e IP:" + socketCliente.getInetAddress().getHostAddress() +" solicitou fechar conexão.");
-                    socketCliente.close();
+                    saida.println("Conexão encerrada.");
+                    conexao = false;
                     break;
                 default:
                     saida.println("Opção inválida. Tente novamente.");

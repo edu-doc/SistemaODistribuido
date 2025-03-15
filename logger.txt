@@ -110,3 +110,61 @@ java.io.EOFException
 [2025-03-11 19:45:21] [INFO] [Impl.ImplServidorProxy.run] Iniciando comunicação com o cliente 2 e IP:127.0.0.1
 [2025-03-11 19:45:23] [INFO] [Impl.ImplServidorProxy.run] Autenticação bem-sucedida para o cliente 2 e IP:127.0.0.1
 [2025-03-11 19:45:24] [INFO] [Impl.ImplServidorProxy.processarEscolha] Cliente 2 e IP:127.0.0.1 solicitou listagem de todas as OSs.
+[2025-03-15 12:22:29] [INFO] [Impl.ImplServidorLocalizacao.run] Cliente 127.0.0.1 se conectou no servidor de localizacao
+[2025-03-15 12:22:44] [INFO] [Impl.ImplServidorLocalizacao.run] Cliente 127.0.0.1 se conectou no servidor de localizacao
+[2025-03-15 12:22:46] [INFO] [Impl.ImplServidorLocalizacao.processarEscolha] Cliente 127.0.0.1 foi redirecionado para servidor de proxy
+[2025-03-15 12:22:46] [INFO] [Impl.ImplServidorProxy.<init>] Nova conexão estabelecida. Total de conexões: 1
+[2025-03-15 12:22:46] [INFO] [Impl.ImplServidorProxy.run] Iniciando comunicação com o cliente 1 e IP:127.0.0.1
+[2025-03-15 12:22:46] [INFO] [Impl.ImplServidorAplicacao.run] Conexão 1 estabelecida com o proxy 127.0.0.1
+[2025-03-15 12:22:56] [INFO] [Impl.ImplServidorProxy.run] Autenticação bem-sucedida para o cliente 1 e IP:127.0.0.1
+[2025-03-15 12:23:00] [ERROR] [Impl.ImplServidorAplicacao.run] Erro na conexão com o proxy: null
+java.io.EOFException
+	at java.base/java.io.ObjectInputStream$BlockDataInputStream.peekByte(ObjectInputStream.java:3232)
+	at java.base/java.io.ObjectInputStream.readObject0(ObjectInputStream.java:1713)
+	at java.base/java.io.ObjectInputStream.readObject(ObjectInputStream.java:540)
+	at java.base/java.io.ObjectInputStream.readObject(ObjectInputStream.java:498)
+	at Impl.ImplServidorAplicacao.run(ImplServidorAplicacao.java:48)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+[2025-03-15 12:24:30] [INFO] [Impl.ImplServidorLocalizacao.run] Cliente 127.0.0.1 se conectou no servidor de localizacao
+[2025-03-15 12:24:32] [INFO] [Impl.ImplServidorLocalizacao.processarEscolha] Cliente 127.0.0.1 foi redirecionado para servidor de proxy
+[2025-03-15 12:24:32] [INFO] [Impl.ImplServidorProxy.<init>] Nova conexão estabelecida. Total de conexões: 1
+[2025-03-15 12:24:32] [INFO] [Impl.ImplServidorProxy.run] Iniciando comunicação com o cliente 1 e IP:127.0.0.1
+[2025-03-15 12:24:32] [INFO] [Impl.ImplServidorAplicacao.run] Conexão 1 estabelecida com o proxy 127.0.0.1
+[2025-03-15 12:24:35] [INFO] [Impl.ImplServidorProxy.run] Autenticação bem-sucedida para o cliente 1 e IP:127.0.0.1
+[2025-03-15 12:24:36] [ERROR] [Impl.ImplServidorAplicacao.run] Erro na conexão com o proxy: null
+java.io.EOFException
+	at java.base/java.io.ObjectInputStream$BlockDataInputStream.peekByte(ObjectInputStream.java:3232)
+	at java.base/java.io.ObjectInputStream.readObject0(ObjectInputStream.java:1713)
+	at java.base/java.io.ObjectInputStream.readObject(ObjectInputStream.java:540)
+	at java.base/java.io.ObjectInputStream.readObject(ObjectInputStream.java:498)
+	at Impl.ImplServidorAplicacao.run(ImplServidorAplicacao.java:48)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+[2025-03-15 12:27:45] [INFO] [Impl.ImplServidorLocalizacao.run] Cliente 127.0.0.1 se conectou no servidor de localizacao
+[2025-03-15 12:27:46] [INFO] [Impl.ImplServidorLocalizacao.processarEscolha] Cliente 127.0.0.1 foi redirecionado para servidor de proxy
+[2025-03-15 12:27:46] [INFO] [Impl.ImplServidorProxy.<init>] Nova conexão estabelecida. Total de conexões: 1
+[2025-03-15 12:27:46] [INFO] [Impl.ImplServidorProxy.run] Iniciando comunicação com o cliente 1 e IP:127.0.0.1
+[2025-03-15 12:27:46] [INFO] [Impl.ImplServidorAplicacao.run] Conexão 1 estabelecida com o proxy 127.0.0.1
+[2025-03-15 12:27:49] [INFO] [Impl.ImplServidorProxy.run] Autenticação bem-sucedida para o cliente 1 e IP:127.0.0.1
+[2025-03-15 12:27:50] [ERROR] [Impl.ImplServidorAplicacao.run] Erro na conexão com o proxy: null
+java.io.EOFException
+	at java.base/java.io.ObjectInputStream$BlockDataInputStream.peekByte(ObjectInputStream.java:3232)
+	at java.base/java.io.ObjectInputStream.readObject0(ObjectInputStream.java:1713)
+	at java.base/java.io.ObjectInputStream.readObject(ObjectInputStream.java:540)
+	at java.base/java.io.ObjectInputStream.readObject(ObjectInputStream.java:498)
+	at Impl.ImplServidorAplicacao.run(ImplServidorAplicacao.java:48)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+[2025-03-15 12:27:56] [INFO] [Impl.ImplServidorLocalizacao.run] Cliente 127.0.0.1 se conectou no servidor de localizacao
+[2025-03-15 12:27:57] [INFO] [Impl.ImplServidorLocalizacao.processarEscolha] Cliente 127.0.0.1 foi redirecionado para servidor de proxy
+[2025-03-15 12:27:57] [INFO] [Impl.ImplServidorProxy.<init>] Nova conexão estabelecida. Total de conexões: 2
+[2025-03-15 12:27:57] [INFO] [Impl.ImplServidorAplicacao.run] Conexão 2 estabelecida com o proxy 127.0.0.1
+[2025-03-15 12:27:57] [INFO] [Impl.ImplServidorProxy.run] Iniciando comunicação com o cliente 2 e IP:127.0.0.1
+[2025-03-15 12:28:00] [INFO] [Impl.ImplServidorProxy.run] Autenticação bem-sucedida para o cliente 2 e IP:127.0.0.1
+[2025-03-15 12:28:03] [INFO] [Impl.ImplServidorProxy.processarEscolha] Cliente 2 e IP:127.0.0.1 solicitou listagem de todas as OSs.
+[2025-03-15 12:28:11] [ERROR] [Impl.ImplServidorAplicacao.run] Erro na conexão com o proxy: null
+java.io.EOFException
+	at java.base/java.io.ObjectInputStream$BlockDataInputStream.peekByte(ObjectInputStream.java:3232)
+	at java.base/java.io.ObjectInputStream.readObject0(ObjectInputStream.java:1713)
+	at java.base/java.io.ObjectInputStream.readObject(ObjectInputStream.java:540)
+	at java.base/java.io.ObjectInputStream.readObject(ObjectInputStream.java:498)
+	at Impl.ImplServidorAplicacao.run(ImplServidorAplicacao.java:48)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
