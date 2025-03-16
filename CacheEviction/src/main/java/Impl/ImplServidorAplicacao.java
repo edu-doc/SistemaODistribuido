@@ -29,10 +29,8 @@ public class ImplServidorAplicacao implements Runnable {
         this.socketProxy = proxy;
         this.banco = Banco.instancia;
         this.log = new Logger();
-        if(cont == 0){
-            inicializar();
-        }
         cont++;  // Incrementa o contador de conexões
+
     }
 
     public void run() {
@@ -116,119 +114,5 @@ public class ImplServidorAplicacao implements Runnable {
                 break;
         }
     }
-    public void inicializar(){
-        List<No> nos = new ArrayList<>(); // Lista para armazenar os nós
 
-        String[][] dados = {
-                {"Paulo", "Erro: Internet instável"},
-                {"Eduardo", "Erro: Conexão perdida"},
-                {"Pedro", "Erro: Rede indisponível"},
-                {"Arthur", "Erro: Falha no DNS"},
-                {"Lucas", "Erro: Timeout de conexão"},
-                {"Brenno", "Erro: Wi-Fi desconectado"},
-                {"Bruno", "Erro: Falha na autenticação"},
-                {"Maria", "Erro: Serviço não encontrado"},
-                {"Clara", "Erro: IP conflitante"},
-                {"Joao", "Erro: Proxy não responde"},
-                {"Guilherme", "Erro: Latência alta"},
-                {"Joana", "Erro: Banda limitada"},
-                {"Margot", "Erro: Conexão interrompida"},
-                {"Carlos", "Erro: Porta bloqueada"},
-                {"Renato", "Erro: VPN falhou"},
-                {"Alan", "Erro: Conexão lenta"},
-                {"Jose", "Erro: Falha no roteador"},
-                {"Henrique", "Erro: Gateway inacessível"},
-                {"Gustavo", "Erro: Servidor não encontrado"},
-                {"Douglas", "Erro: DNS temporário"},
-                {"Ana", "Erro: Conexão instável"},
-                {"Lara", "Erro: Falha na rede"},
-                {"Felipe", "Erro: Interrupção de serviço"},
-                {"Fernanda", "Erro: Falha na comunicação"},
-                {"Mariana", "Erro: Erro de rede"},
-                {"Thiago", "Erro: Falha na sincronização"},
-                {"Beatriz", "Erro: Pacotes perdidos"},
-                {"Leonardo", "Erro: Falha na resolução de nome"},
-                {"Raquel", "Erro: Falha no handshake"},
-                {"Sofia", "Erro: Endereço IP inválido"},
-                {"Igor", "Erro: Falha no TLS"},
-                {"Ricardo", "Erro: Falha na criptografia"},
-                {"Carolina", "Erro: Ping não respondido"},
-                {"Gabriel", "Erro: Sessão expirada"},
-                {"Isabela", "Erro: Limite de tempo atingido"},
-                {"Matheus", "Erro: Certificado expirado"},
-                {"Lucas", "Erro: Endereço MAC bloqueado"},
-                {"Amanda", "Erro: Proxy não encontrado"},
-                {"Rafael", "Erro: HTTP 404"},
-                {"Juliana", "Erro: Serviço temporariamente indisponível"},
-                {"Bruna", "Erro: Endereço IP não atribuído"},
-                {"Thiago", "Erro: Configuração de rede inválida"},
-                {"Julio", "Erro: Conexão segura falhou"},
-                {"Renata", "Erro: Erro de autenticação"},
-                {"Patricia", "Erro: Pacote de dados corrompido"},
-                {"Sergio", "Erro: Problema no modem"},
-                {"Leticia", "Erro: Falha no firewall"},
-                {"Diego", "Erro: Endereço IP duplicado"},
-                {"Marcelo", "Erro: Servidor sobrecarregado"},
-                {"Camila", "Erro: Falha na atualização de DNS"},
-                {"Fabio", "Erro: Erro de SSL"},
-                {"Eliana", "Erro: Conexão rejeitada"},
-                {"Otavio", "Erro: Falha no roteamento"},
-                {"Paula", "Erro: Protocolo não suportado"},
-                {"Helena", "Erro: Conexão redefinida"},
-                {"Vicente", "Erro: Erro de configuração do servidor"},
-                {"Simone", "Erro: Falha na transferência de dados"},
-                {"Anderson", "Erro: Erro de sincronização de tempo"},
-                {"Luiza", "Erro: Falha na autenticação de usuário"},
-                {"Miguel", "Erro: Serviço temporariamente inacessível"},
-                {"Rodrigo", "Erro: Cache de DNS corrompido"},
-                {"Tatiane", "Erro: Falha no handshake TLS"},
-                {"Emanuel", "Erro: Conflito de IP detectado"},
-                {"Cristina", "Erro: Conexão interrompida inesperadamente"},
-                {"Nelson", "Erro: Erro ao resolver domínio"},
-                {"Flávia", "Erro: Acesso negado ao servidor"},
-                {"André", "Erro: Requisição expirou"},
-                {"Vanessa", "Erro: Falha na negociação de SSL"},
-                {"Fábia", "Erro: Firewall bloqueou o tráfego"},
-                {"Maurício", "Erro: Servidor DNS não disponível"},
-                {"Brenda", "Erro: Erro de autenticação WPA2"},
-                {"Luís", "Erro: Resposta inválida do servidor"},
-                {"Roberta", "Erro: Tempo de resposta excedido"},
-                {"Gerson", "Erro: Serviço de rede desativado"},
-                {"Cristiano", "Erro: Porta de conexão fechada"},
-                {"Aline", "Erro: Múltiplas conexões simultâneas detectadas"},
-                {"Jorge", "Erro: Falha na criptografia de dados"},
-                {"Isis", "Erro: Configuração de proxy incorreta"},
-                {"Filipe", "Erro: Falha na negociação de protocolo"},
-                {"Vivian", "Erro: Servidor sobrecarregado"},
-                {"Renan", "Erro: Interferência na conexão Wi-Fi"},
-                {"Nathalia", "Erro: Configuração de DNS inválida"},
-                {"Douglas", "Erro: Ping alto detectado"},
-                {"Davi", "Erro: Perda excessiva de pacotes"},
-                {"Sandra", "Erro: Requisição de IP falhou"},
-                {"Guilherme", "Erro: Sessão de usuário expirada"},
-                {"Débora", "Erro: Conflito entre IPv4 e IPv6"},
-                {"Victor", "Erro: Nenhuma resposta do gateway"},
-                {"Tainá", "Erro: Servidor remoto não encontrado"},
-                {"Caio", "Erro: Erro de roteamento"},
-                {"Lilian", "Erro: Falha na conversão de endereço"},
-                {"Otávio", "Erro: Permissão de acesso negada"},
-                {"Hugo", "Erro: O servidor não suporta esse protocolo"},
-                {"Marisa", "Erro: Sincronização de tempo falhou"},
-                {"João", "Erro: Chave de criptografia inválida"},
-                {"Letícia", "Erro: Proxy não autenticado"},
-                {"Geraldo", "Erro: Servidor de cache corrompido"},
-                {"Eduarda", "Erro: Não foi possível acessar a VPN"}
-        };
-
-        for (String[] dado : dados) {
-            ServiceOrder ordem = new ServiceOrder(dado[0], dado[1]);
-            No no = new No(ordem); // Criando um nó para cada ordem
-            nos.add(no); // Adiciona o nó à lista
-        }
-
-        // Exemplo de saída para verificar os nós criados
-        for (No no : nos) {
-            banco.inserir(no);
-        }
-    }
 }
