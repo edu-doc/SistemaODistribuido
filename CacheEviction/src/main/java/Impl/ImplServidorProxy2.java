@@ -21,7 +21,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class ImplServidorProxy implements Runnable, ProxyRemoteInterface {
+public class ImplServidorProxy2 implements Runnable, ProxyRemoteInterface {
     private Socket socketCliente;
     private Socket socketAplicacao;
     private static int cont = 0;
@@ -34,7 +34,7 @@ public class ImplServidorProxy implements Runnable, ProxyRemoteInterface {
     private Banco banco;
     private String nomeProxy;
 
-    public ImplServidorProxy(Socket cliente, Socket aplicacao, String nomeProxy) {
+    public ImplServidorProxy2(Socket cliente, Socket aplicacao, String nomeProxy) {
         this.socketCliente = cliente;
         this.socketAplicacao = aplicacao;
         this.cache = Cache.instancia;
@@ -46,15 +46,14 @@ public class ImplServidorProxy implements Runnable, ProxyRemoteInterface {
         // Registra o proxy no RMI Registry
         try {
             ProxyRemoteInterface stub = (ProxyRemoteInterface) UnicastRemoteObject.exportObject(this, 0);
-            LocateRegistry.createRegistry(995);
-            Registry registry = LocateRegistry.getRegistry("localhost", 995);
+            LocateRegistry.createRegistry(996);
+            Registry registry = LocateRegistry.getRegistry("localhost", 996);
             registry.bind(nomeProxy, stub);
-            System.out.println("proxy 1 registrado no rmi");
+            System.out.println("Proxy 2 registrado no rmi");
             Logger.info("Proxy registrado no RMI Registry como: " + nomeProxy);
         } catch (RemoteException | AlreadyBoundException e) {
             Logger.error("Erro ao registrar proxy no RMI Registry: " + e.getMessage(), e);
         }
-
     }
 
     @Override
@@ -81,7 +80,6 @@ public class ImplServidorProxy implements Runnable, ProxyRemoteInterface {
                         processarEscolha(mensagemRecebida);
                     }
                 }
-
             } else {
                 Logger.warning("Autenticação falhou para o cliente " + cont + " e IP:" + socketCliente.getInetAddress().getHostAddress());
                 saida.println("Autenticação falhou. Conexão encerrada.");
@@ -256,14 +254,14 @@ public class ImplServidorProxy implements Runnable, ProxyRemoteInterface {
             // 2. Tenta buscar no outro proxy via RMI
             try {
                 Logger.info("Tentando conectar ao RMI Registry...");
-                Registry registry = LocateRegistry.getRegistry("localhost", 996);
-                Logger.info("RMI Registry encontrado. Procurando por 'Proxy2'...");
-                ProxyRemoteInterface outroProxy = (ProxyRemoteInterface) registry.lookup("Proxy2");
-                Logger.info("Conexão RMI estabelecida com 'Proxy2'. Buscando OS...");
+                Registry registry = LocateRegistry.getRegistry("localhost", 995);
+                Logger.info("RMI Registry encontrado. Procurando por 'Proxy1'...");
+                ProxyRemoteInterface outroProxy = (ProxyRemoteInterface) registry.lookup("Proxy1");
+                Logger.info("Conexão RMI estabelecida com 'Proxy1'. Buscando OS...");
                 so = outroProxy.buscarEmOutroProxy(id);
                 if (so != null) {
                     cache.put(id, so); // Armazena na cache local
-                    saida.println("OS encontrada na cache de outro proxy2: " + so);
+                    saida.println("OS encontrada na cache de outro proxy1: " + so);
                     return;
                 } else {
                     Logger.info("Tentando conectar ao RMI Registry...");
@@ -329,5 +327,4 @@ public class ImplServidorProxy implements Runnable, ProxyRemoteInterface {
         socketCliente.close();
         socketAplicacao.close();
     }
-
 }

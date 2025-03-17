@@ -1,17 +1,20 @@
 package Servidores;
 
-import Impl.ImplServidorProxy;
+import Impl.ImplServidorProxy3;
+
 import java.io.IOException;
 import java.net.InetAddress;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.util.logging.Logger;
 
-public class ServidorProxy {
+public class ServidorProxy3 {
     private ServerSocket socketServidor;
     private final int porta;
     private final int portaAplicacao;
+    private static final Logger logger = Logger.getLogger(ServidorProxy3.class.getName());
 
-    public ServidorProxy(int porta, int portaAplicacao) {
+    public ServidorProxy3(int porta, int portaAplicacao) {
         this.porta = porta;
         this.portaAplicacao = portaAplicacao;
         this.rodar();
@@ -20,7 +23,7 @@ public class ServidorProxy {
     private void rodar() {
         try {
             socketServidor = new ServerSocket(porta);
-            System.out.println("Servidor proxy 1 rodando na porta " + porta);
+            System.out.println("Servidor proxy 3 rodando na porta " + porta);
             System.out.println("HostAddress = " + InetAddress.getLocalHost().getHostAddress());
             System.out.println("HostName = " + InetAddress.getLocalHost().getHostName());
             System.out.println("Aguardando conexão do cliente...");
@@ -33,12 +36,12 @@ public class ServidorProxy {
                 Socket socketAplicacao = new Socket("127.0.0.1", portaAplicacao);
 
                 // Cria uma thread para tratar a conexão do cliente
-                ImplServidorProxy servidorProxy = new ImplServidorProxy(cliente, socketAplicacao, "Proxy1");
+                ImplServidorProxy3 servidorProxy = new ImplServidorProxy3(cliente, socketAplicacao, "Proxy3");
                 Thread t = new Thread(servidorProxy);
                 t.start(); // Inicia a thread para o cliente conectado
             }
         } catch (IOException e) {
-            System.err.println("Erro no servidor proxy 1: " + e.getMessage());
+            System.err.println("Erro no servidor proxy 3: " + e.getMessage());
         } finally {
             encerrarServidor();
         }
@@ -48,14 +51,14 @@ public class ServidorProxy {
         try {
             if (socketServidor != null && !socketServidor.isClosed()) {
                 socketServidor.close();
-                System.out.println("Servidor proxy 1 encerrado.");
+                System.out.println("Servidor proxy 3 encerrado.");
             }
         } catch (IOException e) {
-            System.err.println("Erro ao encerrar servidor proxy 1: " + e.getMessage());
+            System.err.println("Erro ao encerrar servidor proxy 3: " + e.getMessage());
         }
     }
 
     public static void main(String[] args) {
-        new ServidorProxy(12345, 12322);
+        new ServidorProxy3(12355, 12322);
     }
 }

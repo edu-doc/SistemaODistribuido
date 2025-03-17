@@ -12,6 +12,9 @@ public class ImplServidorLocalizacao implements Runnable {
     private BufferedReader entrada;
     private PrintWriter saida;
     private final Logger log;
+    public static int cont1 = 0;
+    public static int cont2 = 0;
+    public static int cont3 = 0;
 
     public ImplServidorLocalizacao(Socket cliente) {
         this.socketCliente = cliente;
@@ -89,7 +92,21 @@ public class ImplServidorLocalizacao implements Runnable {
 
     private void redirecionarParaProxy() {
         String enderecoProxy = "127.0.0.1"; // Endereço do servidor de proxy
-        int portaProxy = 12345; // Porta do servidor de proxy
+        int portaProxy; // Porta do servidor de proxy
+
+        if (cont1 <= cont2 && cont1 <= cont3){
+            portaProxy = 12345;
+            System.out.println("Proxy 1");
+            cont1++;
+        } else if (cont2 <= cont3) {
+            portaProxy = 12354;
+            System.out.println("Proxy 2");
+            cont2++;
+        } else {
+            portaProxy = 12355;
+            System.out.println("Proxy 3");
+            cont3++;
+        }
 
         try {
             // Cria um novo socket para se conectar ao proxy
