@@ -1,12 +1,8 @@
 package Impl;
 
 import Banco.No;
-import Cache.NoCache;
-import Exception.MyPickException;
 import Banco.Banco;
-import Cache.Cache;
 import Logger.Logger;
-import OrdemServico.ServiceOrder;
 import RMI.AplicacaoRemoteInterface;
 
 import java.io.ObjectInputStream;
@@ -14,16 +10,13 @@ import java.io.ObjectOutputStream;
 import java.io.IOException;
 import java.net.Socket;
 import java.rmi.AlreadyBoundException;
-import java.rmi.Remote;
 import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
 import java.rmi.server.UnicastRemoteObject;
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 
-public class ImplServidorAplicacao implements Runnable, Remote {
+public class ImplServidorAplicacao implements Runnable, AplicacaoRemoteInterface {
     public Socket socketProxy;
     public static int cont = 0;
     private boolean conexao = true;
@@ -90,9 +83,23 @@ public class ImplServidorAplicacao implements Runnable, Remote {
         switch (comando) {
             case "cadastro":
                 No no = (No) lista.get(1);
-                banco.inserir(no);
-                saida.writeObject("Cadastro realizado com sucesso!");
-                log.info("Cadastro realizado com sucesso!");
+                List<String> listaProxy = null;
+                try {
+                    log.info("Tentando conectar ao RMI Registry...");
+                    Registry registry = LocateRegistry.getRegistry("localhost", 992);
+                    log.info("RMI Registry encontrado. Procurando por 'Backup'...");
+                    AplicacaoRemoteInterface outroProxy = (AplicacaoRemoteInterface) registry.lookup("Backup");
+                    log.info("Conexão RMI estabelecida com 'Backup'");
+                    listaProxy = outroProxy.inserirBackup(no);
+                } catch (Exception e) {
+                    log.error("Erro ao conectar ao RMI Backup", e);
+                }
+
+                System.out.println(listaProxy);
+
+                // banco.inserir(no);
+                // saida.writeObject("Cadastro realizado com sucesso!");
+                // log.info("Cadastro realizado com sucesso!");
                 saida.flush();
                 break;
             case "remover":
@@ -133,4 +140,10 @@ public class ImplServidorAplicacao implements Runnable, Remote {
         }
     }
 
+    @Override
+    public List<String> inserirBackup(No no) throws RemoteException {
+        banco.inserir(no);
+        List<String> lista = banco.listarElementos();
+        return lista;
+    }
 }

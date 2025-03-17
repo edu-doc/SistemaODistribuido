@@ -2,12 +2,11 @@ package Impl;
 
 import Banco.Banco;
 import Banco.No;
-import OrdemServico.ServiceOrder;
 import RMI.AplicacaoRemoteInterface;
-import RMI.ProxyRemoteInterface;
 
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
+import java.util.List;
 
 public class ImplAplicacaoRmi extends UnicastRemoteObject implements AplicacaoRemoteInterface {
     private Banco banco;
@@ -17,7 +16,8 @@ public class ImplAplicacaoRmi extends UnicastRemoteObject implements AplicacaoRe
     }
 
     @Override
-    public void inserirBackup(No no) throws RemoteException {
+    public List<String> inserirBackup(No no) throws RemoteException {
         banco.inserir(no);
+        return null;
     }
 }

@@ -24,6 +24,7 @@ import java.util.Map;
 public class ImplServidorProxy implements Runnable, ProxyRemoteInterface {
     private Socket socketCliente;
     private Socket socketAplicacao;
+    private Socket socketBackup;
     private static int cont = 0;
     private boolean conexao = true;
     private BufferedReader entrada;
@@ -34,12 +35,13 @@ public class ImplServidorProxy implements Runnable, ProxyRemoteInterface {
     private Banco banco;
     private String nomeProxy;
 
-    public ImplServidorProxy(Socket cliente, Socket aplicacao, String nomeProxy) {
+    public ImplServidorProxy(Socket cliente, Socket aplicacao,Socket backup, String nomeProxy) {
         this.socketCliente = cliente;
         this.socketAplicacao = aplicacao;
         this.cache = Cache.instancia;
         this.banco = Banco.instancia;
         this.nomeProxy = nomeProxy;
+        this.socketBackup = backup;
         cont++;
         Logger.info("Nova conexão estabelecida. Total de conexões: " + cont);
 

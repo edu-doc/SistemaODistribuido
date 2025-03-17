@@ -1876,3 +1876,174 @@ java.net.SocketException: Connection reset
 	at java.base/java.io.ObjectInputStream.<init>(ObjectInputStream.java:416)
 	at Impl.ImplServidorProxy.run(ImplServidorProxy.java:68)
 	at java.base/java.lang.Thread.run(Thread.java:1583)
+[2025-03-16 22:43:50] [INFO] [Impl.ImplServidorLocalizacao.run] Cliente 127.0.0.1 se conectou no servidor de localizacao
+[2025-03-16 22:43:51] [INFO] [Impl.ImplServidorLocalizacao.processarEscolha] Cliente 127.0.0.1 foi redirecionado para servidor de proxy
+[2025-03-16 22:43:51] [INFO] [Impl.ImplServidorProxy.<init>] Nova conexão estabelecida. Total de conexões: 1
+[2025-03-16 22:43:51] [INFO] [Impl.ImplServidorAplicacao.<init>] Banco registrado no rmi
+[2025-03-16 22:43:51] [INFO] [Impl.ImplServidorProxy.<init>] Proxy registrado no RMI Registry como: Proxy1
+[2025-03-16 22:43:51] [INFO] [Impl.ImplServidorAplicacao.run] Conexão 1 estabelecida com o proxy 127.0.0.1
+[2025-03-16 22:43:51] [INFO] [Impl.ImplServidorProxy.run] Iniciando comunicação com o cliente 1 e IP:127.0.0.1
+[2025-03-16 22:43:59] [INFO] [Impl.ImplServidorProxy.run] Autenticação bem-sucedida para o cliente 1 e IP:127.0.0.1
+[2025-03-16 22:48:31] [INFO] [Impl.ImplServidorLocalizacao.run] Cliente 127.0.0.1 se conectou no servidor de localizacao
+[2025-03-16 22:48:32] [INFO] [Impl.ImplServidorLocalizacao.processarEscolha] Cliente 127.0.0.1 foi redirecionado para servidor de proxy
+[2025-03-16 22:48:32] [INFO] [Impl.ImplServidorProxy.<init>] Nova conexão estabelecida. Total de conexões: 1
+[2025-03-16 22:48:32] [INFO] [Impl.ImplServidorProxy.<init>] Proxy registrado no RMI Registry como: Proxy1
+[2025-03-16 22:48:32] [INFO] [Impl.ImplServidorAplicacao.<init>] Banco registrado no rmi
+[2025-03-16 22:48:32] [INFO] [Impl.ImplServidorAplicacao.run] Conexão 1 estabelecida com o proxy 127.0.0.1
+[2025-03-16 22:48:32] [INFO] [Impl.ImplServidorProxy.run] Iniciando comunicação com o cliente 1 e IP:127.0.0.1
+[2025-03-16 22:48:36] [INFO] [Impl.ImplServidorProxy.run] Autenticação bem-sucedida para o cliente 1 e IP:127.0.0.1
+[2025-03-16 22:48:38] [INFO] [Impl.ImplServidorProxy.processarEscolha] Cliente 1 e IP:127.0.0.1 solicitou cadastro de OS.
+[2025-03-16 22:48:40] [INFO] [Impl.ImplServidorAplicacao.processarEscolha] Tentando conectar ao RMI Registry...
+[2025-03-16 22:48:40] [INFO] [Impl.ImplServidorAplicacao.processarEscolha] RMI Registry encontrado. Procurando por 'Backup'...
+[2025-03-16 22:48:40] [ERROR] [Impl.ImplServidorAplicacao.processarEscolha] Erro ao conectar ao RMI Backup
+java.rmi.ConnectException: Connection refused to host: localhost; nested exception is: 
+	java.net.ConnectException: Connection refused: connect
+	at java.rmi/sun.rmi.transport.tcp.TCPEndpoint.newSocket(TCPEndpoint.java:625)
+	at java.rmi/sun.rmi.transport.tcp.TCPChannel.createConnection(TCPChannel.java:217)
+	at java.rmi/sun.rmi.transport.tcp.TCPChannel.newConnection(TCPChannel.java:204)
+	at java.rmi/sun.rmi.server.UnicastRef.newCall(UnicastRef.java:345)
+	at java.rmi/sun.rmi.registry.RegistryImpl_Stub.lookup(RegistryImpl_Stub.java:116)
+	at Impl.ImplServidorAplicacao.processarEscolha(ImplServidorAplicacao.java:98)
+	at Impl.ImplServidorAplicacao.run(ImplServidorAplicacao.java:67)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+Caused by: java.net.ConnectException: Connection refused: connect
+	at java.base/sun.nio.ch.Net.connect0(Native Method)
+	at java.base/sun.nio.ch.Net.connect(Net.java:589)
+	at java.base/sun.nio.ch.Net.connect(Net.java:578)
+	at java.base/sun.nio.ch.NioSocketImpl.connect(NioSocketImpl.java:583)
+	at java.base/java.net.SocksSocketImpl.connect(SocksSocketImpl.java:327)
+	at java.base/java.net.Socket.connect(Socket.java:757)
+	at java.base/java.net.Socket.connect(Socket.java:691)
+	at java.base/java.net.Socket.<init>(Socket.java:560)
+	at java.base/java.net.Socket.<init>(Socket.java:329)
+	at java.rmi/sun.rmi.transport.tcp.TCPDirectSocketFactory.createSocket(TCPDirectSocketFactory.java:40)
+	at java.rmi/sun.rmi.transport.tcp.TCPEndpoint.newSocket(TCPEndpoint.java:619)
+	... 7 more
+[2025-03-16 22:48:40] [INFO] [Impl.ImplServidorAplicacao.processarEscolha] Cadastro realizado com sucesso!
+[2025-03-16 22:50:23] [INFO] [Impl.ImplServidorLocalizacao.run] Cliente 127.0.0.1 se conectou no servidor de localizacao
+[2025-03-16 22:50:25] [INFO] [Impl.ImplServidorLocalizacao.processarEscolha] Cliente 127.0.0.1 foi redirecionado para servidor de proxy
+[2025-03-16 22:50:25] [INFO] [Impl.ImplServidorProxy.<init>] Nova conexão estabelecida. Total de conexões: 1
+[2025-03-16 22:50:25] [INFO] [Impl.ImplServidorAplicacao.<init>] Banco registrado no rmi
+[2025-03-16 22:50:25] [INFO] [Impl.ImplServidorProxy.<init>] Proxy registrado no RMI Registry como: Proxy1
+[2025-03-16 22:50:25] [INFO] [Impl.ImplServidorAplicacao.run] Conexão 1 estabelecida com o proxy 127.0.0.1
+[2025-03-16 22:50:25] [INFO] [Impl.ImplServidorProxy.run] Iniciando comunicação com o cliente 1 e IP:127.0.0.1
+[2025-03-16 22:50:29] [INFO] [Impl.ImplServidorProxy.run] Autenticação bem-sucedida para o cliente 1 e IP:127.0.0.1
+[2025-03-16 22:51:32] [INFO] [Impl.ImplServidorProxy.processarEscolha] Cliente 1 e IP:127.0.0.1 solicitou cadastro de OS.
+[2025-03-16 22:51:35] [INFO] [Impl.ImplServidorAplicacao.processarEscolha] Tentando conectar ao RMI Registry...
+[2025-03-16 22:51:35] [INFO] [Impl.ImplServidorAplicacao.processarEscolha] RMI Registry encontrado. Procurando por 'Backup'...
+[2025-03-16 22:51:35] [ERROR] [Impl.ImplServidorAplicacao.processarEscolha] Erro ao conectar ao RMI Backup
+java.rmi.ConnectException: Connection refused to host: localhost; nested exception is: 
+	java.net.ConnectException: Connection refused: connect
+	at java.rmi/sun.rmi.transport.tcp.TCPEndpoint.newSocket(TCPEndpoint.java:625)
+	at java.rmi/sun.rmi.transport.tcp.TCPChannel.createConnection(TCPChannel.java:217)
+	at java.rmi/sun.rmi.transport.tcp.TCPChannel.newConnection(TCPChannel.java:204)
+	at java.rmi/sun.rmi.server.UnicastRef.newCall(UnicastRef.java:345)
+	at java.rmi/sun.rmi.registry.RegistryImpl_Stub.lookup(RegistryImpl_Stub.java:116)
+	at Impl.ImplServidorAplicacao.processarEscolha(ImplServidorAplicacao.java:98)
+	at Impl.ImplServidorAplicacao.run(ImplServidorAplicacao.java:67)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+Caused by: java.net.ConnectException: Connection refused: connect
+	at java.base/sun.nio.ch.Net.connect0(Native Method)
+	at java.base/sun.nio.ch.Net.connect(Net.java:589)
+	at java.base/sun.nio.ch.Net.connect(Net.java:578)
+	at java.base/sun.nio.ch.NioSocketImpl.connect(NioSocketImpl.java:583)
+	at java.base/java.net.SocksSocketImpl.connect(SocksSocketImpl.java:327)
+	at java.base/java.net.Socket.connect(Socket.java:757)
+	at java.base/java.net.Socket.connect(Socket.java:691)
+	at java.base/java.net.Socket.<init>(Socket.java:560)
+	at java.base/java.net.Socket.<init>(Socket.java:329)
+	at java.rmi/sun.rmi.transport.tcp.TCPDirectSocketFactory.createSocket(TCPDirectSocketFactory.java:40)
+	at java.rmi/sun.rmi.transport.tcp.TCPEndpoint.newSocket(TCPEndpoint.java:619)
+	... 7 more
+[2025-03-16 22:51:35] [INFO] [Impl.ImplServidorAplicacao.processarEscolha] Cadastro realizado com sucesso!
+[2025-03-16 22:55:42] [INFO] [Impl.ImplServidorLocalizacao.run] Cliente 127.0.0.1 se conectou no servidor de localizacao
+[2025-03-16 22:55:43] [INFO] [Impl.ImplServidorLocalizacao.processarEscolha] Cliente 127.0.0.1 foi redirecionado para servidor de proxy
+[2025-03-16 22:55:43] [INFO] [Impl.ImplServidorProxy.<init>] Nova conexão estabelecida. Total de conexões: 1
+[2025-03-16 22:55:43] [INFO] [Impl.ImplServidorAplicacaoBackup.<init>] Backup registrado no rmi
+[2025-03-16 22:55:43] [INFO] [Impl.ImplServidorAplicacaoBackup.run] Conexão 1 estabelecida com o proxy 127.0.0.1
+[2025-03-16 22:55:43] [INFO] [Impl.ImplServidorAplicacao.<init>] Banco registrado no rmi
+[2025-03-16 22:55:43] [INFO] [Impl.ImplServidorAplicacao.run] Conexão 1 estabelecida com o proxy 127.0.0.1
+[2025-03-16 22:55:43] [INFO] [Impl.ImplServidorProxy.<init>] Proxy registrado no RMI Registry como: Proxy1
+[2025-03-16 22:55:43] [INFO] [Impl.ImplServidorProxy.run] Iniciando comunicação com o cliente 1 e IP:127.0.0.1
+[2025-03-16 22:55:47] [INFO] [Impl.ImplServidorProxy.run] Autenticação bem-sucedida para o cliente 1 e IP:127.0.0.1
+[2025-03-16 22:56:04] [INFO] [Impl.ImplServidorProxy.processarEscolha] Cliente 1 e IP:127.0.0.1 solicitou cadastro de OS.
+[2025-03-16 22:56:08] [INFO] [Impl.ImplServidorAplicacao.processarEscolha] Tentando conectar ao RMI Registry...
+[2025-03-16 22:56:08] [INFO] [Impl.ImplServidorAplicacao.processarEscolha] RMI Registry encontrado. Procurando por 'Backup'...
+[2025-03-16 22:56:08] [ERROR] [Impl.ImplServidorAplicacao.processarEscolha] Erro ao conectar ao RMI Backup
+java.lang.ClassCastException: class jdk.proxy2.$Proxy2 cannot be cast to class RMI.ProxyRemoteInterface (jdk.proxy2.$Proxy2 is in module jdk.proxy2 of loader 'app'; RMI.ProxyRemoteInterface is in unnamed module of loader 'app')
+	at Impl.ImplServidorAplicacao.processarEscolha(ImplServidorAplicacao.java:98)
+	at Impl.ImplServidorAplicacao.run(ImplServidorAplicacao.java:67)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+[2025-03-16 22:56:08] [INFO] [Impl.ImplServidorAplicacao.processarEscolha] Cadastro realizado com sucesso!
+[2025-03-16 23:04:05] [INFO] [Impl.ImplServidorLocalizacao.run] Cliente 127.0.0.1 se conectou no servidor de localizacao
+[2025-03-16 23:04:06] [INFO] [Impl.ImplServidorLocalizacao.processarEscolha] Cliente 127.0.0.1 foi redirecionado para servidor de proxy
+[2025-03-16 23:04:06] [INFO] [Impl.ImplServidorProxy.<init>] Nova conexão estabelecida. Total de conexões: 1
+[2025-03-16 23:04:06] [INFO] [Impl.ImplServidorAplicacaoBackup.<init>] Backup registrado no rmi
+[2025-03-16 23:04:06] [INFO] [Impl.ImplServidorAplicacao.<init>] Banco registrado no rmi
+[2025-03-16 23:04:06] [INFO] [Impl.ImplServidorAplicacaoBackup.run] Conexão 1 estabelecida com o proxy 127.0.0.1
+[2025-03-16 23:04:06] [INFO] [Impl.ImplServidorAplicacao.run] Conexão 1 estabelecida com o proxy 127.0.0.1
+[2025-03-16 23:04:06] [INFO] [Impl.ImplServidorProxy.<init>] Proxy registrado no RMI Registry como: Proxy1
+[2025-03-16 23:04:06] [INFO] [Impl.ImplServidorProxy.run] Iniciando comunicação com o cliente 1 e IP:127.0.0.1
+[2025-03-16 23:04:10] [INFO] [Impl.ImplServidorProxy.run] Autenticação bem-sucedida para o cliente 1 e IP:127.0.0.1
+[2025-03-16 23:04:11] [INFO] [Impl.ImplServidorProxy.processarEscolha] Cliente 1 e IP:127.0.0.1 solicitou cadastro de OS.
+[2025-03-16 23:04:13] [INFO] [Impl.ImplServidorAplicacao.processarEscolha] Tentando conectar ao RMI Registry...
+[2025-03-16 23:04:13] [INFO] [Impl.ImplServidorAplicacao.processarEscolha] RMI Registry encontrado. Procurando por 'Backup'...
+[2025-03-16 23:04:13] [INFO] [Impl.ImplServidorAplicacao.processarEscolha] Conexão RMI estabelecida com 'Backup'
+[2025-03-16 23:04:13] [INFO] [Impl.ImplServidorAplicacao.processarEscolha] Cadastro realizado com sucesso!
+[2025-03-16 23:06:33] [INFO] [Impl.ImplServidorLocalizacao.run] Cliente 127.0.0.1 se conectou no servidor de localizacao
+[2025-03-16 23:06:34] [INFO] [Impl.ImplServidorLocalizacao.processarEscolha] Cliente 127.0.0.1 foi redirecionado para servidor de proxy
+[2025-03-16 23:06:35] [INFO] [Impl.ImplServidorProxy.<init>] Nova conexão estabelecida. Total de conexões: 1
+[2025-03-16 23:06:35] [INFO] [Impl.ImplServidorAplicacaoBackup.<init>] Backup registrado no rmi
+[2025-03-16 23:06:35] [INFO] [Impl.ImplServidorAplicacaoBackup.run] Conexão 1 estabelecida com o proxy 127.0.0.1
+[2025-03-16 23:06:35] [INFO] [Impl.ImplServidorProxy.<init>] Proxy registrado no RMI Registry como: Proxy1
+[2025-03-16 23:06:35] [INFO] [Impl.ImplServidorAplicacao.<init>] Banco registrado no rmi
+[2025-03-16 23:06:35] [INFO] [Impl.ImplServidorAplicacao.run] Conexão 1 estabelecida com o proxy 127.0.0.1
+[2025-03-16 23:06:35] [INFO] [Impl.ImplServidorProxy.run] Iniciando comunicação com o cliente 1 e IP:127.0.0.1
+[2025-03-16 23:06:37] [INFO] [Impl.ImplServidorProxy.run] Autenticação bem-sucedida para o cliente 1 e IP:127.0.0.1
+[2025-03-16 23:06:38] [INFO] [Impl.ImplServidorProxy.processarEscolha] Cliente 1 e IP:127.0.0.1 solicitou cadastro de OS.
+[2025-03-16 23:06:40] [INFO] [Impl.ImplServidorAplicacao.processarEscolha] Tentando conectar ao RMI Registry...
+[2025-03-16 23:06:40] [INFO] [Impl.ImplServidorAplicacao.processarEscolha] RMI Registry encontrado. Procurando por 'Backup'...
+[2025-03-16 23:06:40] [INFO] [Impl.ImplServidorAplicacao.processarEscolha] Conexão RMI estabelecida com 'Backup'
+[2025-03-16 23:06:40] [INFO] [Impl.ImplServidorAplicacao.processarEscolha] Cadastro realizado com sucesso!
+[2025-03-16 23:10:48] [INFO] [Impl.ImplServidorLocalizacao.run] Cliente 127.0.0.1 se conectou no servidor de localizacao
+[2025-03-16 23:10:49] [INFO] [Impl.ImplServidorLocalizacao.processarEscolha] Cliente 127.0.0.1 foi redirecionado para servidor de proxy
+[2025-03-16 23:10:49] [INFO] [Impl.ImplServidorProxy.<init>] Nova conexão estabelecida. Total de conexões: 1
+[2025-03-16 23:10:49] [INFO] [Impl.ImplServidorAplicacao.<init>] Banco registrado no rmi
+[2025-03-16 23:10:49] [INFO] [Impl.ImplServidorAplicacaoBackup.<init>] Backup registrado no rmi
+[2025-03-16 23:10:49] [INFO] [Impl.ImplServidorAplicacao.run] Conexão 1 estabelecida com o proxy 127.0.0.1
+[2025-03-16 23:10:49] [INFO] [Impl.ImplServidorAplicacaoBackup.run] Conexão 1 estabelecida com o proxy 127.0.0.1
+[2025-03-16 23:10:49] [INFO] [Impl.ImplServidorProxy.<init>] Proxy registrado no RMI Registry como: Proxy1
+[2025-03-16 23:10:49] [INFO] [Impl.ImplServidorProxy.run] Iniciando comunicação com o cliente 1 e IP:127.0.0.1
+[2025-03-16 23:10:51] [INFO] [Impl.ImplServidorProxy.run] Autenticação bem-sucedida para o cliente 1 e IP:127.0.0.1
+[2025-03-16 23:10:53] [INFO] [Impl.ImplServidorProxy.processarEscolha] Cliente 1 e IP:127.0.0.1 solicitou cadastro de OS.
+[2025-03-16 23:10:55] [INFO] [Impl.ImplServidorAplicacao.processarEscolha] Tentando conectar ao RMI Registry...
+[2025-03-16 23:10:55] [INFO] [Impl.ImplServidorAplicacao.processarEscolha] RMI Registry encontrado. Procurando por 'Backup'...
+[2025-03-16 23:10:55] [INFO] [Impl.ImplServidorAplicacao.processarEscolha] Conexão RMI estabelecida com 'Backup'
+[2025-03-16 23:12:13] [INFO] [Impl.ImplServidorLocalizacao.run] Cliente 127.0.0.1 se conectou no servidor de localizacao
+[2025-03-16 23:12:14] [INFO] [Impl.ImplServidorLocalizacao.processarEscolha] Cliente 127.0.0.1 foi redirecionado para servidor de proxy
+[2025-03-16 23:12:14] [INFO] [Impl.ImplServidorProxy.<init>] Nova conexão estabelecida. Total de conexões: 1
+[2025-03-16 23:12:14] [INFO] [Impl.ImplServidorAplicacao.<init>] Banco registrado no rmi
+[2025-03-16 23:12:14] [INFO] [Impl.ImplServidorProxy.<init>] Proxy registrado no RMI Registry como: Proxy1
+[2025-03-16 23:12:14] [INFO] [Impl.ImplServidorAplicacaoBackup.<init>] Backup registrado no rmi
+[2025-03-16 23:12:14] [INFO] [Impl.ImplServidorAplicacao.run] Conexão 1 estabelecida com o proxy 127.0.0.1
+[2025-03-16 23:12:14] [INFO] [Impl.ImplServidorAplicacaoBackup.run] Conexão 1 estabelecida com o proxy 127.0.0.1
+[2025-03-16 23:12:14] [INFO] [Impl.ImplServidorProxy.run] Iniciando comunicação com o cliente 1 e IP:127.0.0.1
+[2025-03-16 23:12:17] [INFO] [Impl.ImplServidorProxy.run] Autenticação bem-sucedida para o cliente 1 e IP:127.0.0.1
+[2025-03-16 23:12:18] [INFO] [Impl.ImplServidorProxy.processarEscolha] Cliente 1 e IP:127.0.0.1 solicitou cadastro de OS.
+[2025-03-16 23:12:21] [INFO] [Impl.ImplServidorAplicacao.processarEscolha] Tentando conectar ao RMI Registry...
+[2025-03-16 23:12:21] [INFO] [Impl.ImplServidorAplicacao.processarEscolha] RMI Registry encontrado. Procurando por 'Backup'...
+[2025-03-16 23:12:21] [INFO] [Impl.ImplServidorAplicacao.processarEscolha] Conexão RMI estabelecida com 'Backup'
+[2025-03-16 23:16:47] [INFO] [Impl.ImplServidorLocalizacao.run] Cliente 127.0.0.1 se conectou no servidor de localizacao
+[2025-03-16 23:16:48] [INFO] [Impl.ImplServidorLocalizacao.processarEscolha] Cliente 127.0.0.1 foi redirecionado para servidor de proxy
+[2025-03-16 23:16:48] [INFO] [Impl.ImplServidorProxy.<init>] Nova conexão estabelecida. Total de conexões: 1
+[2025-03-16 23:16:48] [INFO] [Impl.ImplServidorProxy.<init>] Proxy registrado no RMI Registry como: Proxy1
+[2025-03-16 23:16:48] [INFO] [Impl.ImplServidorAplicacaoBackup.<init>] Backup registrado no rmi
+[2025-03-16 23:16:48] [INFO] [Impl.ImplServidorAplicacao.<init>] Banco registrado no rmi
+[2025-03-16 23:16:48] [INFO] [Impl.ImplServidorAplicacao.run] Conexão 1 estabelecida com o proxy 127.0.0.1
+[2025-03-16 23:16:48] [INFO] [Impl.ImplServidorProxy.run] Iniciando comunicação com o cliente 1 e IP:127.0.0.1
+[2025-03-16 23:16:48] [INFO] [Impl.ImplServidorAplicacaoBackup.run] Conexão 1 estabelecida com o proxy 127.0.0.1
+[2025-03-16 23:16:51] [INFO] [Impl.ImplServidorProxy.run] Autenticação bem-sucedida para o cliente 1 e IP:127.0.0.1
+[2025-03-16 23:16:53] [INFO] [Impl.ImplServidorProxy.processarEscolha] Cliente 1 e IP:127.0.0.1 solicitou cadastro de OS.
+[2025-03-16 23:16:56] [INFO] [Impl.ImplServidorAplicacao.processarEscolha] Tentando conectar ao RMI Registry...
+[2025-03-16 23:16:56] [INFO] [Impl.ImplServidorAplicacao.processarEscolha] RMI Registry encontrado. Procurando por 'Backup'...
+[2025-03-16 23:16:56] [INFO] [Impl.ImplServidorAplicacao.processarEscolha] Conexão RMI estabelecida com 'Backup'

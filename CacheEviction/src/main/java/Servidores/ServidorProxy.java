@@ -10,10 +10,12 @@ public class ServidorProxy {
     private ServerSocket socketServidor;
     private final int porta;
     private final int portaAplicacao;
+    private final int portaBackup;
 
-    public ServidorProxy(int porta, int portaAplicacao) {
+    public ServidorProxy(int porta, int portaAplicacao, int portaBackup) {
         this.porta = porta;
         this.portaAplicacao = portaAplicacao;
+        this.portaBackup = portaBackup;
         this.rodar();
     }
 
@@ -31,9 +33,10 @@ public class ServidorProxy {
 
                 // Cria um novo socket para se comunicar com o servidor de aplicação
                 Socket socketAplicacao = new Socket("127.0.0.1", portaAplicacao);
+                Socket socketBackup = new Socket("127.0.0.1", portaBackup);
 
                 // Cria uma thread para tratar a conexão do cliente
-                ImplServidorProxy servidorProxy = new ImplServidorProxy(cliente, socketAplicacao, "Proxy1");
+                ImplServidorProxy servidorProxy = new ImplServidorProxy(cliente, socketAplicacao,socketBackup, "Proxy1");
                 Thread t = new Thread(servidorProxy);
                 t.start(); // Inicia a thread para o cliente conectado
             }
@@ -56,6 +59,6 @@ public class ServidorProxy {
     }
 
     public static void main(String[] args) {
-        new ServidorProxy(12345, 12322);
+        new ServidorProxy(12345, 12322, 12310);
     }
 }

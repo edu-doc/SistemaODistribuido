@@ -4,21 +4,19 @@ import Banco.Banco;
 import Banco.No;
 import Logger.Logger;
 import RMI.AplicacaoRemoteInterface;
-import RMI.ProxyRemoteInterface;
 
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
 import java.rmi.AlreadyBoundException;
-import java.rmi.Remote;
 import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
 import java.rmi.server.UnicastRemoteObject;
 import java.util.List;
 
-public class ImplServidorAplicacaoBackup implements Runnable, Remote {
+public class ImplServidorAplicacaoBackup implements Runnable, AplicacaoRemoteInterface {
     public Socket socketProxy;
     public static int cont = 0;
     private boolean conexao = true;
@@ -129,4 +127,9 @@ public class ImplServidorAplicacaoBackup implements Runnable, Remote {
         }
     }
 
+    @Override
+    public List<String> inserirBackup(No no) throws RemoteException {
+
+        return null;
+    }
 }

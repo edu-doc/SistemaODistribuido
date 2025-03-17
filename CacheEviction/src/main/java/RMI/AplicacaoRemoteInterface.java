@@ -4,7 +4,8 @@ import Banco.No;
 
 import java.rmi.Remote;
 import java.rmi.RemoteException;
+import java.util.List;
 
 public interface AplicacaoRemoteInterface extends Remote {
-    void inserirBackup(No no) throws RemoteException;
+    List<String> inserirBackup(No no) throws RemoteException;
 }
