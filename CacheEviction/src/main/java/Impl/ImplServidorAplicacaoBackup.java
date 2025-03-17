@@ -1,17 +1,14 @@
 package Impl;
 
-import Banco.No;
-import Cache.NoCache;
-import Exception.MyPickException;
 import Banco.Banco;
-import Cache.Cache;
+import Banco.No;
 import Logger.Logger;
-import OrdemServico.ServiceOrder;
 import RMI.AplicacaoRemoteInterface;
+import RMI.ProxyRemoteInterface;
 
+import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
-import java.io.IOException;
 import java.net.Socket;
 import java.rmi.AlreadyBoundException;
 import java.rmi.Remote;
@@ -19,11 +16,9 @@ import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
 import java.rmi.server.UnicastRemoteObject;
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 
-public class ImplServidorAplicacao implements Runnable, Remote {
+public class ImplServidorAplicacaoBackup implements Runnable, Remote {
     public Socket socketProxy;
     public static int cont = 0;
     private boolean conexao = true;
@@ -32,7 +27,7 @@ public class ImplServidorAplicacao implements Runnable, Remote {
     private Banco banco; // Banco compartilhado
     private Logger log;
 
-    public ImplServidorAplicacao(Socket proxy) {
+    public ImplServidorAplicacaoBackup(Socket proxy) {
         this.socketProxy = proxy;
         this.banco = Banco.instancia;
         this.log = new Logger();
@@ -41,14 +36,15 @@ public class ImplServidorAplicacao implements Runnable, Remote {
         // Registra o proxy no RMI Registry
         try {
             AplicacaoRemoteInterface stub = (AplicacaoRemoteInterface) UnicastRemoteObject.exportObject(this, 0);
-            LocateRegistry.createRegistry(993);
-            Registry registry = LocateRegistry.getRegistry("localhost", 993);
-            registry.bind("Banco", stub);
-            System.out.println("Banco registrado no rmi");
-            log.info("Banco registrado no rmi");
+            LocateRegistry.createRegistry(992);
+            Registry registry = LocateRegistry.getRegistry("localhost", 992);
+            registry.bind("Backup", stub);
+            System.out.println("Backup registrado no rmi");
+            log.info("Backup registrado no rmi");
         } catch (RemoteException | AlreadyBoundException e) {
-            Logger.error("Erro ao registrar Banco no RMI Registry: " + e.getMessage(), e);
+            Logger.error("Erro ao registrar Backup no RMI Registry: " + e.getMessage(), e);
         }
+
     }
 
     public void run() {

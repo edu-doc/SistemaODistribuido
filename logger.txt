@@ -1834,3 +1834,45 @@ tream.java:498)
 [2025-03-16 21:51:12] [INFO] [Impl.ImplServidorProxy2.<init>] Nova conexão estabelecida. Total de conexões: 1
 [2025-03-16 21:51:12] [INFO] [Impl.ImplServidorProxy2.<init>] Proxy registrado no RMI Registry como: Proxy2
 [2025-03-16 21:51:12] [INFO] [Impl.ImplServidorProxy2.run] Iniciando comunicação com o cliente 1 e IP:127.0.0.1
+[2025-03-16 22:10:48] [INFO] [Impl.ImplServidorLocalizacao.run] Cliente 127.0.0.1 se conectou no servidor de localizacao
+[2025-03-16 22:10:53] [INFO] [Impl.ImplServidorLocalizacao.processarEscolha] Cliente 127.0.0.1 foi redirecionado para servidor de proxy
+[2025-03-16 22:10:53] [INFO] [Impl.ImplServidorAplicacao.run] Conexão 1 estabelecida com o proxy 127.0.0.1
+[2025-03-16 22:10:53] [INFO] [Impl.ImplServidorProxy.<init>] Nova conexão estabelecida. Total de conexões: 1
+[2025-03-16 22:10:53] [INFO] [Impl.ImplServidorProxy.<init>] Proxy registrado no RMI Registry como: Proxy1
+[2025-03-16 22:10:53] [INFO] [Impl.ImplServidorProxy.run] Iniciando comunicação com o cliente 1 e IP:127.0.0.1
+[2025-03-16 22:20:45] [INFO] [Impl.ImplServidorLocalizacao.run] Cliente 127.0.0.1 se conectou no servidor de localizacao
+[2025-03-16 22:20:48] [INFO] [Impl.ImplServidorLocalizacao.processarEscolha] Cliente 127.0.0.1 foi redirecionado para servidor de proxy
+[2025-03-16 22:20:48] [INFO] [Impl.ImplServidorProxy.<init>] Nova conexão estabelecida. Total de conexões: 1
+[2025-03-16 22:20:48] [INFO] [Impl.ImplServidorProxy.<init>] Proxy registrado no RMI Registry como: Proxy1
+[2025-03-16 22:20:48] [INFO] [Impl.ImplServidorProxy.run] Iniciando comunicação com o cliente 1 e IP:127.0.0.1
+[2025-03-16 22:22:06] [ERROR] [Impl.ImplServidorProxy.run] Erro na comunicação com o cliente 1: Connection reset
+java.net.SocketException: Connection reset
+	at java.base/sun.nio.ch.NioSocketImpl.implRead(NioSocketImpl.java:318)
+	at java.base/sun.nio.ch.NioSocketImpl.read(NioSocketImpl.java:346)
+	at java.base/sun.nio.ch.NioSocketImpl$1.read(NioSocketImpl.java:796)
+	at java.base/java.net.Socket$SocketInputStream.read(Socket.java:1109)
+	at java.base/java.io.ObjectInputStream$PeekInputStream.read(ObjectInputStream.java:2915)
+	at java.base/java.io.ObjectInputStream$PeekInputStream.readFully(ObjectInputStream.java:2931)
+	at java.base/java.io.ObjectInputStream$BlockDataInputStream.readShort(ObjectInputStream.java:3428)
+	at java.base/java.io.ObjectInputStream.readStreamHeader(ObjectInputStream.java:985)
+	at java.base/java.io.ObjectInputStream.<init>(ObjectInputStream.java:416)
+	at Impl.ImplServidorProxy.run(ImplServidorProxy.java:68)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+[2025-03-16 22:23:53] [INFO] [Impl.ImplServidorLocalizacao.run] Cliente 127.0.0.1 se conectou no servidor de localizacao
+[2025-03-16 22:23:56] [INFO] [Impl.ImplServidorLocalizacao.processarEscolha] Cliente 127.0.0.1 foi redirecionado para servidor de proxy
+[2025-03-16 22:23:56] [INFO] [Impl.ImplServidorProxy.<init>] Nova conexão estabelecida. Total de conexões: 1
+[2025-03-16 22:23:56] [INFO] [Impl.ImplServidorProxy.<init>] Proxy registrado no RMI Registry como: Proxy1
+[2025-03-16 22:23:56] [INFO] [Impl.ImplServidorProxy.run] Iniciando comunicação com o cliente 1 e IP:127.0.0.1
+[2025-03-16 22:25:30] [ERROR] [Impl.ImplServidorProxy.run] Erro na comunicação com o cliente 1: Connection reset
+java.net.SocketException: Connection reset
+	at java.base/sun.nio.ch.NioSocketImpl.implRead(NioSocketImpl.java:318)
+	at java.base/sun.nio.ch.NioSocketImpl.read(NioSocketImpl.java:346)
+	at java.base/sun.nio.ch.NioSocketImpl$1.read(NioSocketImpl.java:796)
+	at java.base/java.net.Socket$SocketInputStream.read(Socket.java:1109)
+	at java.base/java.io.ObjectInputStream$PeekInputStream.read(ObjectInputStream.java:2915)
+	at java.base/java.io.ObjectInputStream$PeekInputStream.readFully(ObjectInputStream.java:2931)
+	at java.base/java.io.ObjectInputStream$BlockDataInputStream.readShort(ObjectInputStream.java:3428)
+	at java.base/java.io.ObjectInputStream.readStreamHeader(ObjectInputStream.java:985)
+	at java.base/java.io.ObjectInputStream.<init>(ObjectInputStream.java:416)
+	at Impl.ImplServidorProxy.run(ImplServidorProxy.java:68)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
