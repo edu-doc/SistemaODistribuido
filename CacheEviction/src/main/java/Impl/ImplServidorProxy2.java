@@ -53,6 +53,7 @@ public class ImplServidorProxy2 implements Runnable, ProxyRemoteInterface {
             Logger.info("Proxy registrado no RMI Registry como: " + nomeProxy);
         } catch (RemoteException | AlreadyBoundException e) {
             Logger.error("Erro ao registrar proxy no RMI Registry: " + e.getMessage(), e);
+            System.out.println("teste");
         }
     }
 
