@@ -1,22 +1,23 @@
 package Servidores;
 
+import Impl.ImplServidorProxy;
 import Impl.ImplServidorProxy3;
 
 import java.io.IOException;
 import java.net.InetAddress;
 import java.net.ServerSocket;
 import java.net.Socket;
-import java.util.logging.Logger;
 
 public class ServidorProxy3 {
     private ServerSocket socketServidor;
     private final int porta;
     private final int portaAplicacao;
-    private static final Logger logger = Logger.getLogger(ServidorProxy3.class.getName());
+    private final int portaBackup;
 
-    public ServidorProxy3(int porta, int portaAplicacao) {
+    public ServidorProxy3(int porta, int portaAplicacao, int portaBackup) {
         this.porta = porta;
         this.portaAplicacao = portaAplicacao;
+        this.portaBackup = portaBackup;
         this.rodar();
     }
 
@@ -35,8 +36,11 @@ public class ServidorProxy3 {
                 // Cria um novo socket para se comunicar com o servidor de aplicação
                 Socket socketAplicacao = new Socket("127.0.0.1", portaAplicacao);
 
+                // Cria um novo socket para se comunicar com o servidor de backup
+                Socket socketBackup = new Socket("127.0.0.1", portaBackup);
+
                 // Cria uma thread para tratar a conexão do cliente
-                ImplServidorProxy3 servidorProxy = new ImplServidorProxy3(cliente, socketAplicacao, "Proxy3");
+                ImplServidorProxy3 servidorProxy = new ImplServidorProxy3(cliente, socketAplicacao, socketBackup, "Proxy3");
                 Thread t = new Thread(servidorProxy);
                 t.start(); // Inicia a thread para o cliente conectado
             }
@@ -59,6 +63,6 @@ public class ServidorProxy3 {
     }
 
     public static void main(String[] args) {
-        new ServidorProxy3(12355, 12322);
+        new ServidorProxy3(12355, 12322, 12310);
     }
 }

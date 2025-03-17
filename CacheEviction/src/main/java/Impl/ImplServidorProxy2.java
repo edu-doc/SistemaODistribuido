@@ -24,6 +24,7 @@ import java.util.Map;
 public class ImplServidorProxy2 implements Runnable, ProxyRemoteInterface {
     private Socket socketCliente;
     private Socket socketAplicacao;
+    private Socket socketBackup;
     private static int cont = 0;
     private boolean conexao = true;
     private BufferedReader entrada;
@@ -33,28 +34,33 @@ public class ImplServidorProxy2 implements Runnable, ProxyRemoteInterface {
     private Cache<Integer> cache;
     private Banco banco;
     private String nomeProxy;
+    private static boolean chave = true;
 
-    public ImplServidorProxy2(Socket cliente, Socket aplicacao, String nomeProxy) {
+    public ImplServidorProxy2(Socket cliente, Socket aplicacao, Socket backup,String nomeProxy) {
         this.socketCliente = cliente;
         this.socketAplicacao = aplicacao;
+        this.socketBackup = backup;
         this.cache = Cache.instancia;
         this.banco = Banco.instancia;
         this.nomeProxy = nomeProxy;
         cont++;
         Logger.info("Nova conexão estabelecida. Total de conexões: " + cont);
 
-        // Registra o proxy no RMI Registry
-        try {
-            ProxyRemoteInterface stub = (ProxyRemoteInterface) UnicastRemoteObject.exportObject(this, 0);
-            LocateRegistry.createRegistry(996);
-            Registry registry = LocateRegistry.getRegistry("localhost", 996);
-            registry.bind(nomeProxy, stub);
-            System.out.println("Proxy 2 registrado no rmi");
-            Logger.info("Proxy registrado no RMI Registry como: " + nomeProxy);
-        } catch (RemoteException | AlreadyBoundException e) {
-            Logger.error("Erro ao registrar proxy no RMI Registry: " + e.getMessage(), e);
-            System.out.println("teste");
+        if (chave == true) {
+            // Registra o proxy no RMI Registry
+            try {
+                ProxyRemoteInterface stub = (ProxyRemoteInterface) UnicastRemoteObject.exportObject(this, 0);
+                LocateRegistry.createRegistry(996);
+                Registry registry = LocateRegistry.getRegistry("localhost", 996);
+                registry.bind(nomeProxy, stub);
+                System.out.println("proxy 2 registrado no rmi");
+                Logger.info("Proxy registrado no RMI Registry como: " + nomeProxy);
+            } catch (RemoteException | AlreadyBoundException e) {
+                Logger.error("Erro ao registrar proxy no RMI Registry: " + e.getMessage(), e);
+            }
+            chave = false;
         }
+
     }
 
     @Override
@@ -81,6 +87,7 @@ public class ImplServidorProxy2 implements Runnable, ProxyRemoteInterface {
                         processarEscolha(mensagemRecebida);
                     }
                 }
+
             } else {
                 Logger.warning("Autenticação falhou para o cliente " + cont + " e IP:" + socketCliente.getInetAddress().getHostAddress());
                 saida.println("Autenticação falhou. Conexão encerrada.");
@@ -96,15 +103,6 @@ public class ImplServidorProxy2 implements Runnable, ProxyRemoteInterface {
             } catch (IOException e) {
                 Logger.error("Erro ao fechar conexões: " + e.getMessage(), e);
             }
-        }
-    }
-
-    @Override
-    public ServiceOrder buscarEmOutroProxy(int id) throws RemoteException {
-        try {
-            return cache.get(id); // Busca a OS na cache local
-        } catch (MyPickException e) {
-            throw new RemoteException("Erro ao buscar OS no proxy remoto: " + e.getMessage());
         }
     }
 
@@ -214,6 +212,44 @@ public class ImplServidorProxy2 implements Runnable, ProxyRemoteInterface {
         saida.println("Digite a nova descrição:");
         String descricao = entrada.readLine();
 
+        try {
+            Logger.info("Tentando conectar ao RMI Registry...");
+            Registry registry = LocateRegistry.getRegistry("localhost", 995);
+            Logger.info("RMI Registry encontrado. Procurando por 'Proxy1'...");
+            ProxyRemoteInterface outroProxy = (ProxyRemoteInterface) registry.lookup("Proxy1");
+            Logger.info("Conexão RMI estabelecida com 'Proxy1'. Buscando OS...");
+            ServiceOrder so = outroProxy.buscarEmOutroProxy(id);
+
+            if (so != null) {
+                outroProxy.alterarOutroProxy(id,nome,descricao); // Armazena na cache local
+                saida.println("OS alterada na cache do proxy1");
+                Logger.info("OS alterada na cache do proxy1");
+            } else {
+                saida.println("Os não encontrada na proxy1");
+                Logger.info("Os não encontrada na proxy1");
+            }
+
+            Logger.info("Tentando conectar ao RMI Registry...");
+            Registry registry1 = LocateRegistry.getRegistry("localhost", 997);
+            Logger.info("RMI Registry encontrado. Procurando por 'Proxy3'...");
+            ProxyRemoteInterface outroProxy1 = (ProxyRemoteInterface) registry1.lookup("Proxy3");
+            Logger.info("Conexão RMI estabelecida com 'Proxy3'. Buscando OS...");
+            so = outroProxy1.buscarEmOutroProxy(id);
+
+            if (so != null) {
+                outroProxy1.alterarOutroProxy(id,nome,descricao);
+                saida.println("OS alterada na cache do proxy3");
+                Logger.info("OS alterada na cache do proxy3");
+            } else {
+                saida.println("Os não encontrada na proxy3");
+                Logger.info("Os não encontrada na proxy3");
+            }
+
+        } catch (Exception e) {
+            Logger.warning("Erro ao alterar nas outras proxy: " + e.getMessage());
+            e.printStackTrace(); // Adiciona stack trace para depuração
+        }
+
         lista.add("alterar");
         lista.add(id);
         lista.add(nome);
@@ -230,6 +266,44 @@ public class ImplServidorProxy2 implements Runnable, ProxyRemoteInterface {
     private void removerOS(List<Object> lista) throws IOException, ClassNotFoundException {
         saida.println("Digite o ID para remover:");
         int id = Integer.parseInt(entrada.readLine());
+
+        try {
+            Logger.info("Tentando conectar ao RMI Registry...");
+            Registry registry = LocateRegistry.getRegistry("localhost", 995);
+            Logger.info("RMI Registry encontrado. Procurando por 'Proxy1'...");
+            ProxyRemoteInterface outroProxy = (ProxyRemoteInterface) registry.lookup("Proxy1");
+            Logger.info("Conexão RMI estabelecida com 'Proxy1'. Buscando OS...");
+            ServiceOrder so = outroProxy.buscarEmOutroProxy(id);
+
+            if (so != null) {
+                outroProxy.deletarOutroProxy(id); // Armazena na cache local
+                saida.println("OS Removida na cache do proxy1");
+                Logger.info("OS Removida na cache do proxy1");
+            } else {
+                saida.println("Os não encontrada na proxy1");
+                Logger.info("Os não encontrada na proxy1");
+            }
+
+            Logger.info("Tentando conectar ao RMI Registry...");
+            Registry registry1 = LocateRegistry.getRegistry("localhost", 997);
+            Logger.info("RMI Registry encontrado. Procurando por 'Proxy3'...");
+            ProxyRemoteInterface outroProxy1 = (ProxyRemoteInterface) registry1.lookup("Proxy3");
+            Logger.info("Conexão RMI estabelecida com 'Proxy3'. Buscando OS...");
+            so = outroProxy1.buscarEmOutroProxy(id);
+
+            if (so != null) {
+                outroProxy1.deletarOutroProxy(id);
+                saida.println("OS Removida na cache do proxy3");
+                Logger.info("OS Removida na cache do proxy3");
+            } else {
+                saida.println("Os não encontrada na proxy3");
+                Logger.info("Os não encontrada na proxy3");
+            }
+
+        } catch (Exception e) {
+            Logger.warning("Erro ao remover nas outras proxy: " + e.getMessage());
+            e.printStackTrace(); // Adiciona stack trace para depuração
+        }
 
         cache.remover(id);
         lista.add("remover");
@@ -263,6 +337,7 @@ public class ImplServidorProxy2 implements Runnable, ProxyRemoteInterface {
                 if (so != null) {
                     cache.put(id, so); // Armazena na cache local
                     saida.println("OS encontrada na cache de outro proxy1: " + so);
+                    Logger.info("OS encontrada na cache de outro proxy1");
                     return;
                 } else {
                     Logger.info("Tentando conectar ao RMI Registry...");
@@ -274,12 +349,13 @@ public class ImplServidorProxy2 implements Runnable, ProxyRemoteInterface {
                     if (so != null) {
                         cache.put(id, so);
                         saida.println("OS encontrada na cache de outro proxy3: " + so);
+                        Logger.info("OS encontrada na cache de outro proxy3");
                         return;
                     }
                     Logger.info("OS não encontrada nas caches.");
                 }
             } catch (Exception e) {
-                Logger.warning("Erro ao buscar no outro proxy: " + e.getMessage());
+                Logger.warning("Erro ao buscar nas outras proxy: " + e.getMessage());
                 e.printStackTrace(); // Adiciona stack trace para depuração
             }
         }
@@ -320,6 +396,25 @@ public class ImplServidorProxy2 implements Runnable, ProxyRemoteInterface {
         return usuarios.containsKey(login) && usuarios.get(login).equals(senha);
     }
 
+    @Override
+    public ServiceOrder buscarEmOutroProxy(int id) throws RemoteException {
+        try {
+            return cache.get(id); // Busca a OS na cache local
+        } catch (MyPickException e) {
+            throw new RemoteException("Erro ao buscar OS no proxy remoto: " + e.getMessage());
+        }
+    }
+
+    @Override
+    public void alterarOutroProxy(int id, String nome, String descricao) throws RemoteException {
+        cache.atualizar(id, nome, descricao);
+    }
+
+    @Override
+    public void deletarOutroProxy(int id) throws RemoteException {
+        cache.remover(id);
+    }
+
     private void fecharConexoes() throws IOException {
         entrada.close();
         saida.close();
@@ -328,4 +423,5 @@ public class ImplServidorProxy2 implements Runnable, ProxyRemoteInterface {
         socketCliente.close();
         socketAplicacao.close();
     }
+
 }

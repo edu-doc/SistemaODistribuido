@@ -1,12 +1,9 @@
 package Impl;
 
 import Banco.No;
-import Cache.NoCache;
-import Exception.MyPickException;
 import Banco.Banco;
-import Cache.Cache;
+import Banco.BancoBackup;
 import Logger.Logger;
-import OrdemServico.ServiceOrder;
 import RMI.AplicacaoRemoteInterface;
 
 import java.io.ObjectInputStream;
@@ -14,23 +11,23 @@ import java.io.ObjectOutputStream;
 import java.io.IOException;
 import java.net.Socket;
 import java.rmi.AlreadyBoundException;
-import java.rmi.Remote;
+import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
 import java.rmi.server.UnicastRemoteObject;
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 
-public class ImplServidorAplicacao implements Runnable, Remote {
+public class ImplServidorAplicacao implements Runnable, AplicacaoRemoteInterface {
     public Socket socketProxy;
     public static int cont = 0;
     private boolean conexao = true;
     private ObjectInputStream entrada;
     private ObjectOutputStream saida;
     private Banco banco; // Banco compartilhado
+    private BancoBackup bancoBackup;
     private Logger log;
+    private static boolean chave = true;
 
     public ImplServidorAplicacao(Socket proxy) {
         this.socketProxy = proxy;
@@ -38,16 +35,19 @@ public class ImplServidorAplicacao implements Runnable, Remote {
         this.log = new Logger();
         cont++;  // Incrementa o contador de conexões
 
-        // Registra o proxy no RMI Registry
-        try {
-            AplicacaoRemoteInterface stub = (AplicacaoRemoteInterface) UnicastRemoteObject.exportObject(this, 0);
-            LocateRegistry.createRegistry(993);
-            Registry registry = LocateRegistry.getRegistry("localhost", 993);
-            registry.bind("Banco", stub);
-            System.out.println("Banco registrado no rmi");
-            log.info("Banco registrado no rmi");
-        } catch (RemoteException | AlreadyBoundException e) {
-            Logger.error("Erro ao registrar Banco no RMI Registry: " + e.getMessage(), e);
+        if (chave == true) {
+            // Registra o proxy no RMI Registry
+            try {
+                AplicacaoRemoteInterface stub = (AplicacaoRemoteInterface) UnicastRemoteObject.exportObject(this, 0);
+                LocateRegistry.createRegistry(993);
+                Registry registry = LocateRegistry.getRegistry("localhost", 993);
+                registry.bind("Banco", stub);
+                System.out.println("Banco registrado no rmi");
+                log.info("Banco registrado no rmi");
+            } catch (RemoteException | AlreadyBoundException e) {
+                Logger.error("Erro ao registrar Banco no RMI Registry: " + e.getMessage(), e);
+            }
+            chave = false;
         }
     }
 
@@ -90,6 +90,20 @@ public class ImplServidorAplicacao implements Runnable, Remote {
         switch (comando) {
             case "cadastro":
                 No no = (No) lista.get(1);
+                try {
+                    Logger.info("Tentando conectar ao RMI Registry...");
+                    Registry registry = LocateRegistry.getRegistry("localhost", 992);
+                    Logger.info("RMI Registry encontrado. Procurando por 'Backup'...");
+
+                    AplicacaoRemoteInterface outroProxy = (AplicacaoRemoteInterface) registry.lookup("Backup");
+                    Logger.info("Conexão RMI estabelecida com 'Backup'. Inserindo OS...");
+                    outroProxy.inserirBackup(no);
+
+                } catch (NotBoundException e) {
+                    log.error("Não foi possível conectar com o Backup", e);
+                    throw new RuntimeException("Não foi possível conectar com o Backup");
+                }
+
                 banco.inserir(no);
                 saida.writeObject("Cadastro realizado com sucesso!");
                 log.info("Cadastro realizado com sucesso!");
@@ -97,6 +111,21 @@ public class ImplServidorAplicacao implements Runnable, Remote {
                 break;
             case "remover":
                 int idRemover = (Integer) lista.get(1);
+
+                try {
+                    Logger.info("Tentando conectar ao RMI Registry...");
+                    Registry registry = LocateRegistry.getRegistry("localhost", 992);
+                    Logger.info("RMI Registry encontrado. Procurando por 'Backup'...");
+
+                    AplicacaoRemoteInterface outroProxy = (AplicacaoRemoteInterface) registry.lookup("Backup");
+                    Logger.info("Conexão RMI estabelecida com 'Backup'. Removoendoo OS...");
+                    outroProxy.removerBackup(idRemover);
+
+                } catch (NotBoundException e) {
+                    log.error("Não foi possível conectar com o Backup", e);
+                    throw new RuntimeException("Não foi possível conectar com o Backup");
+                }
+
                 banco.remover(idRemover);
                 saida.writeObject("Remoção realizada com sucesso!");
                 log.info("Remoção realizada com sucesso!");
@@ -121,6 +150,21 @@ public class ImplServidorAplicacao implements Runnable, Remote {
                 int idAlterar = (Integer) lista.get(1);
                 String nome = (String) lista.get(2);
                 String descricao = (String) lista.get(3);
+
+                try {
+                    Logger.info("Tentando conectar ao RMI Registry...");
+                    Registry registry = LocateRegistry.getRegistry("localhost", 992);
+                    Logger.info("RMI Registry encontrado. Procurando por 'Backup'...");
+
+                    AplicacaoRemoteInterface outroProxy = (AplicacaoRemoteInterface) registry.lookup("Backup");
+                    Logger.info("Conexão RMI estabelecida com 'Backup'. Alterando OS...");
+                    outroProxy.alterarBackup(idAlterar, nome, descricao);
+
+                } catch (NotBoundException e) {
+                    log.error("Não foi possível conectar com o Backup", e);
+                    throw new RuntimeException("Não foi possível conectar com o Backup");
+                }
+
                 banco.atualizar(idAlterar, nome, descricao);
                 saida.writeObject("Alteração realizada com sucesso!");
                 log.info("Alteração realizada com sucesso!");
@@ -132,5 +176,21 @@ public class ImplServidorAplicacao implements Runnable, Remote {
                 break;
         }
     }
+
+    @Override
+    public void inserirBackup(No no) throws RemoteException {
+        bancoBackup.inserir(no);
+    }
+
+    @Override
+    public void removerBackup(int id) throws RemoteException {
+        bancoBackup.remover(id);
+    }
+
+    @Override
+    public void alterarBackup(int id, String nome, String descricao) throws RemoteException {
+        bancoBackup.atualizar(id, nome, descricao);
+    }
+
 
 }
