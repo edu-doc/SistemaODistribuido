@@ -66,7 +66,7 @@ Java
 
     public static void main(String args[]) {
 
-        new Cliente("localhost", 54321);
+        new Cliente("26.50.141.176", 54321);
 
     }
 

@@ -229,12 +229,18 @@ public class ImplServidorProxy implements Runnable, ProxyRemoteInterface {
                 Logger.info("Os não encontrada na proxy2");
             }
 
+        } catch (Exception e) {
+            Logger.warning("Erro ao alterar nas outras proxy: " + e.getMessage());
+            e.printStackTrace(); // Adiciona stack trace para depuração
+        }
+
+        try {
             Logger.info("Tentando conectar ao RMI Registry...");
             Registry registry1 = LocateRegistry.getRegistry("localhost", 997);
             Logger.info("RMI Registry encontrado. Procurando por 'Proxy3'...");
             ProxyRemoteInterface outroProxy1 = (ProxyRemoteInterface) registry1.lookup("Proxy3");
             Logger.info("Conexão RMI estabelecida com 'Proxy3'. Buscando OS...");
-            so = outroProxy1.buscarEmOutroProxy(id);
+            ServiceOrder so = outroProxy1.buscarEmOutroProxy(id);
 
             if (so != null) {
                 outroProxy1.alterarOutroProxy(id,nome,descricao);
@@ -283,13 +289,18 @@ public class ImplServidorProxy implements Runnable, ProxyRemoteInterface {
                 saida.println("Os não encontrada na proxy2");
                 Logger.info("Os não encontrada na proxy2");
             }
+        } catch (Exception e) {
+            Logger.warning("Erro ao remover nas outras proxy: " + e.getMessage());
+            e.printStackTrace(); // Adiciona stack trace para depuração
+        }
 
+        try {
             Logger.info("Tentando conectar ao RMI Registry...");
             Registry registry1 = LocateRegistry.getRegistry("localhost", 997);
             Logger.info("RMI Registry encontrado. Procurando por 'Proxy3'...");
             ProxyRemoteInterface outroProxy1 = (ProxyRemoteInterface) registry1.lookup("Proxy3");
             Logger.info("Conexão RMI estabelecida com 'Proxy3'. Buscando OS...");
-            so = outroProxy1.buscarEmOutroProxy(id);
+            ServiceOrder so = outroProxy1.buscarEmOutroProxy(id);
 
             if (so != null) {
                 outroProxy1.deletarOutroProxy(id);

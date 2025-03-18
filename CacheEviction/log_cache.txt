@@ -1,3 +1,0 @@
-Ação: Service Order adicionada pelo Banco e movido para o inicio, Chave: 1, Estado da Cache: [ID: 1, Nome: Eduardo, Descrição: Erro: Conexão perdida] 
-Ação: Service Order adicionada pelo Banco e movido para o inicio, Chave: 1, Estado da Cache: [ID: 1, Nome: Eduardo, Descrição: Erro: Conexão perdida] 
-Ação: Service Order adicionada pelo Banco e movido para o inicio, Chave: 0, Estado da Cache: [ID: 0, Nome: Paulo, Descrição: Erro: Internet instável] 
