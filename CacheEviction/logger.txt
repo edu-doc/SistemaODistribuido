@@ -1,0 +1,122 @@
+[2025-03-18 12:59:51] [INFO] [Impl.ImplServidorLocalizacao.<init>] Localização registrado no RMI Registry como: Localizacao
+[2025-03-18 12:59:51] [INFO] [Impl.ImplServidorLocalizacao.run] Cliente 127.0.0.1 se conectou no servidor de localizacao
+[2025-03-18 12:59:56] [INFO] [Impl.ImplServidorLocalizacao.processarEscolha] Cliente 127.0.0.1 foi redirecionado para servidor de proxy
+[2025-03-18 12:59:58] [INFO] [Impl.ImplServidorLocalizacao.processarEscolha] Cliente 127.0.0.1 foi redirecionado para servidor de proxy
+[2025-03-18 12:59:58] [INFO] [Impl.ImplServidorLocalizacao.processarEscolha] Cliente 127.0.0.1 foi redirecionado para servidor de proxy
+[2025-03-18 12:59:59] [INFO] [Impl.ImplServidorLocalizacao.processarEscolha] Cliente 127.0.0.1 foi redirecionado para servidor de proxy
+[2025-03-18 13:00:53] [INFO] [Impl.ImplServidorProxy.<init>] Nova conexão estabelecida. Total de conexões: 1
+[2025-03-18 13:00:53] [INFO] [Impl.ImplServidorProxy.<init>] Proxy registrado no RMI Registry como: Proxy1
+[2025-03-18 13:00:53] [INFO] [Impl.ImplServidorAplicacaoBackup.<init>] Backup registrado no rmi
+[2025-03-18 13:00:53] [INFO] [Impl.ImplServidorAplicacao.<init>] Banco registrado no rmi
+[2025-03-18 13:00:53] [INFO] [Impl.ImplServidorAplicacao.run] Conexão 1 estabelecida com o proxy 127.0.0.1
+[2025-03-18 13:00:53] [INFO] [Impl.ImplServidorAplicacaoBackup.run] Conexão 1 estabelecida com o proxy 127.0.0.1
+[2025-03-18 13:00:53] [INFO] [Impl.ImplServidorProxy.run] Iniciando comunicação com o cliente 1 e IP:127.0.0.1
+[2025-03-18 13:00:56] [INFO] [Impl.ImplServidorProxy.run] Autenticação bem-sucedida para o cliente 1 e IP:127.0.0.1
+[2025-03-18 13:01:00] [ERROR] [Impl.ImplServidorAplicacao.run] Erro na conexão com o proxy: null
+java.io.EOFException
+	at java.base/java.io.ObjectInputStream$BlockDataInputStream.peekByte(ObjectInputStream.java:3232)
+	at java.base/java.io.ObjectInputStream.readObject0(ObjectInputStream.java:1713)
+	at java.base/java.io.ObjectInputStream.readObject(ObjectInputStream.java:540)
+	at java.base/java.io.ObjectInputStream.readObject(ObjectInputStream.java:498)
+	at Impl.ImplServidorAplicacao.run(ImplServidorAplicacao.java:64)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+[2025-03-18 13:03:11] [INFO] [Impl.ImplServidorLocalizacao.<init>] Localização registrado no RMI Registry como: Localizacao
+[2025-03-18 13:03:11] [INFO] [Impl.ImplServidorLocalizacao.run] Cliente 127.0.0.1 se conectou no servidor de localizacao
+[2025-03-18 13:03:16] [INFO] [Impl.ImplServidorLocalizacao.processarEscolha] Cliente 127.0.0.1 foi redirecionado para servidor de proxy
+[2025-03-18 13:03:18] [INFO] [Impl.ImplServidorLocalizacao.processarEscolha] Cliente 127.0.0.1 foi redirecionado para servidor de proxy
+[2025-03-18 13:03:19] [INFO] [Impl.ImplServidorLocalizacao.processarEscolha] Cliente 127.0.0.1 foi redirecionado para servidor de proxy
+[2025-03-18 13:03:20] [INFO] [Impl.ImplServidorLocalizacao.processarEscolha] Cliente 127.0.0.1 foi redirecionado para servidor de proxy
+[2025-03-18 13:03:21] [INFO] [Impl.ImplServidorLocalizacao.processarEscolha] Cliente 127.0.0.1 foi redirecionado para servidor de proxy
+[2025-03-18 13:11:53] [INFO] [Impl.ImplServidorLocalizacao.<init>] Localização registrado no RMI Registry como: Localizacao
+[2025-03-18 13:11:53] [INFO] [Impl.ImplServidorLocalizacao.run] Cliente 127.0.0.1 se conectou no servidor de localizacao
+[2025-03-18 13:16:21] [INFO] [Impl.ImplServidorLocalizacao.<init>] Localização registrado no RMI Registry como: Localizacao
+[2025-03-18 13:16:21] [INFO] [Impl.ImplServidorLocalizacao.run] Cliente 127.0.0.1 se conectou no servidor de localizacao
+[2025-03-18 13:16:24] [INFO] [Impl.ImplServidorLocalizacao.processarEscolha] Cliente 127.0.0.1 foi redirecionado para servidor de proxy
+[2025-03-18 13:16:24] [INFO] [Impl.ImplCliente.lambda$run$0] Redirecionando cliente para proxy na porta 12345
+[2025-03-18 13:16:24] [INFO] [Impl.ImplServidorProxy.<init>] Nova conexão estabelecida. Total de conexões: 1
+[2025-03-18 13:16:24] [INFO] [Impl.ImplServidorAplicacao.<init>] Banco registrado no rmi
+[2025-03-18 13:16:24] [INFO] [Impl.ImplServidorAplicacaoBackup.<init>] Backup registrado no rmi
+[2025-03-18 13:16:24] [INFO] [Impl.ImplServidorAplicacaoBackup.run] Conexão 1 estabelecida com o proxy 127.0.0.1
+[2025-03-18 13:16:24] [INFO] [Impl.ImplServidorAplicacao.run] Conexão 1 estabelecida com o proxy 127.0.0.1
+[2025-03-18 13:16:24] [INFO] [Impl.ImplServidorProxy.<init>] Proxy registrado no RMI Registry como: Proxy1
+[2025-03-18 13:16:24] [INFO] [Impl.ImplServidorProxy.run] Iniciando comunicação com o cliente 1 e IP:127.0.0.1
+[2025-03-18 13:16:32] [INFO] [Impl.ImplServidorProxy.run] Autenticação bem-sucedida para o cliente 1 e IP:127.0.0.1
+[2025-03-18 13:16:37] [ERROR] [Impl.ImplServidorAplicacaoBackup.run] Erro na conexão com o proxy: Connection reset
+java.net.SocketException: Connection reset
+	at java.base/sun.nio.ch.NioSocketImpl.implRead(NioSocketImpl.java:318)
+	at java.base/sun.nio.ch.NioSocketImpl.read(NioSocketImpl.java:346)
+	at java.base/sun.nio.ch.NioSocketImpl$1.read(NioSocketImpl.java:796)
+	at java.base/java.net.Socket$SocketInputStream.read(Socket.java:1099)
+	at java.base/java.io.ObjectInputStream$PeekInputStream.read(Objec[2025-03-18 13:16:37] [ERROR] [Impl.ImplServidorAplicacao.run] Erro na conexão com o proxy: Connection reset
+java.net.SocketException: Connection reset
+	at java.base/sun.nio.ch.NioSocketImpl.implRead(NioSocketImpl.java:318)
+	at java.base/sun.nio.ch.NioSocketImpl.read(NioSocketImpl.java:346)
+	at java.base/sun.nio.ch.NioSocketImpl$1.read(NioSocketImpl.java:796)
+	at java.base/java.net.Socket$SocketInputStream.read(Socket.java:1099)
+	at java.base/java.net.Socket$SocketInputStream.read(Socket.java:1093)
+	at java.base/java.io.ObjectInputStream$PeekInputStream.peek(ObjectInputStream.java:2893)
+	at java.base/java.io.ObjectInputStream$BlockDataInputStream.peek(ObjectInputStream.java:3220)
+	at java.base/java.io.ObjectInputStream$BlockDataInputStream.peekByte(ObjectInputStream.java:3230)
+	at java.base/java.io.ObjectInputStream.readObject0(ObjectInputStream.java:1713)
+	at java.base/java.io.ObjectInputStream.readObject(ObjectInputStream.java:540)
+	at java.base/java.io.ObjectInputStream.readObject(ObjectInputStInputStream.java:2915)
+	at java.base/java.io.ObjectInputStream$PeekInputStream.readFully(ObjectInputStream.java:2931)
+	at java.base/java.io.ObjectInputStream$BlockDataInputStream.readShort(ObjectInputStream.java:3428)
+	at java.base/java.io.ObjectInputStream.readStreamHeader(ObjectInputStream.java:985)
+	at java.base/java.io.ObjectInputStream.<init>(ObjectInputStream.java:416)
+	at Impl.ImplServidorAplicacaoBackup.run(ImplServidorAplicacaoBackup.java:58)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+tream.java:498)
+	at Impl.ImplServidorAplicacao.run(ImplServidorAplicacao.java:64)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+[2025-03-18 13:20:50] [INFO] [Impl.ImplServidorLocalizacao.<init>] Localização registrado no RMI Registry como: Localizacao
+[2025-03-18 13:20:50] [INFO] [Impl.ImplServidorLocalizacao.run] Cliente 127.0.0.1 se conectou no servidor de localizacao
+[2025-03-18 13:20:53] [INFO] [Impl.ImplServidorLocalizacao.processarEscolha] Cliente 127.0.0.1 foi redirecionado para servidor de proxy
+[2025-03-18 13:20:53] [INFO] [Impl.ImplCliente.redirecionarParaNovoProxy] Redirecionando cliente para proxy na porta 12345
+[2025-03-18 13:20:53] [INFO] [Impl.ImplServidorProxy.<init>] Nova conexão estabelecida. Total de conexões: 1
+[2025-03-18 13:20:53] [INFO] [Impl.ImplServidorAplicacaoBackup.<init>] Backup registrado no rmi
+[2025-03-18 13:20:53] [INFO] [Impl.ImplServidorAplicacaoBackup.run] Conexão 1 estabelecida com o proxy 127.0.0.1
+[2025-03-18 13:20:53] [INFO] [Impl.ImplServidorAplicacao.<init>] Banco registrado no rmi
+[2025-03-18 13:20:53] [INFO] [Impl.ImplServidorAplicacao.run] Conexão 1 estabelecida com o proxy 127.0.0.1
+[2025-03-18 13:20:53] [INFO] [Impl.ImplServidorProxy.<init>] Proxy registrado no RMI Registry como: Proxy1
+[2025-03-18 13:20:53] [INFO] [Impl.ImplServidorProxy.run] Iniciando comunicação com o cliente 1 e IP:127.0.0.1
+[2025-03-18 13:20:56] [INFO] [Impl.ImplServidorProxy.run] Autenticação bem-sucedida para o cliente 1 e IP:127.0.0.1
+[2025-03-18 13:21:01] [ERROR] [Impl.ImplServidorAplicacaoBackup.run] Erro na conexão com o proxy: Connection reset
+java.net.SocketException: Connection reset
+	at java.base/sun.nio.ch.NioSocketImpl.implRead(NioSocketImpl.java:318)
+	at java.base/sun.nio.ch.NioSocketImpl.read(NioSocketImpl.java:346)
+	at java.base/sun.nio.ch.NioSocketImpl$1.read(NioSocketImpl.java:796)
+	at java.base/java.net.Socket$SocketInputStream.read(Socket.java:1099)
+	at java.base/java.io.ObjectInputStream$PeekInputStream.read(ObjectInputStream.java:2915)
+	at java.base/java.io.ObjectInputStream$PeekInputStream.readFully(ObjectInputStream.java:2931)
+	at java.base/java.io.ObjectInputStream$BlockDataInputStream.readShort(ObjectInputStream.java:3428)
+	at java.base/java.io.ObjectInputStream.readStreamHeader(ObjectInputStream.java:985)
+	at java.base/java.io.ObjectInputStream.<init>(ObjectInputStream.java:416)
+	at Impl.ImplServidorAplicacaoBackup.run(ImplServidorAplicacaoBackup.java:58)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+[2025-03-18 13:21:01] [INFO] [Impl.ImplCliente.tentarNovoProxy] Consultando o servidor de localização para um novo proxy...
+[2025-03-18 13:21:01] [ERROR] [Impl.ImplServidorAplicacao.run] Erro na conexão com o proxy: Connection reset
+java.net.SocketException: Connection reset
+	at java.base/sun.nio.ch.NioSocketImpl.implRead(NioSocketImpl.java:318)
+	at java.base/sun.nio.ch.NioSocketImpl.read(NioSocketImpl.java:346)
+	at java.base/sun.nio.ch.NioSocketImpl$1.read(NioSocketImpl.java:796)
+	at java.base/java.net.Socket$SocketInputStream.read(Socket.java:1099)
+	at java.base/java.net.Socket$SocketInputStream.read(Socket.java:1093)
+	at java.base/java.io.ObjectInputStream$PeekInputStream.peek(ObjectInputStream.java:2893)
+	at java.base/java.io.ObjectInputStream$BlockDataInputStream.peek(ObjectInputStream.java:3220)
+	at java.base/java.io.ObjectInputStream$BlockDataInputStream.peekByte(ObjectInputStream.java:3230)
+	at java.base/java.io.ObjectInputStream.readObject0(ObjectInputStream.java:1713)
+	at java.base/java.io.ObjectInputStream.readObject(ObjectInputStream.java:540)
+	at java.base/java.io.ObjectInputStream.readObject(ObjectInputStream.java:498)
+	at Impl.ImplServidorAplicacao.run(ImplServidorAplicacao.java:64)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+[2025-03-18 13:21:01] [INFO] [Impl.ImplCliente.tentarNovoProxy] Consultando o servidor de localização para um novo proxy...
+[2025-03-18 13:21:01] [INFO] [Impl.ImplCliente.tentarNovoProxy] Tentando conectar ao novo proxy na porta 12354
+[2025-03-18 13:21:01] [INFO] [Impl.ImplCliente.tentarNovoProxy] Tentando conectar ao novo proxy na porta 12355
+[2025-03-18 13:21:01] [INFO] [Impl.ImplServidorAplicacaoBackup.run] Conexão 2 estabelecida com o proxy 127.0.0.1
+[2025-03-18 13:21:01] [INFO] [Impl.ImplServidorAplicacao.run] Conexão 2 estabelecida com o proxy 127.0.0.1
+[2025-03-18 13:21:01] [INFO] [Impl.ImplServidorProxy2.<init>] Nova conexão estabelecida. Total de conexões: 1
+[2025-03-18 13:21:01] [INFO] [Impl.ImplServidorProxy2.<init>] Proxy registrado no RMI Registry como: Proxy2
+[2025-03-18 13:21:01] [INFO] [Impl.ImplServidorProxy2.run] Iniciando comunicação com o cliente 1 e IP:127.0.0.1
+[2025-03-18 13:21:07] [INFO] [Impl.ImplServidorProxy2.run] Autenticação bem-sucedida para o cliente 1 e IP:127.0.0.1
+[2025-03-18 13:21:10] [INFO] [Impl.ImplServidorProxy2.processarEscolha] Cliente 1 e IP:127.0.0.1 solicitou listagem de todas as OSs.

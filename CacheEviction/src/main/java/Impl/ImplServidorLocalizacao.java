@@ -104,7 +104,7 @@ public class ImplServidorLocalizacao implements Runnable, LocalizacaoRemoteInter
                 saida.println("Conectado");
                 log.info("Cliente " + socketCliente.getInetAddress().getHostAddress() + " foi redirecionado para servidor de proxy");
                 try {
-                    saida.println(retornaPorta());
+                    saida.println("REDIRECT:"+retornaPorta());
                 } catch (RemoteException e) {
                     throw new RuntimeException(e);
                 }
