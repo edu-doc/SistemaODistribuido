@@ -21,6 +21,7 @@ public class ImplCliente implements Runnable {
         this.cliente = c;
     }
 
+    @Override
     public void run() {
         conectarServidor(cliente);
 
@@ -39,7 +40,6 @@ public class ImplCliente implements Runnable {
         // Fecha os recursos
         fecharConexao();
         System.out.println("Cliente finaliza conexão.");
-
     }
 
     private void conectarServidor(Socket socket) {
@@ -61,10 +61,11 @@ public class ImplCliente implements Runnable {
                         if (mensagemServidor.startsWith("REDIRECT:")) {
                             int novaPorta = Integer.parseInt(mensagemServidor.split(":")[1].trim());
                             redirecionarParaNovoProxy(novaPorta);
+                            break; // Sai do loop de leitura para reiniciar a conexão
                         }
                     }
                 } catch (IOException e) {
-                    System.out.println("Proxy desconectado. Tentando reconectar...");
+                    System.out.println("Erro na leitura do servidor: " + e.getMessage());
                     tentarNovoProxy();
                 }
             }).start();

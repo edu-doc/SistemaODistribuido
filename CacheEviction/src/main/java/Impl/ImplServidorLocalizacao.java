@@ -82,8 +82,7 @@ public class ImplServidorLocalizacao implements Runnable, LocalizacaoRemoteInter
             // Finaliza os recursos
             entrada.close();
             saida.close();
-            System.out.println("Fim do cliente " +
-                    socketCliente.getInetAddress().getHostAddress());
+            System.out.println("Fim do cliente " + socketCliente.getInetAddress().getHostAddress());
 
             socketCliente.close();
 
@@ -121,23 +120,48 @@ public class ImplServidorLocalizacao implements Runnable, LocalizacaoRemoteInter
 
 
     @Override
-    public int retornaPorta() throws RemoteException {
+    public synchronized int retornaPorta() throws RemoteException {
         int portaProxy; // Porta do servidor de proxy
 
-        if (cont1 <= cont2 && cont1 <= cont3){
+        // Verifica a conectividade das portas em ordem de prioridade
+        if (cont1 <= cont2 && cont1 <= cont3) {
             portaProxy = 12345;
-            System.out.println("Proxy 1");
-            cont1++;
-        } else if (cont2 <= cont3) {
-            portaProxy = 12354;
-            System.out.println("Proxy 2");
-            cont2++;
-        } else {
-            portaProxy = 12355;
-            System.out.println("Proxy 3");
-            cont3++;
+            if (testarPortaAtiva(portaProxy)) {
+                System.out.println("Proxy 1 selecionado (Porta " + portaProxy + ")");
+                cont1++;
+                return portaProxy;
+            }
         }
 
-        return portaProxy;
+        if (cont2 <= cont3) {
+            portaProxy = 12354;
+            if (testarPortaAtiva(portaProxy)) {
+                System.out.println("Proxy 2 selecionado (Porta " + portaProxy + ")");
+                cont2++;
+                return portaProxy;
+            }
+        }
+
+        portaProxy = 12355;
+        if (testarPortaAtiva(portaProxy)) {
+            System.out.println("Proxy 3 selecionado (Porta " + portaProxy + ")");
+            cont3++;
+            return portaProxy;
+        }
+
+        // Se nenhuma porta estiver ativa, lança uma exceção
+        throw new RemoteException("Nenhum servidor proxy está disponível no momento.");
     }
+
+    private boolean testarPortaAtiva(int porta) {
+        try (Socket socket = new Socket("localhost", porta)) {
+            // Se a conexão for bem-sucedida, a porta está ativa
+            return true;
+        } catch (IOException e) {
+            // Se ocorrer uma exceção, a porta não está ativa
+            System.err.println("Porta " + porta + " não está ativa: " + e.getMessage());
+            return false;
+        }
+    }
+
 }
