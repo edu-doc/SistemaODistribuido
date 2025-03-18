@@ -2,9 +2,17 @@ package Impl;
 
 import java.io.*;
 import java.net.Socket;
-import Logger.Logger;
+import java.rmi.AlreadyBoundException;
+import java.rmi.RemoteException;
+import java.rmi.registry.LocateRegistry;
+import java.rmi.registry.Registry;
+import java.rmi.server.UnicastRemoteObject;
 
-public class ImplServidorLocalizacao implements Runnable {
+import Logger.Logger;
+import RMI.LocalizacaoRemoteInterface;
+import RMI.ProxyRemoteInterface;
+
+public class ImplServidorLocalizacao implements Runnable, LocalizacaoRemoteInterface {
 
     public Socket socketCliente;
     public static int cont = 0;
@@ -15,11 +23,28 @@ public class ImplServidorLocalizacao implements Runnable {
     public static int cont1 = 0;
     public static int cont2 = 0;
     public static int cont3 = 0;
+    private static boolean chave = true;
 
     public ImplServidorLocalizacao(Socket cliente) {
         this.socketCliente = cliente;
         this.log = new Logger();
         cont++;  // Incrementa o contador de conexões
+
+        if (chave == true) {
+            // Registra o proxy no RMI Registry
+            try {
+                LocalizacaoRemoteInterface stub = (LocalizacaoRemoteInterface) UnicastRemoteObject.exportObject(this, 0);
+                LocateRegistry.createRegistry(994);
+                Registry registry = LocateRegistry.getRegistry("localhost", 994);
+                registry.bind("Localizacao", stub);
+                System.out.println("localização registrado no rmi");
+                Logger.info("Localização registrado no RMI Registry como: " + "Localizacao");
+            } catch (RemoteException | AlreadyBoundException e) {
+                Logger.error("Erro ao registrar localização no RMI Registry: " + e.getMessage(), e);
+            }
+            chave = false;
+        }
+
     }
 
     public void run() {
@@ -78,7 +103,11 @@ public class ImplServidorLocalizacao implements Runnable {
             case "1":
                 saida.println("Conectado");
                 log.info("Cliente " + socketCliente.getInetAddress().getHostAddress() + " foi redirecionado para servidor de proxy");
-                redirecionarParaProxy();
+                try {
+                    saida.println(retornaPorta());
+                } catch (RemoteException e) {
+                    throw new RuntimeException(e);
+                }
                 break;
             case "2":
                 saida.println("Conexão Finalizada");
@@ -90,8 +119,9 @@ public class ImplServidorLocalizacao implements Runnable {
         }
     }
 
-    private void redirecionarParaProxy() {
-        String enderecoProxy = "127.0.0.1"; // Endereço do servidor de proxy
+
+    @Override
+    public int retornaPorta() throws RemoteException {
         int portaProxy; // Porta do servidor de proxy
 
         if (cont1 <= cont2 && cont1 <= cont3){
@@ -108,60 +138,6 @@ public class ImplServidorLocalizacao implements Runnable {
             cont3++;
         }
 
-        try {
-            // Cria um novo socket para se conectar ao proxy
-            Socket socketProxy = new Socket(enderecoProxy, portaProxy);
-
-            // Cria streams para comunicação entre cliente e proxy
-            BufferedReader proxyEntrada = new BufferedReader(new InputStreamReader(socketProxy.getInputStream()));
-            PrintWriter proxySaida = new PrintWriter(socketProxy.getOutputStream(), true);
-
-            BufferedReader clienteEntrada = new BufferedReader(new InputStreamReader(socketCliente.getInputStream()));
-            PrintWriter clienteSaida = new PrintWriter(socketCliente.getOutputStream(), true);
-
-            System.out.println("Cliente redirecionado para o servidor proxy.");
-
-            // Criar threads para comunicação bidirecional
-            Thread threadClienteParaProxy = new Thread(() -> {
-                try {
-                    String mensagem;
-                    while ((mensagem = clienteEntrada.readLine()) != null) {
-                        proxySaida.println(mensagem);
-                    }
-                } catch (IOException e) {
-                    System.err.println("Erro ao encaminhar mensagem do cliente para o proxy: " + e.getMessage());
-                }
-            });
-
-            Thread threadProxyParaCliente = new Thread(() -> {
-                try {
-                    String mensagem;
-                    while ((mensagem = proxyEntrada.readLine()) != null) {
-                        clienteSaida.println(mensagem);
-                    }
-                } catch (IOException e) {
-                    System.err.println("Erro ao encaminhar mensagem do proxy para o cliente: " + e.getMessage());
-                }
-            });
-
-            // Iniciar as threads
-            threadClienteParaProxy.start();
-            threadProxyParaCliente.start();
-
-            // Aguardar a finalização das threads
-            threadClienteParaProxy.join();
-            threadProxyParaCliente.join();
-
-        } catch (IOException | InterruptedException e) {
-            System.err.println("Erro ao redirecionar o cliente para o proxy: " + e.getMessage());
-        } finally {
-            try {
-                socketCliente.close();
-            } catch (IOException e) {
-                System.err.println("Erro ao fechar conexão do cliente: " + e.getMessage());
-            }
-            conexao = false; // Finaliza a conexão
-        }
+        return portaProxy;
     }
-
 }
