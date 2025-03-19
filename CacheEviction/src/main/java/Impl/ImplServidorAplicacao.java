@@ -75,8 +75,7 @@ public class ImplServidorAplicacao implements Runnable, AplicacaoRemoteInterface
             socketProxy.close();
 
         } catch (IOException e) {
-            System.err.println("Erro na conexão com o proxy: " + e.getMessage());
-            log.error("Erro na conexão com o proxy: " + e.getMessage(), e);
+
         } finally {
             try {
                 socketProxy.close();
@@ -118,7 +117,7 @@ public class ImplServidorAplicacao implements Runnable, AplicacaoRemoteInterface
                     Logger.info("RMI Registry encontrado. Procurando por 'Backup'...");
 
                     AplicacaoRemoteInterface outroProxy = (AplicacaoRemoteInterface) registry.lookup("Backup");
-                    Logger.info("Conexão RMI estabelecida com 'Backup'. Removoendoo OS...");
+                    Logger.info("Conexão RMI estabelecida com 'Backup'. Removendo OS...");
                     outroProxy.removerBackup(idRemover);
 
                 } catch (NotBoundException e) {
@@ -180,16 +179,31 @@ public class ImplServidorAplicacao implements Runnable, AplicacaoRemoteInterface
     @Override
     public void inserirBackup(No no) throws RemoteException {
         bancoBackup.inserir(no);
+        try {
+            saida.writeObject("OS inserida no backup");
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @Override
     public void removerBackup(int id) throws RemoteException {
         bancoBackup.remover(id);
+        try {
+            saida.writeObject("OS removida no backup");
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @Override
     public void alterarBackup(int id, String nome, String descricao) throws RemoteException {
         bancoBackup.atualizar(id, nome, descricao);
+        try {
+            saida.writeObject("OS alterada no backup");
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 
 
